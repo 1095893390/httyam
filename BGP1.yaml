@@ -5,17 +5,17 @@ mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
 proxies:
-  - {name: wtt, server: yi1.wecanplayer.online, port: 20088, type: trojan, password: !<str> 57646625, sni: yi1.wecanplayer.online}
-  - {name: HKnat2Tr-test, server: ion.wecanplayer.online, port: 11011, type: trojan, password: !<str> 57646625, sni: ion.wecanplayer.online}
-  - {name: nhn, server: azhktie.wecanplayer.online, port: 10402, type: trojan, password: !<str> 57646625, sni: azhktie.wecanplayer.online}
+  - {name: 🇭🇰 wtt, server: yi1.wecanplayer.online, port: 20088, type: trojan, password: !<str> 57646625, sni: yi1.wecanplayer.online, skip-cert-verify: true}
+  - {name: 🇭🇰 HKnat2Tr-test, server: ion.wecanplayer.online, port: 11011, type: trojan, password: !<str> 57646625, sni: ion.wecanplayer.online, skip-cert-verify: true}
+  - {name: nhn, server: azhktie.wecanplayer.online, port: 10402, type: trojan, password: !<str> 57646625, sni: azhktie.wecanplayer.online, skip-cert-verify: true}
 proxy-groups:
   - name: Proxies
     type: select
     proxies:
       - Auto - UrlTest
       - DIRECT
-      - 🇭🇰 HKnat2Tr-test
       - 🇭🇰 wtt
+      - 🇭🇰 HKnat2Tr-test
       - nhn
   - name: Domestic
     type: select
@@ -27,8 +27,8 @@ proxy-groups:
     proxies:
       - DIRECT
       - Proxies
-      - 🇭🇰 HKnat2Tr-test
       - 🇭🇰 wtt
+      - 🇭🇰 HKnat2Tr-test
       - nhn
   - name: Others
     type: select
@@ -57,32 +57,32 @@ proxy-groups:
     proxies:
       - Proxies
       - DIRECT
-      - 🇭🇰 HKnat2Tr-test
       - 🇭🇰 wtt
+      - 🇭🇰 HKnat2Tr-test
       - nhn
   - name: Netflix
     type: select
     proxies:
       - Proxies
       - DIRECT
-      - 🇭🇰 HKnat2Tr-test
       - 🇭🇰 wtt
+      - 🇭🇰 HKnat2Tr-test
       - nhn
   - name: Spotify
     type: select
     proxies:
       - Proxies
       - DIRECT
-      - 🇭🇰 HKnat2Tr-test
       - 🇭🇰 wtt
+      - 🇭🇰 HKnat2Tr-test
       - nhn
   - name: Telegram
     type: select
     proxies:
       - Proxies
       - DIRECT
-      - 🇭🇰 HKnat2Tr-test
       - 🇭🇰 wtt
+      - 🇭🇰 HKnat2Tr-test
       - nhn
   - name: Steam
     type: select
@@ -95,8 +95,8 @@ proxy-groups:
       - Proxies
       - DIRECT
       - Domestic
-      - 🇭🇰 HKnat2Tr-test
       - 🇭🇰 wtt
+      - 🇭🇰 HKnat2Tr-test
       - nhn
   - name: PayPal
     type: select
@@ -118,8 +118,8 @@ proxy-groups:
     url: http://cp.cloudflare.com/generate_204
     interval: 1800
     proxies:
-      - 🇭🇰 HKnat2Tr-test
       - 🇭🇰 wtt
+      - 🇭🇰 HKnat2Tr-test
       - nhn
 rules:
  - DOMAIN-SUFFIX,local,DIRECT
