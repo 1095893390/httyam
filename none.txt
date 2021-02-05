@@ -1,0 +1,33 @@
+proxies:
+
+#HKnat2Tr-test
+  - name: HKnat2Tr-test
+    type: trojan
+    server: ion.wecanplayer.online
+    port: 11011
+    password: 57646625
+    skip-cert-verify: true
+
+#wtt
+  - name: wtt
+    type: trojan
+    server: yi1.wecanplayer.online
+    port: 20088
+    password: 57646625
+    skip-cert-verify: true
+
+#nhn
+  - name: nhn
+    type: trojan
+    server: azhktie.wecanplayer.online
+    port: 10402
+    password: 57646625
+    skip-cert-verify: true
+
+#awsdemohk-azhkzf
+  - name: awsdemohk-azhkzf
+    type: ss
+    server: az-hk1.pf.zeroteam.top
+    port: 25688
+    cipher: chacha20-ietf-poly1305
+    password: "TGT29GtuPY"
