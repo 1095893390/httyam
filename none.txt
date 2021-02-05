@@ -1,13 +1,11 @@
 port: 7890
-authentication:
-  - "smxadmin:smxadmin"
+socks-port: 7891
+redir-port: 7892
 allow-lan: true
 mode: rule
 log-level: silent
-external-controller: 0.0.0.0:9095
-external-ui: public
-secret: "smxadmin"
-interface-name: enp6s0f0
+external-controller: 0.0.0.0:9090
+secret: ""
 proxies:
 
 #HKnat2Tr-test
