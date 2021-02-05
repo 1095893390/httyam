@@ -5,7 +5,7 @@ mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
 proxies:
-  - {name: wtt, server:yi1.wecanplayer.online, port: 20088, type: trojan, password: !<str> 57646625, sni: yi1.wecanplayer.online}
+  - {name: wtt, server: yi1.wecanplayer.online, port: 20088, type: trojan, password: !<str> 57646625, sni: yi1.wecanplayer.online}
   - {name: HKnat2Tr-test, server: ion.wecanplayer.online, port: 11011, type: trojan, password: !<str> 57646625, sni: ion.wecanplayer.online}
   - {name: nhn, server: azhktie.wecanplayer.online, port: 10402, type: trojan, password: !<str> 57646625, sni: azhktie.wecanplayer.online}
 proxy-groups:
