@@ -7,7 +7,7 @@ external-controller: 127.0.0.1:9090
 proxies:
   - {name: 🇭🇰 wtt, server: yi1.wecanplayer.online, port: 20088, type: trojan, password: !<str> 57646625, sni: yi1.wecanplayer.online, skip-cert-verify: true}
   - {name: 🇭🇰 HKnat2Tr-test, server: ion.wecanplayer.online, port: 11011, type: trojan, password: !<str> 57646625, sni: ion.wecanplayer.online, skip-cert-verify: true}
-  - {name: nhn, server: 133.223.69.100, port: 10404, type: ss, cipher: chacha20-ietf-poly1305, password: bbfa60a2-e80e-4179-a484-b74d3a7471ee, plugin: v2ray-plugin, plugin-opts: {mode: "", host: "", path: "", tls: false, mux: false}}
+  - {name: nhn, server: 133.223.69.100, port: 10404, type: ss, cipher: chacha20-ietf-poly1305, password: bbfa60a2-e80e-4179-a484-b74d3a7471ee, plugin: v2ray-plugin, plugin-opts: {mode: "websocket", host: "", path: "", tls: false, mux: false}}
 proxy-groups:
   - name: Proxies
     type: select
