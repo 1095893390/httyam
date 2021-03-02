@@ -9,6 +9,7 @@ proxies:
   - {name: 🇭🇰 HKnat2Tr-test, server: ion.wecanplayer.online, port: 11011, type: trojan, password: !<str> 57646625, sni: ion.wecanplayer.online, skip-cert-verify: true}
   - {name: AZfeng, server: azhk1.wecanplayer.online, port: 443, type: trojan, password: !<str> 57646625, sni: azhk1.wecanplayer.online, skip-cert-verify: true}
   - {name: nhnKR, server: azhktie.wecanplayer.online, port: 10502, type: trojan, password: !<str> 57646625, sni: azhktie.wecanplayer.online, skip-cert-verify: true}
+  - {name: nhnJP, server: yi1.wecanplayer.online, port: 10702, type: trojan, password: !<str> 57646625, sni: yi1.wecanplayer.online, skip-cert-verify: true}
 proxy-groups:
   - name: Proxies
     type: select
@@ -19,6 +20,7 @@ proxy-groups:
       - 🇭🇰 HKnat2Tr-test
       - AZfeng
       - nhnKR
+      - nhnJP
   - name: Domestic
     type: select
     proxies:
