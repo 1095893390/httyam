@@ -11,6 +11,7 @@ proxies:
   - {name: nhnKR, server: azhktie.wecanplayer.online, port: 10502, type: trojan, password: !<str> 57646625, sni: azhktie.wecanplayer.online, skip-cert-verify: true}
   - {name: azkuai, server: azkuaile.wecanplayer.online, port: 11041, type: trojan, password: !<str> 57646625, sni: azkuaile.wecanplayer.online, skip-cert-verify: true}
   - {name: nhnjp, server: yi1.wecanplayer.online, port: 10402, type: trojan, password: !<str> 57646625, sni: yi1.wecanplayer.online, skip-cert-verify: true}
+  - {name: krsk, server: krsk.jiasu.live, port: 443, type: trojan, password: !<str> 57646625, sni: krsk.jiasu.live, skip-cert-verify: true}
 proxy-groups:
   - name: Proxies
     type: select
@@ -23,6 +24,7 @@ proxy-groups:
       - nhnKR
       - azkuaile
       - nhnjp
+      - krsk
   - name: Domestic
     type: select
     proxies:
