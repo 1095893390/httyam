@@ -10,7 +10,7 @@ proxies:
   - {name: 🇭🇰 wttpftx, server: tx.wecanplayer.online, port: 46824, type: trojan, password: !<str> 57646625, sni: tx.wecanplayer.online, skip-cert-verify: true}
   - {name: 🇭🇰 HKnat2Tr-test, server: ion.wecanplayer.online, port: 11011, type: trojan, password: !<str> 57646625, sni: ion.wecanplayer.online, skip-cert-verify: true}
   - {name: 🇭🇰 aznatpf, server: awsbj.wecanplayer.online, port: 11351, type: trojan, password: !<str> 57646625, sni: awsbj.wecanplayer.online, skip-cert-verify: true}
-  - {name: AZfeng, server: azhk1.wecanplayer.online, port: 443, type: trojan, password: !<str> 57646625, sni: azhk1.wecanplayer.online, skip-cert-verify: true}
+  - {name: AZfeng, server: azfeng.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: azfeng.jiasudu.live, skip-cert-verify: true}
   - {name: nhnKR, server: azhktie.wecanplayer.online, port: 10502, type: trojan, password: !<str> 57646625, sni: azhktie.wecanplayer.online, skip-cert-verify: true}
   - {name: azkuai, server: azkuaile.wecanplayer.online, port: 11041, type: trojan, password: !<str> 57646625, sni: azkuaile.wecanplayer.online, skip-cert-verify: true}
   - {name: azkuaipf, server: awsbj.wecanplayer.online, port: 10352, type: trojan, password: !<str> 57646625, sni: awsbj.wecanplayer.online, skip-cert-verify: true}
