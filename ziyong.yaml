@@ -16,7 +16,7 @@ proxy-groups:
       - DIRECT
       - AZfeng
       - nhnkr
-      - wikius
+      - WikiUS
   - name: Domestic
     type: select
     proxies:
