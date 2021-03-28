@@ -4,11 +4,9 @@ allow-lan: true
 mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
-proxies:
-  - {name: azkuaipf, server: awsbj.jiasudu.live, port: 10352, type: trojan, password: !<str> 57646625, sni: awsbj.jiasudu.live, skip-cert-verify: true}
+proxies
+  - {name: WikiUS, server: wikius.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: wikius.jiasudu.live, skip-cert-verify: true}
   - {name: AZfeng, server: azfeng.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: azfeng.jiasudu.live, skip-cert-verify: true}
-  - {name: azkuai, server: azkuai.jiasudu.live, port: 11041, type: trojan, password: !<str> 57646625, sni: azkuai.jiasudu.live, skip-cert-verify: true}
-  - {name: nhnjp, server: nhnjp.jiasudu.live, port: 10102, type: trojan, password: !<str> 57646625, sni: nhnjp.jiasudu.live, skip-cert-verify: true}
   - {name: nhnkr, server: nhnkr.jiasudu.live, port: 10502, type: trojan, password: !<str> 57646625, sni: nhnkr.jiasudu.live, skip-cert-verify: true}
 proxy-groups:
   - name: Proxies
@@ -16,11 +14,9 @@ proxy-groups:
     proxies:
       - Auto - UrlTest
       - DIRECT
-      - azkuaipf
       - AZfeng
-      - azkuai
-      - nhnjp
       - nhnkr
+      - wikius
   - name: Domestic
     type: select
     proxies:
