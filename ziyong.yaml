@@ -27,9 +27,6 @@ proxy-groups:
     proxies:
       - DIRECT
       - Proxies
-      - 🇭🇰 wtt
-      - 🇭🇰 HKnat2Tr-test
-      - nhn
   - name: Others
     type: select
     proxies:
@@ -51,39 +48,26 @@ proxy-groups:
     proxies:
       - DIRECT
       - Proxies
-      - 🇭🇰 HKnat2Tr-test
   - name: GlobalTV
     type: select
     proxies:
       - Proxies
       - DIRECT
-      - 🇭🇰 wtt
-      - 🇭🇰 HKnat2Tr-test
-      - nhn
   - name: Netflix
     type: select
     proxies:
       - Proxies
       - DIRECT
-      - 🇭🇰 wtt
-      - 🇭🇰 HKnat2Tr-test
-      - nhn
   - name: Spotify
     type: select
     proxies:
       - Proxies
       - DIRECT
-      - 🇭🇰 wtt
-      - 🇭🇰 HKnat2Tr-test
-      - nhn
   - name: Telegram
     type: select
     proxies:
       - Proxies
       - DIRECT
-      - 🇭🇰 wtt
-      - 🇭🇰 HKnat2Tr-test
-      - nhn
   - name: Steam
     type: select
     proxies:
@@ -95,9 +79,6 @@ proxy-groups:
       - Proxies
       - DIRECT
       - Domestic
-      - 🇭🇰 wtt
-      - 🇭🇰 HKnat2Tr-test
-      - nhn
   - name: PayPal
     type: select
     proxies:
@@ -118,9 +99,8 @@ proxy-groups:
     url: http://cp.cloudflare.com/generate_204
     interval: 1800
     proxies:
-      - 🇭🇰 wtt
-      - 🇭🇰 HKnat2Tr-test
-      - nhn
+      - Proxies
+      - DIRECT
 rules:
  - DOMAIN-SUFFIX,local,DIRECT
  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
