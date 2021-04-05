@@ -8,6 +8,8 @@ proxies:
   - {name: AZfeng, server: azfeng.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: azfeng.jiasudu.live, skip-cert-verify: true}
   - {name: WikiUS, server: wikius.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: wikius.jiasudu.live, skip-cert-verify: true}
   - {name: nhnkr, server: nhnkr.jiasudu.live, port: 10502, type: trojan, password: !<str> 57646625, sni: nhnkr.jiasudu.live, skip-cert-verify: true}
+  - {name: bjzfkr, server: awsbj.jiasudu.live, port: 10352, type: trojan, password: !<str> 57646625, sni: nhnkr.jiasudu.live, skip-cert-verify: true}
+  - {name: bjzfus, server: awsbj.jiasudu.live, port: 10351, type: trojan, password: !<str> 57646625, sni: nhnkr.jiasudu.live, skip-cert-verify: true}
 proxy-groups:
   - name: Proxies
     type: select
@@ -17,6 +19,8 @@ proxy-groups:
       - AZfeng
       - WikiUS
       - nhnkr
+      - bjzfkr
+      - bjzfus
   - name: Domestic
     type: select
     proxies:
