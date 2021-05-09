@@ -8,6 +8,8 @@ proxies:
   - {name: AZfeng, server: azfeng.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: azfeng.jiasudu.live, skip-cert-verify: true}
   - {name: WikiUS, server: wikius.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: wikius.jiasudu.live, skip-cert-verify: true}
   - {name: skkr, server: skkr.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: skkr.jiasudu.live, skip-cert-verify: true}
+  - {name: Heroku, server: minxin.herokuapp.com, port: 443, type: vmess, uuid: 58e98288-17c8-422b-97a9-a4c9b01896ec, alterId: 0, cipher: auto, tls: true, network: ws, ws-path: /58e98288-17c8-422b-97a9-a4c9b01896ec-vmess, ws-headers: {Host: minxin.herokuapp.com}}
+  - {name: CFheroku, server: noisy-wood-4044.mx1095893390.workers.dev, port: 443, type: vmess, uuid: 58e98288-17c8-422b-97a9-a4c9b01896ec, alterId: 0, cipher: auto, tls: true, network: ws, ws-path: /58e98288-17c8-422b-97a9-a4c9b01896ec-vmess, ws-headers: {Host: noisy-wood-4044.mx1095893390.workers.dev}}
 proxy-groups:
   - name: Proxies
     type: select
@@ -17,6 +19,8 @@ proxy-groups:
       - AZfeng
       - WikiUS
       - skkr
+      - Heroku
+      - CFheroku
   - name: Domestic
     type: select
     proxies:
