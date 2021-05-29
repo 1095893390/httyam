@@ -6,7 +6,7 @@ log-level: info
 external-controller: 127.0.0.1:9090
 proxies:
   - {name: awsjp, server: awsjp.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: awsjp.jiasudu.live, skip-cert-verify: true}
-  - {name: WikiUS, server: wikius.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: wikius.jiasudu.live, skip-cert-verify: true}
+  - {name: WikiUS, server: wikius2.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: wikius2.jiasudu.live, skip-cert-verify: true}
 
 proxy-groups:
   - name: Proxies
