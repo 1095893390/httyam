@@ -9,6 +9,7 @@ proxies:
   - {name: WikiUS, server: wikius2.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: wikius2.jiasudu.live, skip-cert-verify: true}
   - {name: digus, server: digus.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: digus.jiasudu.live, skip-cert-verify: true}
   - {name: ggus, server: ggus.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: ggus.jiasudu.live, skip-cert-verify: true}
+  - DIRECT
 
 proxy-groups:
   - name: Proxies
