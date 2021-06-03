@@ -8,6 +8,7 @@ proxies:
   - {name: awsjp, server: awsjp.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: awsjp.jiasudu.live, skip-cert-verify: true}
   - {name: WikiUS, server: wikius2.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: wikius2.jiasudu.live, skip-cert-verify: true}
   - {name: london, server: london.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: london.jiasudu.live, skip-cert-verify: true}
+  - {name: ggus, server: ggus.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: ggus.jiasudu.live, skip-cert-verify: true}
 
 proxy-groups:
   - name: Proxies
@@ -18,6 +19,7 @@ proxy-groups:
       - awsjp
       - london
       - WikiUS
+      - ggus
   - name: Domestic
     type: select
     proxies:
