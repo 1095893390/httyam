@@ -8,7 +8,7 @@ proxies:
   - {name: shs, server: shs.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: shs.jiasudu.live, skip-cert-verify: true}
   - {name: tabby, server: tabby.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: tabby.jiasudu.live, skip-cert-verify: true}
   - {name: wikius2, server: wikius2.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: wikius2.jiasudu.live, skip-cert-verify: true}
-  - {name: softbank, server: soft.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: soft.jiasudu.live, skip-cert-verify: true}
+  - {name: soft2, server: soft2.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: soft2.jiasudu.live, skip-cert-verify: true}
 proxy-groups:
   - name: Proxies
     type: select
