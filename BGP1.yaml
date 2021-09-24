@@ -5,6 +5,7 @@ mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
 proxies:
+  - {name: aiyun, server: aiyun.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: aiyun.jiasudu.live, skip-cert-verify: true}
   - {name: pccw, server: jp.jiasudu.live, port: 10271, type: trojan, password: !<str> 57646625, sni: jp.jiasudu.live, skip-cert-verify: true}
   - {name: cmi, server: cmi.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: cmi.jiasudu.live, skip-cert-verify: true}
   - {name: soft2, server: soft2.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: soft2.jiasudu.live, skip-cert-verify: true}
