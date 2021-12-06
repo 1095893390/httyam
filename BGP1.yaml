@@ -5,14 +5,14 @@ mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
 proxies:
-  - {name: vu, server: vu.jiasudu.live, port: 443, type: trojan, password: !<str> c893df4b-0553-410f-9043-68815842ba6d, sni: vu.jiasudu.live, skip-cert-verify: true}
+  - {name: uscn2, server: ser.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: ser.jiasudu.live, skip-cert-verify: true}
 proxy-groups:
   - name: Proxies
     type: select
     proxies:
       - Auto - UrlTest
       - DIRECT
-      - vu
+      - uscn2
   - name: Domestic
     type: select
     proxies:
