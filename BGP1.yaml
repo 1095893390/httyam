@@ -5,7 +5,7 @@ mode: Rule
 log-level: info
 external-controller: 127.0.0.1:9090
 proxies:
-  - {name: uscn2, server: ser.jiasudu.live, port: 443, type: trojan, password: !<str> 57646625, sni: ser.jiasudu.live, skip-cert-verify: true}
+  - {name: hk, server: hk.speedtestcurl.space, port: 443, type: trojan, password: !<str> 57646625, sni: hk.speedtestcurl.space, skip-cert-verify: true}
 proxy-groups:
   - name: Proxies
     type: select
