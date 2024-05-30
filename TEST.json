@@ -279,7 +279,7 @@
     {
       "tag": "Proxy",
       "outbounds": [
-        "全部"
+        "alll"
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
@@ -288,7 +288,7 @@
       "tag": "Youtube",
       "outbounds": [
         "Proxy",
-        "全部"
+        "alll"
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
@@ -297,7 +297,7 @@
       "tag": "Telegram",
       "outbounds": [
         "Proxy",
-        "全部"
+        "alll"
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
@@ -306,7 +306,7 @@
       "tag": "Github",
       "outbounds": [
         "Proxy",
-        "全部"
+        "alll"
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
@@ -315,7 +315,7 @@
       "tag": "Openai",
       "outbounds": [
         "Proxy",
-        "全部"
+        "alll"
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
@@ -324,7 +324,7 @@
       "tag": "Netflix",
       "outbounds": [
         "Proxy",
-        "全部"
+        "alll"
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
@@ -333,13 +333,13 @@
       "tag": "Google",
       "outbounds": [
         "Proxy",
-        "全部"
+        "alll"
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
     },
     {
-      "tag": "全部",
+      "tag": "alll",
       "outbounds": [
         "JP"
       ],
