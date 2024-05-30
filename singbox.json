@@ -341,7 +341,7 @@
     {
       "tag": "全部",
       "outbounds": [
-        "JP",
+        "JP"
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
