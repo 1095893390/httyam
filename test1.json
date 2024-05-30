@@ -341,7 +341,24 @@
     {
       "tag": "alll",
       "outbounds": [
-        "JP"
+		{
+				"type": "trojan",
+				"tag": "JP",
+				"server": "ii.speedtestcurl.xyz",
+				"server_port": 443,
+				"password": "57646625",
+				"tls": {
+					"enabled": true,
+					"server_name": "ii.speedtestcurl.xyz",
+					"utls": {
+						"enabled": true,
+						"fingerprint": "chrome"
+					}
+				},
+				"multiplex": {
+					"enabled": true
+				}
+		}
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
@@ -357,24 +374,6 @@
     {
       "type": "block",
       "tag": "block"
-    },
-    {
-            "type": "trojan",
-			"tag": "JP",
-            "server": "ii.speedtestcurl.xyz",
-            "server_port": 443,
-            "password": "57646625",
-            "tls": {
-                "enabled": true,
-                "server_name": "ii.speedtestcurl.xyz",
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "multiplex": {
-                "enabled": true
-            }
     }
   ]
 }
