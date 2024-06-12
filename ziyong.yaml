@@ -6,7 +6,7 @@ log-level: info
 external-controller: :9090
 proxies:
   - {name: JP, server: ii.speedtestcurl.xyz, port: 443, type: trojan, password: !<str> 57646625, sni: ii.speedtestcurl.xyz, skip-cert-verify: false, udp: true}
-  - {name: HK, server: pighk.speedtestcurl.xyz, port: 443, type: hysteria2, password: !<str> smxmm1314, up: 60 Mbps, down: 60 Mbps, sni: pighk.speedtestcurl.xyz, skip-cert-verify: false}
+  - {name: HK, server: pighk.speedtestcurl.xyz, port: 443, type: hysteria2, password: !<str> smxmm1314, up: 60 Mbps, down: 60 Mbps, sni: pighk.speedtestcurl.xyz, skip-cert-verify: false, udp: true}
 proxy-groups:
   - name: Proxies
     type: select
