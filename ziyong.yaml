@@ -5,8 +5,36 @@ mode: Rule
 log-level: info
 external-controller: :9090
 proxies:
-  - {name: JP, server: ii.speedtestcurl.xyz, port: 443, type: trojan, password: !<str> 57646625, sni: ii.speedtestcurl.xyz, skip-cert-verify: false, udp: true}
-  - {name: HK, server: pighk.speedtestcurl.xyz, port: 443, type: hysteria2, password: !<str> smxmm1314, up: 60 Mbps, down: 60 Mbps, sni: pighk.speedtestcurl.xyz, skip-cert-verify: true, udp: true}
+  #- {name: JP, server: ii.speedtestcurl.xyz, port: 443, type: trojan, password: !<str> 57646625, sni: ii.speedtestcurl.xyz, skip-cert-verify: false, udp: true}
+  - name: "JP"
+    type: trojan
+    server: ii.speedtestcurl.xyz
+    port: 443
+    password: 57646625
+    # client-fingerprint: random # Available: "chrome","firefox","safari","random","none"
+    # fingerprint: xxxx
+    udp: true
+    sni: ii.speedtestcurl.xyz
+    # alpn:
+    #   - h2
+    #   - http/1.1
+    skip-cert-verify: false
+    # ss-opts: # like trojan-go's `shadowsocks` config
+    #   enabled: false
+    #   method: aes-128-gcm # aes-128-gcm/aes-256-gcm/chacha20-ietf-poly1305
+    #   password: "example"
+  #- {name: HK, server: pighk.speedtestcurl.xyz, port: 443, type: hysteria2, password: !<str> smxmm1314, up: 60 Mbps, down: 60 Mbps, sni: pighk.speedtestcurl.xyz, skip-cert-verify: false, udp: true}
+  - name: "HK"
+    type: hysteria2
+    server: pighk.speedtestcurl.xyz
+    port: 443
+    up: "60 Mbps"
+    down: "60 Mbps"
+    password: smxmm1314
+    sni: pighk.speedtestcurl.xyz
+    skip-cert-verify: false
+    alpn:
+      - h3
 proxy-groups:
   - name: Proxies
     type: select
