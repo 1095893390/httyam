@@ -280,7 +280,8 @@
       "tag": "Proxy",
       "outbounds": [
         "jp1",
-        "hy2-hk"	
+        "hkt",
+        "hy2-hk"		
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
@@ -357,21 +358,26 @@
         "server_name": "ii.speedtestcurl.xyz"
       }
     },
+    {
+      "tag": "hkt",
+      "server": "hkt.speedtestcurl.xyz",
+      "server_port": 443,
+      "type": "trojan",
+      "password": "smxmm1314",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "hkt.speedtestcurl.xyz"
+      }
+    },
 	{
             "type": "hysteria2",
 			"tag": "hy2-hk",
             "server": "pighk.speedtestcurl.xyz",
-            "server_port": 443,
+            "server_port": 8443,
             "up_mbps": 60,
             "down_mbps": 60,
-            "password": "smxmm1314",
-            "tls": {
-                "enabled": true,
-                "server_name": "pighk.speedtestcurl.xyz",
-                "alpn": [
-                    "h3"
-                ]
-            }
+            "password": "smxmm1314"
     }
   ]
 }
