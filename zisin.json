@@ -280,8 +280,7 @@
       "tag": "Proxy",
       "outbounds": [
         "jp1",
-        "hkt",
-        "hy2-hk"		
+        "hkt"	
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
