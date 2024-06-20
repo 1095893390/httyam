@@ -374,11 +374,6 @@
             "type": "hysteria2",
 			"tag": "hy2-hk",
             "server": "pighk.speedtestcurl.xyz:20000-50000",
-		    "transport": {
-				"udp": {
-				"hopInterval": "60s"
-				}
-				},
             "up_mbps": 60,
             "down_mbps": 60,
             "password": "smxmm1314",
