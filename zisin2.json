@@ -373,7 +373,8 @@
 	{
             "type": "hysteria2",
 			"tag": "hy2-hk",
-            "server": "pighk.speedtestcurl.xyz:20000-50000",
+            "server": "pighk.speedtestcurl.xyz",
+            "server_port": 8443,
             "up_mbps": 60,
             "down_mbps": 60,
             "password": "smxmm1314",
