@@ -279,9 +279,10 @@
     {
       "tag": "Proxy",
       "outbounds": [
+	    "direct",
         "jp1",
-        "hy2-hk",
-        "hkt"	
+        "hy2-us",
+        "us"	
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
@@ -359,28 +360,28 @@
       }
     },
     {
-      "tag": "hkt",
-      "server": "hkt.speedtestcurl.xyz",
+      "tag": "us",
+      "server": "pigus.speedtestcurl.xyz",
       "server_port": 443,
       "type": "trojan",
       "password": "smxmm1314",
       "tls": {
         "enabled": true,
         "insecure": false,
-        "server_name": "hkt.speedtestcurl.xyz"
+        "server_name": "pigus.speedtestcurl.xyz"
       }
     },
 	{
             "type": "hysteria2",
-			"tag": "hy2-hk",
-            "server": "pighk.speedtestcurl.xyz",
+			"tag": "hy2-us",
+            "server": "pigus.speedtestcurl.xyz",
             "server_port": 8443,
-            "up_mbps": 60,
-            "down_mbps": 60,
+            "up_mbps": 50,
+            "down_mbps": 50,
             "password": "smxmm1314",
             "tls": {
                 "enabled": true,
-                "server_name": "pighk.speedtestcurl.xyz",
+                "server_name": "pigus.speedtestcurl.xyz",
                 "alpn": [
                     "h3"
                 ]
