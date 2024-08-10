@@ -129,13 +129,6 @@
         "type": "remote",
         "format": "binary",
         "download_detour": "Proxy",
-        "tag": "AntiAD",
-        "url": "https://anti-ad.net/anti-ad-sing-box.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
         "tag": "Youtube0",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/youtube.srs"
       },
@@ -226,12 +219,6 @@
           {
             "protocol": "stun"
           }
-        ],
-        "outbound": "block"
-      },
-      {
-        "rule_set": [
-          "AntiAD"
         ],
         "outbound": "block"
       },
