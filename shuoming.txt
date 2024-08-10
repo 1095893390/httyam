@@ -1,0 +1,1 @@
+zisin.json就是没有拦截广告的，zisinAD是用的https://github.com/privacy-protection-tools/anti-AD里边的规则，得singbox高版本，zisinAD2用的是https://github.com/tangnahuaite/sing-box_Route-rules，可以用在路由器shellcrash里边
