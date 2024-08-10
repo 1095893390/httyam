@@ -292,9 +292,9 @@
     {
       "tag": "Proxy",
       "outbounds": [
-	    "direct",
         "jp1",
         "hy2-us",
+	    "direct",
         "us"	
       ],
       "interrupt_exist_connections": true,
