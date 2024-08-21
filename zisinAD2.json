@@ -144,14 +144,14 @@
         "format": "binary",
         "download_detour": "Proxy",
         "tag": "Telegram0",
-        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geoip/telegram.srs"
+        "url": "https://github.com/CHIZI-0618/v2ray-rules-dat/raw/release/singbox_ip_rule_set/geoip-telegram.srs"
       },
       {
         "type": "remote",
         "format": "binary",
         "download_detour": "Proxy",
         "tag": "Telegram1",
-        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/telegram.srs"
+        "url": "https://github.com/CHIZI-0618/v2ray-rules-dat/raw/release/singbox_rule_set/geosite-telegram.srs"
       },
       {
         "type": "remote",
@@ -293,9 +293,8 @@
       "tag": "Proxy",
       "outbounds": [
         "jp1",
-        "hy2-us",
 	    "direct",
-        "us"	
+        "hk"	
       ],
       "interrupt_exist_connections": true,
       "type": "selector"
@@ -373,32 +372,16 @@
       }
     },
     {
-      "tag": "us",
-      "server": "pigus.speedtestcurl.xyz",
+      "tag": "hk",
+      "server": "pigmk.speedtestcurl.xyz",
       "server_port": 443,
       "type": "trojan",
       "password": "smxmm1314",
       "tls": {
         "enabled": true,
         "insecure": false,
-        "server_name": "pigus.speedtestcurl.xyz"
+        "server_name": "pigmk.speedtestcurl.xyz"
       }
-    },
-	{
-            "type": "hysteria2",
-			"tag": "hy2-us",
-            "server": "pigus.speedtestcurl.xyz",
-            "server_port": 8443,
-            "up_mbps": 50,
-            "down_mbps": 50,
-            "password": "smxmm1314",
-            "tls": {
-                "enabled": true,
-                "server_name": "pigus.speedtestcurl.xyz",
-                "alpn": [
-                    "h3"
-                ]
-            }
     }
   ]
 }
