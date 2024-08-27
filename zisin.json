@@ -360,14 +360,14 @@
     },
     {
       "tag": "hk",
-      "server": "pigmk.speedtestcurl.xyz",
+      "server": "pigmk.speedtestwget.life",
       "server_port": 443,
       "type": "trojan",
       "password": "smxmm1314",
       "tls": {
         "enabled": true,
         "insecure": false,
-        "server_name": "pigmk.speedtestcurl.xyz"
+        "server_name": "pigmk.speedtestwget.life"
       }
     }
   ]
