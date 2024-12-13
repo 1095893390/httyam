@@ -22,7 +22,7 @@
     "servers": [
       {
         "tag": "google",
-        "address": "tls://8.8.8.8",
+        "address": "tls://dns.google",
         "detour": "Proxy"
       },
       {
@@ -296,6 +296,7 @@
 	    "direct",
         "us"
       ],
+	  "default": "us",
       "interrupt_exist_connections": true,
       "type": "selector"
     },
