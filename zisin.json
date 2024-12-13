@@ -366,7 +366,7 @@
       "password": "smxmm1314",
       "tls": {
         "enabled": true,
-        "insecure": true,
+        "insecure": false,
         "server_name": "pigmk.speedtestwget.life"
       }
     }
