@@ -4,6 +4,103 @@
     "level": "info",
     "timestamp": true
   },
+  "outbounds": [
+    {
+      "tag": "Proxy",
+      "outbounds": [
+        "jp1",
+	    "direct",
+        "us"
+      ],
+	  "default": "us",
+      "interrupt_exist_connections": true,
+      "type": "selector"
+    },
+    {
+      "tag": "Youtube",
+      "outbounds": [
+        "Proxy"
+      ],
+      "interrupt_exist_connections": true,
+      "type": "selector"
+    },
+    {
+      "tag": "Telegram",
+      "outbounds": [
+        "Proxy"
+      ],
+      "interrupt_exist_connections": true,
+      "type": "selector"
+    },
+    {
+      "tag": "Github",
+      "outbounds": [
+        "Proxy"
+      ],
+      "interrupt_exist_connections": true,
+      "type": "selector"
+    },
+    {
+      "tag": "Openai",
+      "outbounds": [
+        "Proxy"
+      ],
+      "interrupt_exist_connections": true,
+      "type": "selector"
+    },
+    {
+      "tag": "Netflix",
+      "outbounds": [
+        "Proxy"
+      ],
+      "interrupt_exist_connections": true,
+      "type": "selector"
+    },
+    {
+      "tag": "Google",
+      "outbounds": [
+        "Proxy"
+      ],
+      "interrupt_exist_connections": true,
+      "type": "selector"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "tag": "jp1",
+      "server": "soft.speedtestwget.life",
+      "server_port": 443,
+      "type": "trojan",
+      "password": "smxmm1314",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "soft.speedtestwget.life"
+      }
+    },
+    {
+      "tag": "us",
+      "server": "pigus.speedtestwget.life",
+      "server_port": 443,
+      "type": "trojan",
+      "password": "smxmm1314",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "pigus.speedtestwget.life"
+      }
+    }
+  ],
   "dns": {
     "servers": [
       {
@@ -113,77 +210,77 @@
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "direct",
+        "download_detour": "Proxy",
         "tag": "AntiAD",
         "url": "https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-ad.github.io@master/docs/anti-ad-sing-box.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "direct",
+        "download_detour": "Proxy",
         "tag": "Youtube0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/youtube.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "direct",
+        "download_detour": "Proxy",
         "tag": "Telegram0",
         "url": "https://cdn.jsdelivr.net/gh/CHIZI-0618/v2ray-rules-dat@raw/release/singbox_ip_rule_set/geoip-telegram.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "direct",
+        "download_detour": "Proxy",
         "tag": "Telegram1",
         "url": "https://cdn.jsdelivr.net/gh/CHIZI-0618/v2ray-rules-dat@raw/release/singbox_rule_set/geosite-telegram.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "direct",
+        "download_detour": "Proxy",
         "tag": "Github0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/github.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "direct",
+        "download_detour": "Proxy",
         "tag": "Openai0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/openai.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "direct",
+        "download_detour": "Proxy",
         "tag": "Netflix0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/netflix.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "direct",
+        "download_detour": "Proxy",
         "tag": "Netflix1",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo-lite/geoip/netflix.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "direct",
+        "download_detour": "Proxy",
         "tag": "Google0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/google.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "direct",
+        "download_detour": "Proxy",
         "tag": "Direct0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geoip/cn.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "direct",
+        "download_detour": "Proxy",
         "tag": "Direct1",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/cn.srs"
       }
@@ -272,102 +369,5 @@
     ],
     "auto_detect_interface": true,
     "final": "Proxy"
-  },
-  "outbounds": [
-    {
-      "tag": "Proxy",
-      "outbounds": [
-        "jp1",
-	    "direct",
-        "us"
-      ],
-	  "default": "us",
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "tag": "Youtube",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "tag": "Telegram",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "tag": "Github",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "tag": "Openai",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "tag": "Netflix",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "tag": "Google",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "type": "direct",
-      "tag": "direct"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
-    },
-    {
-      "type": "block",
-      "tag": "block"
-    },
-    {
-      "tag": "jp1",
-      "server": "soft.speedtestwget.life",
-      "server_port": 443,
-      "type": "trojan",
-      "password": "smxmm1314",
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "server_name": "soft.speedtestwget.life"
-      }
-    },
-    {
-      "tag": "us",
-      "server": "pigus.speedtestwget.life",
-      "server_port": 443,
-      "type": "trojan",
-      "password": "smxmm1314",
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "server_name": "pigus.speedtestwget.life"
-      }
-    }
-  ]
+  }
 }
