@@ -113,77 +113,77 @@
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "Proxy",
+        "download_detour": "direct",
         "tag": "AntiAD",
         "url": "https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-ad.github.io@master/docs/anti-ad-sing-box.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "Proxy",
+        "download_detour": "direct",
         "tag": "Youtube0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/youtube.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "Proxy",
+        "download_detour": "direct",
         "tag": "Telegram0",
         "url": "https://cdn.jsdelivr.net/gh/CHIZI-0618/v2ray-rules-dat@raw/release/singbox_ip_rule_set/geoip-telegram.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "Proxy",
+        "download_detour": "direct",
         "tag": "Telegram1",
         "url": "https://cdn.jsdelivr.net/gh/CHIZI-0618/v2ray-rules-dat@raw/release/singbox_rule_set/geosite-telegram.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "Proxy",
+        "download_detour": "direct",
         "tag": "Github0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/github.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "Proxy",
+        "download_detour": "direct",
         "tag": "Openai0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/openai.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "Proxy",
+        "download_detour": "direct",
         "tag": "Netflix0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/netflix.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "Proxy",
+        "download_detour": "direct",
         "tag": "Netflix1",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo-lite/geoip/netflix.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "Proxy",
+        "download_detour": "direct",
         "tag": "Google0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/google.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "Proxy",
+        "download_detour": "direct",
         "tag": "Direct0",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geoip/cn.srs"
       },
       {
         "type": "remote",
         "format": "binary",
-        "download_detour": "Proxy",
+        "download_detour": "direct",
         "tag": "Direct1",
         "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@raw/sing/geo/geosite/cn.srs"
       }
