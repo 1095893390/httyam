@@ -5,17 +5,6 @@
     "timestamp": true
   },
   "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "path": "cache.db",
-      "cache_id": "my_profile2",
-      "store_fakeip": true
-    },
-    "clash_api": {
-      "external_ui": "ui",
-      "external_controller": "0.0.0.0:9090",
-      "external_ui_download_detour": "Proxy",
-      "default_mode": "rule"
     }
   },
   "dns": {
