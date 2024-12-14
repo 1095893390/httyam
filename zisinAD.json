@@ -84,13 +84,21 @@
         "server": "fallback"
       }
     ],
+    "final": "local-dns",	
     "strategy": "ipv4_only"
   },
+  "ntp": {
+    "enabled": true,
+    "server": "time.apple.com",
+    "server_port": 123,
+    "interval": "30m",
+    "detour": "DIRECT"
+  },  
   "inbounds": [
     {
       "type": "mixed",
       "tag": "mixed-in",
-      "listen": "::",
+      "listen": "0.0.0.0",
       "listen_port": 8888,
       "sniff": true
     },
