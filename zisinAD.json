@@ -90,7 +90,7 @@
     "server": "time.apple.com",
     "server_port": 123,
     "interval": "30m",
-    "detour": "DIRECT"
+    "detour": "direct"
   },  
   "inbounds": [
     {
@@ -102,7 +102,7 @@
     {
       "type": "tun",
       "address": "172.19.0.1/30",
-      "stack": "mixed",
+      "stack": "system",
       "sniff": true,
       "auto_route": true,
       "strict_route": true
