@@ -4,8 +4,6 @@
     "level": "info",
     "timestamp": true
   },
-  "experimental": {
-  },
   "dns": {
     "servers": [
       {
