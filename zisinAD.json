@@ -8,7 +8,7 @@
     "servers": [
       {
         "tag": "google",
-        "address": "tls://dns.google",
+        "address": "tls://1.1.1.1",
         "detour": "Proxy"
       },
       {
@@ -97,24 +97,15 @@
       "type": "mixed",
       "tag": "mixed-in",
       "listen": "0.0.0.0",
-      "listen_port": 8888,
-      "sniff": true
+      "listen_port": 8888
     },
     {
       "type": "tun",
       "address": "172.19.0.1/30",
-      "stack": "system",
+      "stack": "mixed",
       "sniff": true,
       "auto_route": true,
-      "strict_route": true,
-      "gso": false,
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 8888
-        }
-      }
+      "strict_route": true
     }
   ],
   "route": {
