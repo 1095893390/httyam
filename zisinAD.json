@@ -226,7 +226,7 @@
         "format": "binary",
         "download_detour": "Proxy",
         "tag": "Telegram1",
-        "url": "https://ghp.ci/https://github.com/CHIZI-0618/v2ray-rules-dat/raw/release/singbox_rule_set/geosite-telegram.srs"
+        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs"
       },
       {
         "type": "remote",
