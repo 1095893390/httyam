@@ -1,295 +1,295 @@
 {
-  "log": {
-    "disabled": false,
-    "level": "info",
-    "timestamp": true
-  },
-  "outbounds": [
-    {
-      "tag": "Proxy",
-      "outbounds": [
-        "jp1",
-	    "direct",
-        "us"
-      ],
-	  "default": "us",
-      "interrupt_exist_connections": true,
-      "type": "selector"
+    "log": {
+        "disabled": false,
+        "level": "info",
+        "timestamp": true
     },
-    {
-      "type": "direct",
-      "tag": "direct"
+    "outbounds": [
+        {
+            "tag": "Proxy",
+            "outbounds": [
+                "jp1",
+                "direct",
+                "us"
+            ],
+            "default": "us",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "type": "direct",
+            "tag": "direct"
+        },
+        {
+            "type": "dns",
+            "tag": "dns-out"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "tag": "jp1",
+            "server": "soft.speedtestwget.life",
+            "server_port": 443,
+            "type": "trojan",
+            "password": "smxmm1314",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "soft.speedtestwget.life"
+            }
+        },
+        {
+            "tag": "us",
+            "server": "pigus.speedtestwget.life",
+            "server_port": 443,
+            "type": "trojan",
+            "password": "smxmm1314",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "pigus.speedtestwget.life"
+            }
+        }
+    ],
+    "dns": {
+        "servers": [
+            {
+                "tag": "fallback",
+                "address": "8.8.8.8",
+                "detour": "Proxy"
+            },
+            {
+                "tag": "local-dns",
+                "address": "223.5.5.5",
+                "detour": "direct"
+            },
+            {
+                "tag": "block-dns",
+                "address": "rcode://success"
+            }
+        ],
+        "rules": [
+            {
+                "outbound": "any",
+                "server": "local-dns"
+            },
+            {
+                "rule_set": [
+                    "bilibili@cn",
+                    "youku",
+                    "zhihu",
+                    "Direct1"
+                ],
+                "server": "local-dns"
+            },
+            {
+                "rule_set": [
+                    "Youtube0",
+                    "Telegram1",
+                    "Github0",
+                    "Openai0",
+                    "Netflix0",
+                    "Google0"
+                ],
+                "server": "fallback"
+            },
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "rule_set": "geosite-geolocation-!cn",
+                        "invert": true
+                    },
+                    {
+                        "rule_set": "geoip-cn"
+                    }
+                ],
+                "server": "fallback",
+                "client_subnet": "114.114.114.114/24"
+            }
+        ],
+        "final": "local-dns",
+        "strategy": "ipv4_only"
     },
-    {
-      "type": "dns",
-      "tag": "dns-out"
-    },
-    {
-      "type": "block",
-      "tag": "block"
-    },
-    {
-      "tag": "jp1",
-      "server": "soft.speedtestwget.life",
-      "server_port": 443,
-      "type": "trojan",
-      "password": "smxmm1314",
-      "tls": {
+    "ntp": {
         "enabled": true,
-        "insecure": false,
-        "server_name": "soft.speedtestwget.life"
-      }
-    },
-    {
-      "tag": "us",
-      "server": "pigus.speedtestwget.life",
-      "server_port": 443,
-      "type": "trojan",
-      "password": "smxmm1314",
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "server_name": "pigus.speedtestwget.life"
-      }
-    }
-  ],
-  "dns": {
-    "servers": [
-      {
-        "tag": "fallback",
-        "address": "8.8.8.8",
-        "detour": "Proxy"
-      },
-      {
-        "tag": "local-dns",
-        "address": "223.5.5.5",
+        "server": "time.apple.com",
+        "server_port": 123,
+        "interval": "30m",
         "detour": "direct"
-      },
-      {
-        "tag": "block-dns",
-        "address": "rcode://success"
-      }
-    ],
-    "rules": [
-      {
-        "outbound": "any",
-        "server": "local-dns"
-      },
-      {
-        "rule_set": [
-          "bilibili@cn",
-		  "youku",
-		  "zhihu",
-		  "Direct1"
-        ],
-        "server": "local-dns"
-      },
-      {
-        "rule_set": [
-          "Youtube0",
-		  "Telegram1",
-		  "Github0",
-		  "Openai0",
-          "Netflix0",
-		  "Google0"
-        ],
-        "server": "fallback"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "geosite-geolocation-!cn",
-            "invert": true
-          },
-          {
-            "rule_set": "geoip-cn"
-          }
-        ],
-        "server": "fallback",
-        "client_subnet": "114.114.114.114/24"
-      }
-    ],
-    "final": "local-dns",	
-    "strategy": "ipv4_only"
-  },
-  "ntp": {
-    "enabled": true,
-    "server": "time.apple.com",
-    "server_port": 123,
-    "interval": "30m",
-    "detour": "direct"
-  },  
-  "inbounds": [
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "0.0.0.0",
-      "listen_port": 8888
     },
-    {
-      "type": "tun",
-      "address": "172.19.0.1/30",
-      "stack": "system",
-      "sniff": true,
-      "auto_route": true,
-      "strict_route": true
-    }
-  ],
-  "route": {
-    "rule_set": [
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "bilibili@cn",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili@cn.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "zhihu",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/zhihu.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "youku",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youku.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "Youtube0",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/youtube.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "Telegram1",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "Github0",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/github.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "Openai0",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/openai.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "Netflix0",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/netflix.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "Netflix1",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/geoip/netflix.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "Google0",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/google.srs"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-geolocation-!cn",
-        "format": "binary",
-        "url": "https://ghp.ci/https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs"
-      },
-      {
-        "type": "remote",
-        "tag": "geoip-cn",
-        "format": "binary",
-        "url": "https://ghp.ci/https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "Direct0",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geoip/cn.srs"
-      },
-      {
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "Proxy",
-        "tag": "Direct1",
-        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/cn.srs"
-      }
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "0.0.0.0",
+            "listen_port": 8888
+        },
+        {
+            "type": "tun",
+            "address": "172.19.0.1/30",
+            "stack": "system",
+            "sniff": true,
+            "auto_route": true,
+            "strict_route": true
+        }
     ],
-    "rules": [
-      {
-        "protocol": "dns",
-        "outbound": "dns-out"
-      },
-      {
-        "port": 53,
-        "outbound": "dns-out"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
+    "route": {
+        "rule_set": [
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "bilibili@cn",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili@cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "zhihu",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/zhihu.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "youku",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youku.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "Youtube0",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/youtube.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "Telegram1",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "Github0",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/github.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "Openai0",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/openai.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "Netflix0",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/netflix.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "Netflix1",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/geoip/netflix.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "Google0",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/google.srs"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-geolocation-!cn",
+                "format": "binary",
+                "url": "https://ghp.ci/https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs"
+            },
+            {
+                "type": "remote",
+                "tag": "geoip-cn",
+                "format": "binary",
+                "url": "https://ghp.ci/https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "Direct0",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geoip/cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "Direct1",
+                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/cn.srs"
+            }
+        ],
         "rules": [
-          {
-            "port": 853
-          },
-          {
-            "network": "udp",
-            "port": 443
-          },
-          {
-            "protocol": "stun"
-          }
+            {
+                "protocol": "dns",
+                "outbound": "dns-out"
+            },
+            {
+                "port": 53,
+                "outbound": "dns-out"
+            },
+            {
+                "type": "logical",
+                "mode": "or",
+                "rules": [
+                    {
+                        "port": 853
+                    },
+                    {
+                        "network": "udp",
+                        "port": 443
+                    },
+                    {
+                        "protocol": "stun"
+                    }
+                ],
+                "outbound": "block"
+            },
+            {
+                "rule_set": [
+                    "Youtube0",
+                    "Telegram1",
+                    "Github0",
+                    "Openai0",
+                    "Netflix0",
+                    "Netflix1",
+                    "Google0"
+                ],
+                "outbound": "Proxy"
+            },
+            {
+                "rule_set": [
+                    "bilibili@cn",
+                    "youku",
+                    "zhihu",
+                    "Direct0",
+                    "Direct1"
+                ],
+                "outbound": "direct"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "direct"
+            }
         ],
-        "outbound": "block"
-      },
-      {
-        "rule_set": [
-          "Youtube0",
-		  "Telegram1",
-		  "Github0",
-		  "Openai0",
-          "Netflix0",
-          "Netflix1",
-		  "Google0"
-        ],
-        "outbound": "Proxy"
-      },
-      {
-        "rule_set": [
-          "bilibili@cn",
-		  "youku",
-		  "zhihu",
-          "Direct0",
-          "Direct1"
-        ],
-        "outbound": "direct"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      }
-    ],
-    "auto_detect_interface": true,
-    "final": "Proxy"
-  }
+        "auto_detect_interface": true,
+        "final": "Proxy"
+    }
 }
