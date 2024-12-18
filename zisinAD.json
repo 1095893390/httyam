@@ -17,54 +17,6 @@
       "type": "selector"
     },
     {
-      "tag": "Youtube",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "tag": "Telegram",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "tag": "Github",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "tag": "Openai",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "tag": "Netflix",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
-      "tag": "Google",
-      "outbounds": [
-        "Proxy"
-      ],
-      "interrupt_exist_connections": true,
-      "type": "selector"
-    },
-    {
       "type": "direct",
       "tag": "direct"
     },
@@ -104,14 +56,8 @@
   "dns": {
     "servers": [
       {
-        "tag": "google",
-        "address": "tls://1.1.1.1",
-        "detour": "Proxy"
-      },
-      {
         "tag": "fallback",
         "address": "8.8.8.8",
-        "address_resolver": "google",
         "detour": "Proxy"
       },
       {
@@ -131,52 +77,38 @@
       },
       {
         "rule_set": [
-          "Youtube0"
-        ],
-        "server": "fallback"
-      },
-      {
-        "rule_set": [
-          "Telegram1"
-        ],
-        "server": "fallback"
-      },
-      {
-        "rule_set": [
-          "Github0"
-        ],
-        "server": "fallback"
-      },
-      {
-        "rule_set": [
-          "Openai0"
-        ],
-        "server": "fallback"
-      },
-      {
-        "rule_set": [
-          "Netflix0"
-        ],
-        "server": "fallback"
-      },
-      {
-        "rule_set": [
-          "Google0"
-        ],
-        "server": "fallback"
-      },
-      {
-        "rule_set": [
-          "Direct1"
+          "bilibili@cn",
+		  "youku",
+		  "zhihu",
+		  "Direct1"
         ],
         "server": "local-dns"
       },
       {
-        "query_type": [
-          "A"
+        "rule_set": [
+          "Youtube0",
+		  "Telegram1",
+		  "Github0",
+		  "Openai0",
+          "Netflix0",
+		  "Google0"
         ],
-        "rewrite_ttl": 1,
         "server": "fallback"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn",
+            "invert": true
+          },
+          {
+            "rule_set": "geoip-cn"
+          }
+        ],
+        "server": "fallback",
+        "client_subnet": "114.114.114.114/24"
       }
     ],
     "final": "local-dns",	
@@ -211,8 +143,22 @@
         "type": "remote",
         "format": "binary",
         "download_detour": "Proxy",
-        "tag": "AntiAD",
-        "url": "https://ghp.ci/https://raw.githubusercontent.com/privacy-protection-tools/anti-ad.github.io/master/docs/anti-ad-sing-box.srs"
+        "tag": "bilibili@cn",
+        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili@cn.srs"
+      },
+      {
+        "type": "remote",
+        "format": "binary",
+        "download_detour": "Proxy",
+        "tag": "zhihu",
+        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/zhihu.srs"
+      },
+      {
+        "type": "remote",
+        "format": "binary",
+        "download_detour": "Proxy",
+        "tag": "youku",
+        "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youku.srs"
       },
       {
         "type": "remote",
@@ -265,6 +211,18 @@
       },
       {
         "type": "remote",
+        "tag": "geosite-geolocation-!cn",
+        "format": "binary",
+        "url": "https://ghp.ci/https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "format": "binary",
+        "url": "https://ghp.ci/https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+      },
+      {
+        "type": "remote",
         "format": "binary",
         "download_detour": "Proxy",
         "tag": "Direct0",
@@ -306,49 +264,21 @@
       },
       {
         "rule_set": [
-          "AntiAD"
-        ],
-        "outbound": "block"
-      },
-      {
-        "rule_set": [
-          "Youtube0"
-        ],
-        "outbound": "Youtube"
-      },
-      {
-        "rule_set": [
-          "Telegram1"
-        ],
-        "outbound": "Telegram"
-      },
-      {
-        "rule_set": [
-          "Github0"
-        ],
-        "outbound": "Github"
-      },
-      {
-        "rule_set": [
-          "Openai0"
-        ],
-        "outbound": "Openai"
-      },
-      {
-        "rule_set": [
+          "Youtube0",
+		  "Telegram1",
+		  "Github0",
+		  "Openai0",
           "Netflix0",
-          "Netflix1"
+          "Netflix1",
+		  "Google0"
         ],
-        "outbound": "Netflix"
+        "outbound": "Proxy"
       },
       {
         "rule_set": [
-          "Google0"
-        ],
-        "outbound": "Google"
-      },
-      {
-        "rule_set": [
+          "bilibili@cn",
+		  "youku",
+		  "zhihu",
           "Direct0",
           "Direct1"
         ],
