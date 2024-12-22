@@ -1,8 +1,23 @@
 {
     "log": {
         "disabled": false,
-        "level": "info",
+        "level": "trace",
         "timestamp": true
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": "0.0.0.0:9095",
+            "external_ui": "/etc/sing-box/ui",
+            "secret": "",
+            "external_ui_download_url": "https://ghp.ci/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+            "external_ui_download_detour": "Proxy",
+            "default_mode": "rule"
+        },
+        "cache_file": {
+            "enabled": true,
+            "path": "/etc/sing-box/cache.db",
+            "store_fakeip": false
+        }
     },
     "outbounds": [
         {
@@ -57,18 +72,13 @@
         "servers": [
             {
                 "tag": "remote-dns",
-                "address": "tls://8.8.8.8",
+                "address": "https://dns.google/dns-query",
                 "address_resolver": "remote-resolver-dns",
+                "address_strategy": "ipv4_only",
                 "detour": "Proxy"
             },
             {
                 "tag": "local-dns",
-                "address": "https://223.5.5.5/dns-query",
-                "address_resolver": "resolver-dns",
-                "detour": "direct"
-            },
-            {
-                "tag": "resolver-dns",
                 "address": "223.5.5.5",
                 "detour": "direct"
             },
@@ -91,8 +101,10 @@
                 "disable_cache": true,
                 "server": "local-dns"
             },
-			{
+            {
                 "domain_keyword": [
+                    "bili",
+                    "hdslb",
                     "bilivideo",
                     "bilibili",
                     "biliapi",
@@ -103,7 +115,6 @@
             {
                 "rule_set": [
                     "bili1",
-                    "bili2",
                     "youku",
                     "zhihu",
                     "Direct1"
@@ -120,13 +131,21 @@
                     "Google0"
                 ],
                 "server": "remote-dns"
+            },
+            {
+                "clash_mode": "direct",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "global",
+                "server": "remote-dns"
             }
         ],
         "fakeip": {
             "enabled": false,
             "inet4_range": "198.18.0.1/16"
         },
-        "final": "remote-dns",
+        "final": "local-dns",
         "strategy": "ipv4_only"
     },
     "ntp": {
@@ -138,26 +157,28 @@
     },
     "inbounds": [
         {
-            "type": "mixed",
-            "listen": "127.0.0.1",
-            "listen_port": 20122,
-            "sniff": true,
-            "sniff_override_destination": false,
-            "domain_strategy": "ipv4_only",
-            "tcp_fast_open": false,
-            "tcp_multi_path": false,
-            "udp_fragment": false
-        },
-        {
             "type": "tun",
             "address": "172.19.0.1/30",
-            "stack": "system",
-            "sniff": true,
+            "mtu": 9000,
             "auto_route": true,
-            "exclude_package": [
-                "tv.danmaku.bili"
-            ],
-            "strict_route": true
+            "sniff": true,
+            "stack": "system",
+            "platform": {
+                "http_proxy": {
+                    "enabled": true,
+                    "server": "127.0.0.1",
+                    "server_port": 2080
+                }
+            }
+        },
+        {
+            "type": "mixed",
+            "listen": "127.0.0.1",
+            "listen_port": 2080,
+            "sniff": true,
+            "users": [
+
+            ]
         }
     ],
     "route": {
@@ -241,18 +262,6 @@
             },
             {
                 "type": "remote",
-                "tag": "geosite-geolocation-!cn",
-                "format": "binary",
-                "url": "https://ghp.ci/https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs"
-            },
-            {
-                "type": "remote",
-                "tag": "geoip-cn",
-                "format": "binary",
-                "url": "https://ghp.ci/https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
-            },
-            {
-                "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
                 "tag": "Direct0",
@@ -268,15 +277,30 @@
         ],
         "rules": [
             {
-                "protocol": "dns",
+                "type": "logical",
+                "mode": "or",
+                "rules": [
+                    {
+                        "port": 53
+                    },
+                    {
+                        "protocol": "dns"
+                    }
+                ],
                 "outbound": "dns-out"
             },
             {
-                "port": 53,
-                "outbound": "dns-out"
+                "clash_mode": "direct",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "global",
+                "outbound": "Proxy"
             },
             {
                 "domain_keyword": [
+                    "bili",
+                    "hdslb",
                     "bilivideo",
                     "bilibili",
                     "biliapi",
@@ -286,24 +310,13 @@
             },
             {
                 "rule_set": [
-                    "bili1"
-                ],
-                "outbound": "direct"
-            },
-            {
-                "rule_set": [
                     "youku",
+					"bili1",
                     "zhihu",
                     "Direct0",
                     "Direct1"
                 ],
                 "outbound": "direct"
-            },
-            {
-                "rule_set": [
-                    "bili2"
-                ],
-                "outbound": "Proxy"
             },
             {
                 "rule_set": [
