@@ -145,7 +145,7 @@
             "enabled": false,
             "inet4_range": "198.18.0.1/16"
         },
-        "final": "local-dns",
+        "final": "remote-dns",
         "strategy": "ipv4_only"
     },
     "ntp": {
@@ -293,6 +293,11 @@
                     }
                 ],
                 "outbound": "dns-out"
+            },
+			{
+                "network": "udp",
+                "port": 443,
+                "outbound": "block"
             },
             {
                 "clash_mode": "direct",
