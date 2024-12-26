@@ -9,7 +9,7 @@
             "external_controller": "0.0.0.0:9095",
             "external_ui": "/etc/sing-box/ui",
             "secret": "",
-            "external_ui_download_url": "https://ghp.ci/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+            "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
             "external_ui_download_detour": "Proxy",
             "default_mode": "rule"
         },
@@ -113,6 +113,12 @@
                 ],
                 "server": "remote-dns"
             },
+			{
+                "rule_set": [
+                    "CATEGORY-ADS"
+                ],
+                "server": "block"
+            },
             {
                 "clash_mode": "direct",
                 "server": "local-dns"
@@ -186,6 +192,13 @@
                 "download_detour": "Proxy",
                 "tag": "GEOLOCATION-!CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+            },
+			{
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "CATEGORY-ADS",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
             }
         ],
         "rules": [
@@ -227,6 +240,12 @@
                     "GEOLOCATION-!CN"
                 ],
                 "outbound": "Proxy"
+            },
+			            {
+                "rule_set": [
+                    "CATEGORY-ADS"
+                ],
+                "outbound": "block"
             },
             {
                 "ip_is_private": true,
