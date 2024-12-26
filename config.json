@@ -102,33 +102,14 @@
                 "server": "local-dns"
             },
             {
-                "domain_keyword": [
-                    "bili",
-                    "hdslb",
-                    "bilivideo",
-                    "bilibili",
-                    "biliapi",
-                    "biligame"
+                "rule_set": [
+                    "GEOSITE-CN"
                 ],
                 "server": "local-dns"
             },
             {
                 "rule_set": [
-                    "bili1",
-                    "youku",
-                    "zhihu",
-                    "Direct1"
-                ],
-                "server": "local-dns"
-            },
-            {
-                "rule_set": [
-                    "Youtube0",
-                    "Telegram1",
-                    "Github0",
-                    "Openai0",
-                    "Netflix0",
-                    "Google0"
+                    "GEOLOCATION-!CN"
                 ],
                 "server": "remote-dns"
             },
@@ -189,92 +170,22 @@
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
-                "tag": "zhihu",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/zhihu.srs"
+                "tag": "GEOIP-CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
-                "tag": "bili1",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili@cn.srs"
+                "tag": "GEOSITE-CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
             },
-            {
+			{
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
-                "tag": "bili2",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili@!cn.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "youku",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youku.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "Youtube0",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/youtube.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "Telegram1",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "Github0",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/github.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "Openai0",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/openai.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "Netflix0",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/netflix.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "Netflix1",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/geoip/netflix.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "Google0",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/google.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "Direct0",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geoip/cn.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "Direct1",
-                "url": "https://ghp.ci/https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/cn.srs"
+                "tag": "GEOLOCATION-!CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
             }
         ],
         "rules": [
@@ -305,35 +216,15 @@
                 "outbound": "Proxy"
             },
             {
-                "domain_keyword": [
-                    "bili",
-                    "hdslb",
-                    "bilivideo",
-                    "bilibili",
-                    "biliapi",
-                    "biligame"
+                "rule_set": [
+                    "GEOIP-CN",
+					"GEOSITE-CN"
                 ],
                 "outbound": "direct"
             },
             {
                 "rule_set": [
-                    "youku",
-					"bili1",
-                    "zhihu",
-                    "Direct0",
-                    "Direct1"
-                ],
-                "outbound": "direct"
-            },
-            {
-                "rule_set": [
-                    "Youtube0",
-                    "Telegram1",
-                    "Github0",
-                    "Openai0",
-                    "Netflix0",
-                    "Netflix1",
-                    "Google0"
+                    "GEOLOCATION-!CN"
                 ],
                 "outbound": "Proxy"
             },
