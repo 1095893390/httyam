@@ -198,7 +198,7 @@
                 "format": "binary",
                 "download_detour": "Proxy",
                 "tag": "CATEGORY-ADS",
-                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
+                "url": "https://anti-ad.net/anti-ad-sing-box.srs"
             }
         ],
         "rules": [
