@@ -216,8 +216,16 @@
                 "outbound": "dns-out"
             },
 			{
-                "network": "udp",
-                "port": 443,
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "port": 443
+                    },
+                    {
+                        "network": "udp"
+                    }
+                ],
                 "outbound": "block"
             },
             {
