@@ -101,6 +101,13 @@
                 "disable_cache": true,
                 "server": "local-dns"
             },
+			{
+                "domain_keyword": [
+					"adobe",
+					"Adobe"
+				],
+                "server": "block"
+            },
             {
                 "rule_set": [
                     "GEOSITE-CN"
@@ -119,6 +126,7 @@
                 ],
                 "server": "block"
             },
+			
             {
                 "clash_mode": "direct",
                 "server": "local-dns"
@@ -226,6 +234,13 @@
                         "network": "udp"
                     }
                 ],
+                "outbound": "block"
+            },
+			{
+                "domain_keyword": [
+					"adobe",
+					"Adobe"
+				],
                 "outbound": "block"
             },
             {
