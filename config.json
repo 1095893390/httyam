@@ -25,9 +25,9 @@
             "outbounds": [
                 "jp1",
                 "direct",
-                "us"
+                "hk"
             ],
-            "default": "us",
+            "default": "hk",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -56,15 +56,15 @@
             }
         },
         {
-            "tag": "us",
-            "server": "pigus.speedtestwget.life",
+            "tag": "hk",
+            "server": "clawhk.speedtestwget.life",
             "server_port": 443,
             "type": "trojan",
             "password": "smxmm1314",
             "tls": {
                 "enabled": true,
                 "insecure": false,
-                "server_name": "pigus.speedtestwget.life"
+                "server_name": "clawhk.speedtestwget.life"
             }
         }
     ],
