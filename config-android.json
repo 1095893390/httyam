@@ -143,15 +143,21 @@
     },
     "inbounds": [
         {
-            "type": "mixed",
-            "listen": "::",
-            "listen_port": 20122,
+            "type": "tproxy",
+            "tag": "tproxy-in",
+            "listen": "0.0.0.0",
+            "listen_port": 7895,
             "sniff": true,
-            "sniff_override_destination": false,
-            "domain_strategy": "ipv4_only",
-            "tcp_fast_open": false,
-            "tcp_multi_path": false,
-            "udp_fragment": false
+            "sniff_override_destination": false
+        },
+        {
+            "type": "mixed",
+            "listen": "127.0.0.1",
+            "listen_port": 2080,
+            "sniff": true,
+            "users": [
+
+            ]
         }
     ],
     "route": {
