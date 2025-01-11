@@ -95,6 +95,12 @@
                 "server": "local-dns"
             },
             {
+                "package_name": [
+                    "com.zhihu.android"
+                ],
+                "server": "local-dns"
+            },
+            {
                 "domain_keyword": [
                     "adobe",
                     "Adobe"
@@ -213,6 +219,12 @@
                     }
                 ],
                 "outbound": "block"
+            },
+            {
+                "package_name": [
+                    "com.zhihu.android"
+                ],
+                "server": "direct"
             },
             {
                 "domain_keyword": [
