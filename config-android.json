@@ -151,6 +151,9 @@
             "strict_route": true,
             "sniff": true,
             "stack": "system",
+            "exclude_package": [
+                "com.zhihu.android"
+            ],
             "platform": {
                 "http_proxy": {
                     "enabled": true,
