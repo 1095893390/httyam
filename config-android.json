@@ -224,7 +224,7 @@
                 "package_name": [
                     "com.zhihu.android"
                 ],
-                "server": "direct"
+                "outbound": "direct"
             },
             {
                 "domain_keyword": [
