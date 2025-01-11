@@ -5,12 +5,12 @@
         "timestamp": true
     },
     "experimental": {
-        "cache_file": {
-            "enabled": true,
-			"path": "cache.db",
-            "store_fakeip": false,
-            "store_rdrc": false
-        }
+		"cache_file": {
+		  "enabled": true,
+		  "path": "cache.db",
+		  "store_fakeip": false,
+		  "store_rdrc": false
+    }		
     },
     "outbounds": [
         {
@@ -94,11 +94,11 @@
                 "disable_cache": true,
                 "server": "local-dns"
             },
-            {
+			{
                 "domain_keyword": [
-                    "adobe",
-                    "Adobe"
-                ],
+					"adobe",
+					"Adobe"
+				],
                 "server": "block"
             },
             {
@@ -112,12 +112,6 @@
                     "GEOLOCATION-!CN"
                 ],
                 "server": "remote-dns"
-            },
-            {
-                "rule_set": [
-                    "CATEGORY-ADS"
-                ],
-                "server": "block"
             },
             {
                 "clash_mode": "direct",
@@ -144,16 +138,24 @@
     },
     "inbounds": [
         {
-            "type": "tproxy",
-            "tag": "tproxy-in",
-            "listen": "0.0.0.0",
-            "listen_port": 7895,
+            "type": "tun",
+            "address":"172.19.0.1/30",
+            "mtu": 9000,
+            "auto_route": true,
+			"strict_route": true,
             "sniff": true,
-            "sniff_override_destination": false
+            "stack": "system",
+            "platform": {
+                "http_proxy": {
+                    "enabled": true,
+                    "server": "127.0.0.1",
+                    "server_port": 2080
+                }
+            }
         },
         {
             "type": "mixed",
-            "listen": "127.0.0.1",
+            "listen": "0.0.0.0",
             "listen_port": 2080,
             "sniff": true,
             "users": [
@@ -177,19 +179,12 @@
                 "tag": "GEOSITE-CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
             },
-            {
+			{
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
                 "tag": "GEOLOCATION-!CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "CATEGORY-ADS",
-                "url": "https://anti-ad.net/anti-ad-sing-box.srs"
             }
         ],
         "rules": [
@@ -206,7 +201,7 @@
                 ],
                 "outbound": "dns-out"
             },
-            {
+			{
                 "type": "logical",
                 "mode": "and",
                 "rules": [
@@ -219,11 +214,11 @@
                 ],
                 "outbound": "block"
             },
-            {
+			{
                 "domain_keyword": [
-                    "adobe",
-                    "Adobe"
-                ],
+					"adobe",
+					"Adobe"
+				],
                 "outbound": "block"
             },
             {
@@ -237,7 +232,7 @@
             {
                 "rule_set": [
                     "GEOIP-CN",
-                    "GEOSITE-CN"
+					"GEOSITE-CN"
                 ],
                 "outbound": "direct"
             },
@@ -246,12 +241,6 @@
                     "GEOLOCATION-!CN"
                 ],
                 "outbound": "Proxy"
-            },
-            {
-                "rule_set": [
-                    "CATEGORY-ADS"
-                ],
-                "outbound": "block"
             },
             {
                 "ip_is_private": true,
