@@ -120,6 +120,12 @@
                 "server": "remote-dns"
             },
             {
+                "rule_set": [
+                    "CATEGORY-ADS"
+                ],
+                "server": "block"
+            },			
+            {
                 "clash_mode": "direct",
                 "server": "local-dns"
             },
@@ -194,7 +200,14 @@
                 "download_detour": "Proxy",
                 "tag": "GEOLOCATION-!CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
-            }
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "CATEGORY-ADS",
+                "url": "https://anti-ad.net/anti-ad-sing-box.srs"
+            }			
         ],
         "rules": [
             {
@@ -257,6 +270,12 @@
                 ],
                 "outbound": "Proxy"
             },
+            {
+                "rule_set": [
+                    "CATEGORY-ADS"
+                ],
+                "outbound": "block"
+            },			
             {
                 "ip_is_private": true,
                 "outbound": "direct"
