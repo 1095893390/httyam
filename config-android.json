@@ -158,7 +158,19 @@
             "sniff": true,
             "stack": "system",
             "exclude_package": [
-                "com.zhihu.android"
+                "com.zhihu.android",
+				"tv.danmaku.bili",
+				"com.jingdong.app.mall",
+				"com.sankuai.meituan",
+				"com.taobao.taobao",
+				"com.taobao.idlefish",
+				"com.xingin.xhs",
+				"com.xiaomi.shop",
+				"com.youku.phone",
+				"com.zjkccb.mbank",
+				"com.eg.android.AlipayGphone",
+				"com.wuba.zhuanzhuan",
+				"com.tencent.mobileqq"	
             ],
             "platform": {
                 "http_proxy": {
