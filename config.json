@@ -24,9 +24,21 @@
         {
             "tag": "Proxy",
             "outbounds": [
+                "hk",
                 "jp1",
                 "direct",
-                "hk"
+                "socks01"
+            ],
+            "default": "hk",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "FrontProxy",
+            "outbounds": [
+                "hk",
+                "jp1",
+                "direct"
             ],
             "default": "hk",
             "interrupt_exist_connections": true,
@@ -67,6 +79,16 @@
                 "insecure": false,
                 "server_name": "clawhk.speedtestwget.life"
             }
+        },
+        {
+            "type": "socks",
+            "tag": "socks01",
+            "server": "1.37.70.225",
+            "server_port": 42000,
+            "username": "kiwz5f",
+            "password": "vkaqcjyw",
+            "version": "5",
+            "detour": "FrontProxy"
         }
     ],
     "dns": {
