@@ -170,7 +170,8 @@
 				"com.zjkccb.mbank",
 				"com.eg.android.AlipayGphone",
 				"com.wuba.zhuanzhuan",
-				"com.tencent.mobileqq"	
+				"com.tencent.mobileqq",
+				"com.tencnt.mm"
             ],
             "platform": {
                 "http_proxy": {
