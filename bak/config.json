@@ -20,109 +20,6 @@
             "store_rdrc": false
         }
     },
-    "dns": {
-        "servers": [
-            {
-                "tag": "remote-dns",
-                "address": "https://dns.google/dns-query",
-                "address_resolver": "remote-resolver-dns",
-                "address_strategy": "ipv4_only",
-                "detour": "Proxy"
-            },
-            {
-                "tag": "local-dns",
-                "address": "223.5.5.5",
-                "detour": "direct"
-            },
-            {
-                "tag": "remote-resolver-dns",
-                "address": "8.8.8.8",
-                "detour": "Proxy"
-            }
-        ],
-        "disable_cache": false,
-        "disable_expire": false,
-        "independent_cache": false,
-        "rules": [
-            {
-                "outbound": "any",
-                "disable_cache": false,
-                "action": "route",
-                "server": "local-dns"
-            },
-            {
-                "domain_keyword": [
-                    "adobe",
-                    "Adobe"
-                ],
-                "action": "reject",
-                "method": "default",
-                "no_drop": false
-            },
-            {
-                "rule_set": [
-                    "GEOSITE-CN"
-                ],
-                "action": "route",
-                "server": "local-dns"
-            },
-            {
-                "rule_set": [
-                    "GEOLOCATION-!CN"
-                ],
-                "action": "route",
-                "server": "remote-dns"
-            },
-            {
-                "rule_set": [
-                    "CATEGORY-ADS"
-                ],
-                "action": "reject",
-                "method": "default",
-                "no_drop": false
-            },
-            {
-                "clash_mode": "direct",
-                "action": "route",
-                "server": "local-dns"
-            },
-            {
-                "clash_mode": "global",
-                "action": "route",
-                "server": "remote-dns"
-            }
-        ],
-        "fakeip": {
-            "enabled": false,
-            "inet4_range": "198.18.0.1/16"
-        },
-        "final": "local-dns",
-        "strategy": "ipv4_only"
-    },
-    "inbounds": [
-        {
-            "type": "tun",
-            "address": "172.19.0.1/30",
-            "mtu": 9000,
-            "auto_route": true,
-            "strict_route": true,
-            "auto_redirect": true,
-            "stack": "system",
-            "platform": {
-                "http_proxy": {
-                    "enabled": true,
-                    "server": "127.0.0.1",
-                    "server_port": 2080
-                }
-            }
-        },
-        {
-            "type": "mixed",
-            "tag": "in",
-            "listen": "0.0.0.0",
-            "listen_port": 2080
-        }
-    ],
     "outbounds": [
         {
             "tag": "Proxy",
@@ -150,6 +47,14 @@
         {
             "type": "direct",
             "tag": "direct"
+        },
+        {
+            "type": "dns",
+            "tag": "dns-out"
+        },
+        {
+            "type": "block",
+            "tag": "block"
         },
         {
             "tag": "jp1",
@@ -186,6 +91,80 @@
             "detour": "FrontProxy"
         }
     ],
+    "dns": {
+        "servers": [
+            {
+                "tag": "remote-dns",
+                "address": "https://dns.google/dns-query",
+                "address_resolver": "remote-resolver-dns",
+                "address_strategy": "ipv4_only",
+                "detour": "Proxy"
+            },
+            {
+                "tag": "local-dns",
+                "address": "223.5.5.5",
+                "detour": "direct"
+            },
+            {
+                "tag": "remote-resolver-dns",
+                "address": "8.8.8.8",
+                "detour": "Proxy"
+            },
+            {
+                "tag": "block",
+                "address": "rcode://success"
+            }
+        ],
+        "disable_cache": false,
+        "disable_expire": false,
+        "independent_cache": false,
+        "rules": [
+            {
+                "outbound": "any",
+                "disable_cache": true,
+                "server": "local-dns"
+            },
+            {
+                "domain_keyword": [
+                    "adobe",
+                    "Adobe"
+                ],
+                "server": "block"
+            },
+            {
+                "rule_set": [
+                    "GEOSITE-CN"
+                ],
+                "server": "local-dns"
+            },
+            {
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
+                "server": "remote-dns"
+            },
+            {
+                "rule_set": [
+                    "CATEGORY-ADS"
+                ],
+                "server": "block"
+            },
+            {
+                "clash_mode": "direct",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "global",
+                "server": "remote-dns"
+            }
+        ],
+        "fakeip": {
+            "enabled": false,
+            "inet4_range": "198.18.0.1/16"
+        },
+        "final": "local-dns",
+        "strategy": "ipv4_only"
+    },
     "ntp": {
         "enabled": true,
         "server": "time.apple.com",
@@ -193,6 +172,34 @@
         "interval": "30m",
         "detour": "direct"
     },
+    "inbounds": [
+        {
+            "type": "tun",
+            "address": "172.19.0.1/30",
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "auto_redirect": true,
+            "sniff": true,
+            "stack": "system",
+            "platform": {
+                "http_proxy": {
+                    "enabled": true,
+                    "server": "127.0.0.1",
+                    "server_port": 2080
+                }
+            }
+        },
+        {
+            "type": "mixed",
+            "listen": "0.0.0.0",
+            "listen_port": 2080,
+            "sniff": true,
+            "users": [
+
+            ]
+        }
+    ],
     "route": {
         "rule_set": [
             {
@@ -226,19 +233,6 @@
         ],
         "rules": [
             {
-                "inbound": "in",
-                "action": "resolve",
-                "strategy": "prefer_ipv4"
-            },
-            {
-                "inbound": "in",
-                "action": "sniff",
-                "timeout": "1s"
-            },
-            {
-                "action": "sniff"
-            },
-            {
                 "type": "logical",
                 "mode": "or",
                 "rules": [
@@ -249,7 +243,7 @@
                         "protocol": "dns"
                     }
                 ],
-                "action": "hijack-dns"
+                "outbound": "dns-out"
             },
             {
                 "type": "logical",
@@ -262,14 +256,14 @@
                         "network": "udp"
                     }
                 ],
-                "action": "reject"
+                "outbound": "block"
             },
             {
                 "domain_keyword": [
                     "adobe",
                     "Adobe"
                 ],
-                "action": "reject"
+                "outbound": "block"
             },
             {
                 "clash_mode": "direct",
@@ -296,7 +290,7 @@
                 "rule_set": [
                     "CATEGORY-ADS"
                 ],
-                "action": "reject"
+                "outbound": "block"
             },
             {
                 "ip_is_private": true,
