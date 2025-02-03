@@ -199,6 +199,13 @@
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
+                "tag": "spotify",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/spotify.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
                 "tag": "GEOIP-CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
             },
@@ -288,7 +295,8 @@
             },
             {
                 "rule_set": [
-                    "GEOLOCATION-!CN"
+                    "GEOLOCATION-!CN",
+					"spotify"
                 ],
                 "outbound": "Proxy"
             },
