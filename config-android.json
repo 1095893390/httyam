@@ -290,6 +290,12 @@
                 "outbound": "Proxy"
             },
             {
+                "wifi_ssid": [
+                    "Xiaomi_4B33_5G"
+                ],
+                "outbound": "direct"
+            },
+            {
                 "package_name": [
                     "com.spotify.music"
                 ],

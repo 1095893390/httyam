@@ -12,13 +12,146 @@
             "store_rdrc": false
         }
     },
+    "dns": {
+        "servers": [
+            {
+                "tag": "remote-dns",
+                "address": "https://dns.google/dns-query",
+                "address_resolver": "remote-resolver-dns",
+                "address_strategy": "ipv4_only",
+                "detour": "Proxy"
+            },
+            {
+                "tag": "local-dns",
+                "address": "223.5.5.5",
+                "detour": "direct"
+            },
+            {
+                "tag": "remote-resolver-dns",
+                "address": "8.8.8.8",
+                "detour": "Proxy"
+            }
+        ],
+        "disable_cache": false,
+        "disable_expire": false,
+        "independent_cache": false,
+        "rules": [
+            {
+                "outbound": "any",
+                "disable_cache": false,
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "rule_set": [
+                    "GEOSITE-CN"
+                ],
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
+                "rule_set": [
+                    "CATEGORY-ADS"
+                ],
+                "action": "reject",
+                "method": "default",
+                "no_drop": false
+            },
+            {
+                "clash_mode": "direct",
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "global",
+                "action": "route",
+                "server": "remote-dns"
+            }
+        ],
+        "fakeip": {
+            "enabled": false,
+            "inet4_range": "198.18.0.1/16"
+        },
+        "final": "local-dns",
+        "strategy": "ipv4_only"
+    },
+    "inbounds": [
+        {
+            "type": "tun",
+            "address": "172.19.0.1/30",
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "system",
+            "exclude_package": [
+                "com.zhihu.android",
+                "tv.danmaku.bili",
+                "com.jingdong.app.mall",
+                "com.sankuai.meituan",
+                "com.taobao.taobao",
+                "com.taobao.idlefish",
+                "com.xingin.xhs",
+                "com.xiaomi.shop",
+                "com.youku.phone",
+                "com.zjkccb.mbank",
+                "com.eg.android.AlipayGphone",
+                "com.wuba.zhuanzhuan",
+                "com.tencent.mobileqq",
+                "com.tencnt.mm"
+            ],
+            "platform": {
+                "http_proxy": {
+                    "enabled": true,
+                    "server": "127.0.0.1",
+                    "server_port": 2080
+                }
+            }
+        },
+        {
+            "type": "mixed",
+            "tag": "in",
+            "listen": "0.0.0.0",
+            "listen_port": 2080
+        }
+    ],
     "outbounds": [
         {
             "tag": "Proxy",
             "outbounds": [
+                "hk",
                 "jp1",
                 "direct",
-                "hk"
+                "socks01"
+            ],
+            "default": "hk",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "Spotify",
+            "outbounds": [
+                "hk",
+                "jp1",
+                "direct",
+                "socks01"
+            ],
+            "default": "hk",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "FrontProxy",
+            "outbounds": [
+                "hk",
+                "jp1",
+                "direct"
             ],
             "default": "hk",
             "interrupt_exist_connections": true,
@@ -27,14 +160,6 @@
         {
             "type": "direct",
             "tag": "direct"
-        },
-        {
-            "type": "dns",
-            "tag": "dns-out"
-        },
-        {
-            "type": "block",
-            "tag": "block"
         },
         {
             "tag": "jp1",
@@ -59,88 +184,18 @@
                 "insecure": false,
                 "server_name": "clawhk.speedtestwget.life"
             }
+        },
+        {
+            "tag": "socks01",
+            "type": "socks",
+            "server": "1.37.70.225",
+            "server_port": 42000,
+            "username": "kiwz5f",
+            "password": "vkaqcjyw",
+            "version": "5",
+            "detour": "FrontProxy"
         }
     ],
-    "dns": {
-        "servers": [
-            {
-                "tag": "remote-dns",
-                "address": "https://dns.google/dns-query",
-                "address_resolver": "remote-resolver-dns",
-                "address_strategy": "ipv4_only",
-                "detour": "Proxy"
-            },
-            {
-                "tag": "local-dns",
-                "address": "223.5.5.5",
-                "detour": "direct"
-            },
-            {
-                "tag": "remote-resolver-dns",
-                "address": "8.8.8.8",
-                "detour": "Proxy"
-            },
-            {
-                "tag": "block",
-                "address": "rcode://success"
-            }
-        ],
-        "disable_cache": false,
-        "disable_expire": false,
-        "independent_cache": false,
-        "rules": [
-            {
-                "outbound": "any",
-                "disable_cache": true,
-                "server": "local-dns"
-            },
-            {
-                "package_name": [
-                    "com.zhihu.android"
-                ],
-                "server": "local-dns"
-            },
-            {
-                "domain_keyword": [
-                    "adobe",
-                    "Adobe"
-                ],
-                "server": "block"
-            },
-            {
-                "rule_set": [
-                    "GEOSITE-CN"
-                ],
-                "server": "local-dns"
-            },
-            {
-                "rule_set": [
-                    "GEOLOCATION-!CN"
-                ],
-                "server": "remote-dns"
-            },
-            {
-                "rule_set": [
-                    "CATEGORY-ADS"
-                ],
-                "server": "block"
-            },			
-            {
-                "clash_mode": "direct",
-                "server": "local-dns"
-            },
-            {
-                "clash_mode": "global",
-                "server": "remote-dns"
-            }
-        ],
-        "fakeip": {
-            "enabled": false,
-            "inet4_range": "198.18.0.1/16"
-        },
-        "final": "local-dns",
-        "strategy": "ipv4_only"
-    },
     "ntp": {
         "enabled": true,
         "server": "time.apple.com",
@@ -148,51 +203,15 @@
         "interval": "30m",
         "detour": "direct"
     },
-    "inbounds": [
-        {
-            "type": "tun",
-            "address": "172.19.0.1/30",
-            "mtu": 9000,
-            "auto_route": true,
-            "strict_route": true,
-            "sniff": true,
-            "stack": "system",
-            "exclude_package": [
-                "com.zhihu.android",
-				"tv.danmaku.bili",
-				"com.jingdong.app.mall",
-				"com.sankuai.meituan",
-				"com.taobao.taobao",
-				"com.taobao.idlefish",
-				"com.xingin.xhs",
-				"com.xiaomi.shop",
-				"com.youku.phone",
-				"com.zjkccb.mbank",
-				"com.eg.android.AlipayGphone",
-				"com.wuba.zhuanzhuan",
-				"com.tencent.mobileqq",
-				"com.tencnt.mm"
-            ],
-            "platform": {
-                "http_proxy": {
-                    "enabled": true,
-                    "server": "127.0.0.1",
-                    "server_port": 2080
-                }
-            }
-        },
-        {
-            "type": "mixed",
-            "listen": "0.0.0.0",
-            "listen_port": 2080,
-            "sniff": true,
-            "users": [
-
-            ]
-        }
-    ],
     "route": {
         "rule_set": [
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "spotify",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/spotify.srs"
+            },
             {
                 "type": "remote",
                 "format": "binary",
@@ -220,9 +239,22 @@
                 "download_detour": "Proxy",
                 "tag": "CATEGORY-ADS",
                 "url": "https://anti-ad.net/anti-ad-sing-box.srs"
-            }			
+            }
         ],
         "rules": [
+            {
+                "inbound": "in",
+                "action": "resolve",
+                "strategy": "prefer_ipv4"
+            },
+            {
+                "inbound": "in",
+                "action": "sniff",
+                "timeout": "1s"
+            },
+            {
+                "action": "sniff"
+            },
             {
                 "type": "logical",
                 "mode": "or",
@@ -234,7 +266,7 @@
                         "protocol": "dns"
                     }
                 ],
-                "outbound": "dns-out"
+                "action": "hijack-dns"
             },
             {
                 "type": "logical",
@@ -247,20 +279,7 @@
                         "network": "udp"
                     }
                 ],
-                "outbound": "block"
-            },
-            {
-                "package_name": [
-                    "com.zhihu.android"
-                ],
-                "outbound": "direct"
-            },
-            {
-                "domain_keyword": [
-                    "adobe",
-                    "Adobe"
-                ],
-                "outbound": "block"
+                "action": "reject"
             },
             {
                 "clash_mode": "direct",
@@ -269,6 +288,18 @@
             {
                 "clash_mode": "global",
                 "outbound": "Proxy"
+            },
+            {
+                "package_name": [
+                    "com.spotify.music"
+                ],
+                "outbound": "Spotify"
+            },
+            {
+                "rule_set": [
+                    "spotify"
+                ],
+                "outbound": "Spotify"
             },
             {
                 "rule_set": [
@@ -287,8 +318,8 @@
                 "rule_set": [
                     "CATEGORY-ADS"
                 ],
-                "outbound": "block"
-            },			
+                "action": "reject"
+            },
             {
                 "ip_is_private": true,
                 "outbound": "direct"
