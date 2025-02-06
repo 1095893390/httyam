@@ -90,21 +90,21 @@
             "auto_route": true,
             "strict_route": true,
             "stack": "system",
-			"exclude_package": [
+            "exclude_package": [
                 "com.zhihu.android",
-				"tv.danmaku.bili",
-				"com.jingdong.app.mall",
-				"com.sankuai.meituan",
-				"com.taobao.taobao",
-				"com.taobao.idlefish",
-				"com.xingin.xhs",
-				"com.xiaomi.shop",
-				"com.youku.phone",
-				"com.zjkccb.mbank",
-				"com.eg.android.AlipayGphone",
-				"com.wuba.zhuanzhuan",
-				"com.tencent.mobileqq",
-				"com.tencnt.mm"
+                "tv.danmaku.bili",
+                "com.jingdong.app.mall",
+                "com.sankuai.meituan",
+                "com.taobao.taobao",
+                "com.taobao.idlefish",
+                "com.xingin.xhs",
+                "com.xiaomi.shop",
+                "com.youku.phone",
+                "com.zjkccb.mbank",
+                "com.eg.android.AlipayGphone",
+                "com.wuba.zhuanzhuan",
+                "com.tencent.mobileqq",
+                "com.tencnt.mm"
             ],
             "platform": {
                 "http_proxy": {
@@ -124,6 +124,18 @@
     "outbounds": [
         {
             "tag": "Proxy",
+            "outbounds": [
+                "hk",
+                "jp1",
+                "direct",
+                "socks01"
+            ],
+            "default": "hk",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "Spotify",
             "outbounds": [
                 "hk",
                 "jp1",
@@ -278,6 +290,18 @@
                 "outbound": "Proxy"
             },
             {
+                "package_name": [
+                    "com.spotify.music"
+                ],
+                "outbound": "Spotify"
+            },
+            {
+                "rule_set": [
+                    "spotify"
+                ],
+                "outbound": "Spotify"
+            },
+            {
                 "rule_set": [
                     "GEOIP-CN",
                     "GEOSITE-CN"
@@ -287,7 +311,6 @@
             {
                 "rule_set": [
                     "GEOLOCATION-!CN",
-					"spotify"
                 ],
                 "outbound": "Proxy"
             },

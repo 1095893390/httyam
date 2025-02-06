@@ -314,7 +314,6 @@
             {
                 "rule_set": [
                     "GEOLOCATION-!CN",
-					"spotify"
                 ],
                 "outbound": "Proxy"
             },
