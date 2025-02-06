@@ -300,7 +300,7 @@
             },
             {
                 "rule_set": [
-					"spotify"
+                    "spotify"
                 ],
                 "outbound": "Spotify"
             },
@@ -313,7 +313,7 @@
             },
             {
                 "rule_set": [
-                    "GEOLOCATION-!CN",
+                    "GEOLOCATION-!CN"
                 ],
                 "outbound": "Proxy"
             },

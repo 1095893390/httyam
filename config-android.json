@@ -310,7 +310,7 @@
             },
             {
                 "rule_set": [
-                    "GEOLOCATION-!CN",
+                    "GEOLOCATION-!CN"
                 ],
                 "outbound": "Proxy"
             },
