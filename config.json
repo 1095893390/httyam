@@ -137,6 +137,18 @@
             "type": "selector"
         },
         {
+            "tag": "Spotify",
+            "outbounds": [
+                "hk",
+                "jp1",
+                "direct",
+                "socks01"
+            ],
+            "default": "hk",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
             "tag": "FrontProxy",
             "outbounds": [
                 "hk",
@@ -178,10 +190,10 @@
         {
             "tag": "socks01",
             "type": "socks",
-            "server": "1.37.70.225",
-            "server_port": 42000,
-            "username": "kiwz5f",
-            "password": "vkaqcjyw",
+            "server": "proxy.ipipgo.com",
+            "server_port": 31212,
+            "username": "customer-0dc41e-country-PH",
+            "password": "fb976954",
             "version": "5",
             "detour": "FrontProxy"
         }
@@ -285,6 +297,12 @@
             {
                 "clash_mode": "global",
                 "outbound": "Proxy"
+            },
+            {
+                "rule_set": [
+					"spotify"
+                ],
+                "outbound": "Spotify"
             },
             {
                 "rule_set": [
