@@ -50,7 +50,7 @@
             {
                 "wifi_ssid": [
                     "Xiaomi_4B33_5G",
-					"OpenWrt5G"
+                    "OpenWrt5G"
                 ],
                 "disable_cache": false,
                 "action": "route",
@@ -306,7 +306,7 @@
             {
                 "wifi_ssid": [
                     "Xiaomi_4B33_5G",
-					"OpenWrt5G"
+                    "OpenWrt5G"
                 ],
                 "outbound": "direct"
             },
