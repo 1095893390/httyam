@@ -43,6 +43,16 @@
                 "server": "local-dns"
             },
             {
+                "wifi_ssid": [
+                    "Xiaomi_4B33_5G",
+                    "OpenWrt5G",
+                    "JD"
+                ],
+                "disable_cache": false,
+                "action": "route",
+                "server": "local"
+            },
+            {
                 "rule_set": [
                     "GEOSITE-CN"
                 ],
@@ -288,6 +298,14 @@
             {
                 "clash_mode": "global",
                 "outbound": "Proxy"
+            },
+            {
+                "wifi_ssid": [
+                    "Xiaomi_4B33_5G",
+                    "OpenWrt5G",
+                    "JD"
+                ],
+                "outbound": "direct"
             },
             {
                 "package_name": [

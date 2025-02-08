@@ -27,11 +27,6 @@
                 "detour": "direct"
             },
             {
-                "tag": "local",
-                "address": "local",
-                "detour": "direct"
-            },
-            {
                 "tag": "remote-resolver-dns",
                 "address": "8.8.8.8",
                 "detour": "Proxy"
@@ -46,16 +41,6 @@
                 "disable_cache": false,
                 "action": "route",
                 "server": "local-dns"
-            },
-            {
-                "wifi_ssid": [
-                    "Xiaomi_4B33_5G",
-                    "OpenWrt5G",
-                    "JD"
-                ],
-                "disable_cache": false,
-                "action": "route",
-                "server": "local"
             },
             {
                 "rule_set": [
