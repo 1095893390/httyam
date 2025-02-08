@@ -92,6 +92,12 @@
             "stack": "system",
             "exclude_package": [
                 "com.zhihu.android",
+				"com.milink.service",
+				"com.xiaomi.smarthome",
+				"com.xiaomi.mico",
+				"com.miui.voiceassist",
+				"com.xiaomi.xmsf",
+				"com.xiaomi.mi_connect_service",
                 "tv.danmaku.bili",
                 "com.jingdong.app.mall",
                 "com.sankuai.meituan",
