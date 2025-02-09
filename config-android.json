@@ -110,6 +110,7 @@
                 "com.eg.android.AlipayGphone",
                 "com.wuba.zhuanzhuan",
                 "com.tencent.mobileqq",
+				"org.jellyfin.mobile",
                 "com.tencnt.mm"
             ],
             "platform": {
