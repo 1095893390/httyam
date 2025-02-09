@@ -290,10 +290,12 @@
             },
             {
                 "clash_mode": "direct",
+				"action": "route",
                 "outbound": "direct"
             },
             {
                 "clash_mode": "global",
+				"action": "route",
                 "outbound": "Proxy"
             },
             {
@@ -302,18 +304,21 @@
                     "OpenWrt5G",
                     "JD"
                 ],
+				"action": "route",
                 "outbound": "direct"
             },
             {
                 "package_name": [
                     "com.spotify.music"
                 ],
+				"action": "route",
                 "outbound": "Spotify"
             },
             {
                 "rule_set": [
                     "spotify"
                 ],
+				"action": "route",
                 "outbound": "Spotify"
             },
             {
@@ -321,22 +326,26 @@
                     "GEOIP-CN",
                     "GEOSITE-CN"
                 ],
+				"action": "route",
                 "outbound": "direct"
             },
             {
                 "rule_set": [
                     "GEOLOCATION-!CN"
                 ],
+				"action": "route",
                 "outbound": "Proxy"
             },
             {
                 "rule_set": [
                     "CATEGORY-ADS"
                 ],
+				"action": "route",
                 "action": "reject"
             },
             {
                 "ip_is_private": true,
+				"action": "route",
                 "outbound": "direct"
             }
         ],
