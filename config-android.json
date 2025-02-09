@@ -7,7 +7,7 @@
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
-			"external_ui": "/storage/emulated/0/singboxui",
+            "external_ui": "/storage/emulated/0/singboxui",
             "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
             "external_ui_download_detour": "Proxy",
             "default_mode": "rule"
@@ -99,12 +99,12 @@
             "stack": "system",
             "exclude_package": [
                 "com.zhihu.android",
-				"com.milink.service",
-				"com.xiaomi.smarthome",
-				"com.xiaomi.mico",
-				"com.miui.voiceassist",
-				"com.xiaomi.xmsf",
-				"com.xiaomi.mi_connect_service",
+                "com.milink.service",
+                "com.xiaomi.smarthome",
+                "com.xiaomi.mico",
+                "com.miui.voiceassist",
+                "com.xiaomi.xmsf",
+                "com.xiaomi.mi_connect_service",
                 "tv.danmaku.bili",
                 "com.jingdong.app.mall",
                 "com.sankuai.meituan",
@@ -117,7 +117,7 @@
                 "com.eg.android.AlipayGphone",
                 "com.wuba.zhuanzhuan",
                 "com.tencent.mobileqq",
-				"org.jellyfin.mobile",
+                "org.jellyfin.mobile",
                 "com.tencnt.mm"
             ],
             "platform": {
@@ -297,12 +297,12 @@
             },
             {
                 "clash_mode": "direct",
-				"action": "route",
+                "action": "route",
                 "outbound": "direct"
             },
             {
                 "clash_mode": "global",
-				"action": "route",
+                "action": "route",
                 "outbound": "Proxy"
             },
             {
@@ -311,21 +311,21 @@
                     "OpenWrt5G",
                     "JD"
                 ],
-				"action": "route",
+                "action": "route",
                 "outbound": "direct"
             },
             {
                 "package_name": [
                     "com.spotify.music"
                 ],
-				"action": "route",
+                "action": "route",
                 "outbound": "Spotify"
             },
             {
                 "rule_set": [
                     "spotify"
                 ],
-				"action": "route",
+                "action": "route",
                 "outbound": "Spotify"
             },
             {
@@ -333,26 +333,25 @@
                     "GEOIP-CN",
                     "GEOSITE-CN"
                 ],
-				"action": "route",
+                "action": "route",
                 "outbound": "direct"
             },
             {
                 "rule_set": [
                     "GEOLOCATION-!CN"
                 ],
-				"action": "route",
+                "action": "route",
                 "outbound": "Proxy"
             },
             {
                 "rule_set": [
                     "CATEGORY-ADS"
                 ],
-				"action": "route",
                 "action": "reject"
             },
             {
                 "ip_is_private": true,
-				"action": "route",
+                "action": "route",
                 "outbound": "direct"
             }
         ],

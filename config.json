@@ -292,19 +292,19 @@
             },
             {
                 "clash_mode": "direct",
-				"action": "route",
+                "action": "route",
                 "outbound": "direct"
             },
             {
                 "clash_mode": "global",
-				"action": "route",
+                "action": "route",
                 "outbound": "Proxy"
             },
             {
                 "rule_set": [
                     "spotify"
                 ],
-				"action": "route",
+                "action": "route",
                 "outbound": "Spotify"
             },
             {
@@ -312,26 +312,25 @@
                     "GEOIP-CN",
                     "GEOSITE-CN"
                 ],
-				"action": "route",
+                "action": "route",
                 "outbound": "direct"
             },
             {
                 "rule_set": [
                     "GEOLOCATION-!CN"
                 ],
-				"action": "route",
+                "action": "route",
                 "outbound": "Proxy"
             },
             {
                 "rule_set": [
                     "CATEGORY-ADS"
                 ],
-				"action": "route",
                 "action": "reject"
             },
             {
                 "ip_is_private": true,
-				"action": "route",
+                "action": "route",
                 "outbound": "direct"
             }
         ],
