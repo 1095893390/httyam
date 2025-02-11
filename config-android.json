@@ -11,7 +11,7 @@
             "external_ui_download_url": "",
             "external_ui_download_detour": "Proxy",
             "default_mode": "rule",
-			"access_control_allow_private_network": true
+            "access_control_allow_private_network": true
         },
         "cache_file": {
             "enabled": true,
@@ -97,7 +97,7 @@
             "mtu": 9000,
             "auto_route": true,
             "strict_route": false,
-            "stack": "system",
+            "stack": "mixed",
             "exclude_package": [
                 "com.zhihu.android",
                 "com.milink.service",
