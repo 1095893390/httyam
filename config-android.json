@@ -7,7 +7,7 @@
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
-            "external_ui": "/storage/emulated/0/singboxui/ui",
+            "external_ui": "",
             "external_ui_download_url": "",
             "external_ui_download_detour": "Proxy",
             "default_mode": "rule",
@@ -96,7 +96,7 @@
             "address": "172.19.0.1/30",
             "mtu": 9000,
             "auto_route": true,
-            "strict_route": false,
+            "strict_route": true,
             "stack": "mixed",
             "exclude_package": [
                 "com.zhihu.android",
