@@ -307,11 +307,6 @@
                 "outbound": "Proxy"
             },
             {
-                "ip_is_private": true,
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
                 "wifi_ssid": [
                     "Xiaomi_4B33_5G",
                     "OpenWrt5G",
@@ -348,6 +343,11 @@
                 ],
                 "action": "route",
                 "outbound": "Proxy"
+            },
+            {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
             },
             {
                 "rule_set": [
