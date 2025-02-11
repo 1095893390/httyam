@@ -98,9 +98,6 @@
             "auto_route": true,
             "strict_route": true,
             "stack": "mixed",
-            "route_address": [
-                "192.168.0.0/16"
-            ],
             "exclude_package": [
                 "com.zhihu.android",
                 "com.milink.service",
