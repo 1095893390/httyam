@@ -7,8 +7,8 @@
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
-            "external_ui": "",
-            "external_ui_download_url": "",
+            "external_ui": "/storage/emulated/0/singboxui/ui",
+            "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
             "external_ui_download_detour": "Proxy",
             "default_mode": "rule",
             "access_control_allow_private_network": true
@@ -307,6 +307,32 @@
                 "outbound": "Proxy"
             },
             {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "source_ip_cidr": [
+                    "192.168.0.0/16"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "ip_cidr": [
+                    "192.168.0.0/16"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "source_geoip": [
+                    "private"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
                 "wifi_ssid": [
                     "Xiaomi_4B33_5G",
                     "OpenWrt5G",
@@ -343,11 +369,6 @@
                 ],
                 "action": "route",
                 "outbound": "Proxy"
-            },
-            {
-                "ip_is_private": true,
-                "action": "route",
-                "outbound": "direct"
             },
             {
                 "rule_set": [
