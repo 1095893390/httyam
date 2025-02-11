@@ -307,32 +307,6 @@
                 "outbound": "Proxy"
             },
             {
-                "ip_is_private": true,
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
-                "source_ip_cidr": [
-                    "192.168.0.0/16"
-                ],
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
-                "ip_cidr": [
-                    "192.168.0.0/16"
-                ],
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
-                "source_geoip": [
-                    "private"
-                ],
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
                 "wifi_ssid": [
                     "Xiaomi_4B33_5G",
                     "OpenWrt5G",
@@ -375,6 +349,11 @@
                     "CATEGORY-ADS"
                 ],
                 "action": "reject"
+            },
+            {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
             }
         ],
         "auto_detect_interface": true,
