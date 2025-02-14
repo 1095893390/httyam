@@ -128,6 +128,7 @@
             "tag": "Proxy",
             "outbounds": [
                 "hk",
+                "hk-front",
                 "jp1",
                 "direct",
                 "socks01"
@@ -140,6 +141,7 @@
             "tag": "Spotify",
             "outbounds": [
                 "hk",
+                "hk-front",
                 "jp1",
                 "direct",
                 "socks01"
@@ -151,11 +153,11 @@
         {
             "tag": "FrontProxy",
             "outbounds": [
-                "hk",
                 "jp1",
+                "hk",
                 "direct"
             ],
-            "default": "hk",
+            "default": "jp1",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -186,6 +188,19 @@
                 "insecure": false,
                 "server_name": "clawhk.speedtestwget.life"
             }
+        },
+        {
+            "tag": "hk-front",
+            "server": "clawhk.speedtestwget.life",
+            "server_port": 443,
+            "type": "trojan",
+            "password": "smxmm1314",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "clawhk.speedtestwget.life"
+            },
+            "detour": "FrontProxy"
         },
         {
             "tag": "socks01",
