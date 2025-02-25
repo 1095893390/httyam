@@ -142,7 +142,7 @@
             "tag": "Proxy",
             "outbounds": [
                 "hk",
-				"hk-front",
+                "hk-front",
                 "jp1",
                 "direct",
                 "socks01"
@@ -155,7 +155,7 @@
             "tag": "Spotify",
             "outbounds": [
                 "hk",
-				"hk-front",
+                "hk-front",
                 "jp1",
                 "direct",
                 "socks01"
@@ -214,7 +214,7 @@
                 "insecure": false,
                 "server_name": "clawhk.speedtestwget.life"
             },
-			"detour": "FrontProxy"
+            "detour": "FrontProxy"
         },
         {
             "tag": "socks01",
@@ -323,15 +323,6 @@
                 "outbound": "Proxy"
             },
             {
-                "wifi_ssid": [
-                    "Xiaomi_4B33_5G",
-                    "OpenWrt5G",
-                    "JD"
-                ],
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
                 "package_name": [
                     "com.spotify.music"
                 ],
@@ -344,6 +335,15 @@
                 ],
                 "action": "route",
                 "outbound": "Spotify"
+            },
+            {
+                "wifi_ssid": [
+                    "Xiaomi_4B33_5G",
+                    "OpenWrt5G",
+                    "JD"
+                ],
+                "action": "route",
+                "outbound": "direct"
             },
             {
                 "rule_set": [
