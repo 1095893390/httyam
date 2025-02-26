@@ -318,6 +318,15 @@
                 "outbound": "direct"
             },
             {
+                "wifi_ssid": [
+                    "Xiaomi_4B33_5G",
+                    "OpenWrt5G",
+                    "JD"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
                 "clash_mode": "global",
                 "action": "route",
                 "outbound": "Proxy"
@@ -335,15 +344,6 @@
                 ],
                 "action": "route",
                 "outbound": "Spotify"
-            },
-            {
-                "wifi_ssid": [
-                    "Xiaomi_4B33_5G",
-                    "OpenWrt5G",
-                    "JD"
-                ],
-                "action": "route",
-                "outbound": "direct"
             },
             {
                 "rule_set": [
