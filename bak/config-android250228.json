@@ -120,7 +120,6 @@
                 "com.wuba.zhuanzhuan",
                 "com.tencent.mobileqq",
                 "org.jellyfin.mobile",
-                "com.ss.android.ugc.aweme",
                 "com.tencnt.mm"
             ],
             "platform": {
@@ -226,20 +225,6 @@
             "password": "vkaqcjyw",
             "version": "5",
             "detour": "FrontProxy"
-        },
-        {
-            "tag": "socksXMwifi",
-            "type": "socks",
-            "server": "192.168.1.119",
-            "server_port": 2080,
-            "version": "5"
-        },
-        {
-            "tag": "socksOpenWRT",
-            "type": "socks",
-            "server": "192.168.3.119",
-            "server_port": 2080,
-            "version": "5"
         }
     ],
     "ntp": {
@@ -334,17 +319,12 @@
             },
             {
                 "wifi_ssid": [
-                    "Xiaomi_4B33_5G"
+                    "Xiaomi_4B33_5G",
+                    "OpenWrt5G",
+                    "JD"
                 ],
                 "action": "route",
-                "outbound": "socksXMwifi"
-            },
-            {
-                "wifi_ssid": [
-                    "OpenWrt5G"
-                ],
-                "action": "route",
-                "outbound": "socksOpenWRT"
+                "outbound": "direct"
             },
             {
                 "clash_mode": "global",
