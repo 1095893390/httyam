@@ -237,7 +237,7 @@
         {
             "tag": "socksOpenWRT",
             "type": "socks",
-            "server": "192.168.3.119",
+            "server": "192.168.3.139",
             "server_port": 2080,
             "version": "5"
         }
