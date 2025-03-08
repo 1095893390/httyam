@@ -23,6 +23,12 @@
     "dns": {
         "servers": [
             {
+                "tag": "localDNS",
+                "address": "local",
+                "address_strategy": "ipv4_only",
+                "detour": "direct"
+            },
+            {
                 "tag": "remote-dns",
                 "address": "https://dns.google/dns-query",
                 "address_resolver": "remote-resolver-dns",
@@ -44,6 +50,13 @@
         "disable_expire": false,
         "independent_cache": false,
         "rules": [
+            {
+                "wifi_ssid": [
+                    "Xiaomi_4B33_5G"
+                ],
+                "action": "route",
+                "server": "localDNS"
+            },
             {
                 "outbound": "any",
                 "disable_cache": false,
