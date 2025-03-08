@@ -24,7 +24,7 @@
         "servers": [
             {
                 "tag": "localDNS",
-                "address": "local",
+                "address": "192.168.3.119",
                 "address_strategy": "ipv4_only",
                 "detour": "direct"
             },
