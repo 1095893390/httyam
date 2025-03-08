@@ -194,26 +194,26 @@
         },
         {
             "tag": "hk",
-            "server": "clawhk.speedtestwget.life",
+            "server": "doghk.speedtestwget.life",
             "server_port": 443,
             "type": "trojan",
             "password": "smxmm1314",
             "tls": {
                 "enabled": true,
                 "insecure": false,
-                "server_name": "clawhk.speedtestwget.life"
+                "server_name": "doghk.speedtestwget.life"
             }
         },
         {
             "tag": "hk-front",
-            "server": "clawhk.speedtestwget.life",
+            "server": "doghk.speedtestwget.life",
             "server_port": 443,
             "type": "trojan",
             "password": "smxmm1314",
             "tls": {
                 "enabled": true,
                 "insecure": false,
-                "server_name": "clawhk.speedtestwget.life"
+                "server_name": "doghk.speedtestwget.life"
             },
             "detour": "FrontProxy"
         },
