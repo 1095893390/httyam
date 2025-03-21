@@ -30,7 +30,7 @@
             },
             {
                 "tag": "localOpenWRTDNS",
-                "address": "192.168.3.139",
+                "address": "192.168.3.111",
                 "address_strategy": "ipv4_only",
                 "detour": "direct"
             },
@@ -263,7 +263,7 @@
         {
             "tag": "socksOpenWRT",
             "type": "socks",
-            "server": "192.168.3.139",
+            "server": "192.168.3.111",
             "server_port": 2080,
             "version": "5"
         }
