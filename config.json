@@ -185,6 +185,11 @@
             "server_port": 36666,
             "type": "trojan",
             "password": "EKw7JX79zA",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "x.sslink.site"
+            },
             "transport": {
                 "type": "ws",
                 "path": "/ccc"
