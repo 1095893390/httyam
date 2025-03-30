@@ -180,15 +180,18 @@
             }
         },
         {
+            "type": "vless",
             "tag": "us",
-            "server": "x.sslink.site",
-            "server_port": 36666,
-            "type": "trojan",
-            "password": "EKw7JX79zA",
+            "server": "38.246.229.153",
+            "server_port": 31888,
+            "uuid": "68d0a25e-e415-4df3-d924-d91a602a0b35",
+            "network": "tcp",
             "tls": {
-                "enabled": true,
-                "insecure": false,
-                "server_name": "x.sslink.site"
+
+            },
+            "packet_encoding": "",
+            "multiplex": {
+
             },
             "transport": {
                 "type": "ws",
