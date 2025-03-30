@@ -129,6 +129,7 @@
             "outbounds": [
                 "hk",
                 "hk-front",
+                "us",
                 "jp1",
                 "direct",
                 "socks01"
@@ -141,6 +142,7 @@
             "tag": "Spotify",
             "outbounds": [
                 "hk",
+                "us",
                 "hk-front",
                 "jp1",
                 "direct",
@@ -175,6 +177,17 @@
                 "enabled": true,
                 "insecure": false,
                 "server_name": "soft.speedtestwget.life"
+            }
+        },
+        {
+            "tag": "us",
+            "server": "x.sslink.site",
+            "server_port": 36666,
+            "type": "trojan",
+            "password": "EKw7JX79zA",
+            "transport": {
+                "type": "ws",
+                "path": "/ccc"
             }
         },
         {
