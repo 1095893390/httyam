@@ -171,6 +171,7 @@
             "outbounds": [
                 "hk",
                 "hk-front",
+                "us",
                 "jp1",
                 "direct",
                 "socks01"
@@ -183,6 +184,7 @@
             "tag": "Spotify",
             "outbounds": [
                 "hk",
+                "us",
                 "hk-front",
                 "jp1",
                 "direct",
@@ -217,6 +219,25 @@
                 "enabled": true,
                 "insecure": false,
                 "server_name": "soft.speedtestwget.life"
+            }
+        },
+        {
+            "tag": "us",
+            "type": "vless",
+            "server": "38.246.229.153",
+            "server_port": 31888,
+            "uuid": "68d0a25e-e415-4df3-d924-d91a602a0b35",
+            "network": "tcp",
+            "tls": {
+
+            },
+            "packet_encoding": "",
+            "multiplex": {
+
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/ccc"
             }
         },
         {

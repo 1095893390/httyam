@@ -180,8 +180,8 @@
             }
         },
         {
-            "type": "vless",
             "tag": "us",
+            "type": "vless",
             "server": "38.246.229.153",
             "server_port": 31888,
             "uuid": "68d0a25e-e415-4df3-d924-d91a602a0b35",
