@@ -134,7 +134,7 @@
                 "direct",
                 "socks01"
             ],
-            "default": "hk",
+            "default": "jp1",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -148,7 +148,7 @@
                 "direct",
                 "socks01"
             ],
-            "default": "hk",
+            "default": "jp1",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
