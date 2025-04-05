@@ -128,23 +128,38 @@
             "tag": "Proxy",
             "outbounds": [
                 "hk",
+                "hk-front",
                 "us",
                 "jp1",
-                "direct"
+                "direct",
+                "socks01"
             ],
             "default": "jp1",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
         {
-            "tag": "AppleMusic",
+            "tag": "Spotify",
             "outbounds": [
                 "hk",
                 "us",
+                "hk-front",
                 "jp1",
+                "direct",
+                "socks01"
+            ],
+            "default": "jp1",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "FrontProxy",
+            "outbounds": [
+                "jp1",
+                "hk",
                 "direct"
             ],
-            "default": "direct",
+            "default": "jp1",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -206,6 +221,29 @@
                 }
             },
             "packet_encoding": "xudp"
+        },
+        {
+            "tag": "hk-front",
+            "server": "doghk.speedtestwget.life",
+            "server_port": 443,
+            "type": "trojan",
+            "password": "smxmm1314",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "doghk.speedtestwget.life"
+            },
+            "detour": "FrontProxy"
+        },
+        {
+            "tag": "socks01",
+            "type": "socks",
+            "server": "proxy.ipipgo.com",
+            "server_port": 31212,
+            "username": "customer-0dc41e-country-PH",
+            "password": "fb976954",
+            "version": "5",
+            "detour": "FrontProxy"
         }
     ],
     "ntp": {
@@ -221,8 +259,8 @@
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
-                "tag": "applemusic",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geosite/applemusic.srs"
+                "tag": "spotify",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/spotify.srs"
             },
             {
                 "type": "remote",
@@ -312,10 +350,10 @@
             },
             {
                 "rule_set": [
-                    "applemusic"
+                    "spotify"
                 ],
                 "action": "route",
-                "outbound": "AppleMusic"
+                "outbound": "Spotify"
             },
             {
                 "rule_set": [
