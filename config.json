@@ -61,7 +61,8 @@
             },
             {
                 "rule_set": [
-                    "GEOSITE-CN"
+                    "GEOSITE-CN",
+                    "GEOSITE-APPLE"
                 ],
                 "action": "route",
                 "server": "local-dns"
@@ -137,7 +138,7 @@
             "type": "selector"
         },
         {
-            "tag": "AppleMusic",
+            "tag": "Apple",
             "outbounds": [
                 "hk",
                 "us",
@@ -221,8 +222,15 @@
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
-                "tag": "applemusic",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geosite/applemusic.srs"
+                "tag": "GEOSITE-APPLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOIP-APPLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geoip/apple.srs"
             },
             {
                 "type": "remote",
@@ -312,10 +320,11 @@
             },
             {
                 "rule_set": [
-                    "applemusic"
+                    "GEOSITE-APPLE",
+                    "GEOIP-APPLE"
                 ],
                 "action": "route",
-                "outbound": "AppleMusic"
+                "outbound": "Apple"
             },
             {
                 "rule_set": [
