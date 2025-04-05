@@ -92,7 +92,7 @@
             {
                 "rule_set": [
                     "GEOSITE-CN",
-					"GEOSITE-APPLE"
+                    "GEOSITE-APPLE"
                 ],
                 "action": "route",
                 "server": "local-dns"
@@ -186,7 +186,7 @@
                 "hk",
                 "us",
                 "jp1",
-                "direct",
+                "direct"
             ],
             "default": "jp1",
             "interrupt_exist_connections": true,
@@ -198,7 +198,7 @@
                 "hk",
                 "us",
                 "jp1",
-                "direct",
+                "direct"
             ],
             "default": "direct",
             "interrupt_exist_connections": true,
