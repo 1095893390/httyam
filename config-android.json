@@ -23,6 +23,12 @@
     "dns": {
         "servers": [
             {
+                "tag": "localChai123456",
+                "address": "192.168.1.115",
+                "address_strategy": "ipv4_only",
+                "detour": "direct"
+            },
+            {
                 "tag": "localMiWifiDNS",
                 "address": "192.168.1.119",
                 "address_strategy": "ipv4_only",
@@ -58,6 +64,13 @@
         "rules": [
             {
                 "wifi_ssid": [
+                    "123456"
+                ],
+                "action": "route",
+                "server": "localChai123456"
+            },
+            {
+                "wifi_ssid": [
                     "Xiaomi_4B33_5G"
                 ],
                 "action": "route",
@@ -78,7 +91,8 @@
             },
             {
                 "rule_set": [
-                    "GEOSITE-CN"
+                    "GEOSITE-CN",
+					"GEOSITE-APPLE"
                 ],
                 "action": "route",
                 "server": "local-dns"
@@ -170,38 +184,23 @@
             "tag": "Proxy",
             "outbounds": [
                 "hk",
-                "hk-front",
                 "us",
                 "jp1",
                 "direct",
-                "socks01"
-            ],
-            "default": "hk",
-            "interrupt_exist_connections": true,
-            "type": "selector"
-        },
-        {
-            "tag": "Spotify",
-            "outbounds": [
-                "hk",
-                "us",
-                "hk-front",
-                "jp1",
-                "direct",
-                "socks01"
-            ],
-            "default": "hk",
-            "interrupt_exist_connections": true,
-            "type": "selector"
-        },
-        {
-            "tag": "FrontProxy",
-            "outbounds": [
-                "hk",
-                "jp1",
-                "direct"
             ],
             "default": "jp1",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "Apple",
+            "outbounds": [
+                "hk",
+                "us",
+                "jp1",
+                "direct",
+            ],
+            "default": "direct",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -241,39 +240,28 @@
             }
         },
         {
+            "type": "vless",
             "tag": "hk",
-            "server": "doghk.speedtestwget.life",
+            "server": "193.200.130.61",
             "server_port": 443,
-            "type": "trojan",
-            "password": "smxmm1314",
+            "uuid": "7dd1e296-27a1-4daa-b2f9-0cf83232ef2c",
+            "flow": "xtls-rprx-vision",
+            "network": "tcp",
             "tls": {
                 "enabled": true,
+                "server_name": "dnzq8866.com",
                 "insecure": false,
-                "server_name": "doghk.speedtestwget.life"
-            }
-        },
-        {
-            "tag": "hk-front",
-            "server": "doghk.speedtestwget.life",
-            "server_port": 443,
-            "type": "trojan",
-            "password": "smxmm1314",
-            "tls": {
-                "enabled": true,
-                "insecure": false,
-                "server_name": "doghk.speedtestwget.life"
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "CH6yjYieaN0O1EL-Jn3XtpzU_60PzKKhwUQSqiZrJz0",
+                    "short_id": "9df4bb72"
+                }
             },
-            "detour": "FrontProxy"
-        },
-        {
-            "tag": "socks01",
-            "type": "socks",
-            "server": "1.37.70.225",
-            "server_port": 42000,
-            "username": "kiwz5f",
-            "password": "vkaqcjyw",
-            "version": "5",
-            "detour": "FrontProxy"
+            "packet_encoding": "xudp"
         },
         {
             "tag": "socksXMwifi",
@@ -286,6 +274,13 @@
             "tag": "socksOpenWRT",
             "type": "socks",
             "server": "192.168.3.111",
+            "server_port": 2080,
+            "version": "5"
+        },
+        {
+            "tag": "socksChai123456",
+            "type": "socks",
+            "server": "192.168.1.115",
             "server_port": 2080,
             "version": "5"
         }
@@ -303,8 +298,15 @@
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
-                "tag": "spotify",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/spotify.srs"
+                "tag": "GEOSITE-APPLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOIP-APPLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geoip/apple.srs"
             },
             {
                 "type": "remote",
@@ -382,6 +384,13 @@
             },
             {
                 "wifi_ssid": [
+                    "123456"
+                ],
+                "action": "route",
+                "outbound": "socksChai123456"
+            },
+            {
+                "wifi_ssid": [
                     "Xiaomi_4B33_5G"
                 ],
                 "action": "route",
@@ -401,17 +410,18 @@
             },
             {
                 "package_name": [
-                    "com.spotify.music"
+                    "com.apple.android.music"
                 ],
                 "action": "route",
-                "outbound": "Spotify"
+                "outbound": "Apple"
             },
             {
                 "rule_set": [
-                    "spotify"
+                    "GEOSITE-APPLE",
+                    "GEOIP-APPLE"
                 ],
                 "action": "route",
-                "outbound": "Spotify"
+                "outbound": "Apple"
             },
             {
                 "rule_set": [
