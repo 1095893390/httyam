@@ -153,6 +153,31 @@ fi
 #echo $ip4statusChange
 #
 #
+
+#第五个ip地址LG
+ip5="192.168.3.151"
+
+ping -c 30 "$ip5" > /dev/null
+if [ "$?" -eq "0" ]; then
+    ip5staus="on"
+    echo "ip5LG的状态是$ip5staus"
+else
+    ip5staus="off"
+    echo "ip5LG的状态是$ip5staus"
+fi
+#echo "出了循环ip5的状态变量是$ip5staus"
+
+if [ "$ip5staus" = "$ip5stausDefault" ]; then
+	echo "ip5LG一致"
+    ip5statusChange="same"
+else
+	echo "ip5LG不一致"
+    ip5statusChange="diffrent"
+    ip5stausDefault="$ip5staus"
+    echo $ip5stausDefault
+fi
+
+
 #发送TG提示消息
 if [ "$ip1statusChange" = "diffrent" ] || [ "$ip2statusChange" = "diffrent" ] || [ "$ip3statusChange" = "diffrent" ] || [ "$ip4statusChange" = "diffrent" ]; then
 #if [ "$ip1statusChange" = "diffrent" ]; then
@@ -163,6 +188,7 @@ if [ "$ip1statusChange" = "diffrent" ] || [ "$ip2statusChange" = "diffrent" ] ||
     周姐：$ip2staus
     石哥：$ip4staus
     周哥：$ip3staus
+    刘哥：$ip5staus
     " "https://api.telegram.org/bot1438292076:AAF6sKD0fG-fDheaxH74CL-CyPM6Lyd4Ofw/sendMessage"
 else
 	echo "没有变化"
