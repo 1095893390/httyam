@@ -128,7 +128,6 @@
         {
             "tag": "Proxy",
             "outbounds": [
-                "hk",
                 "us",
                 "jp1",
                 "direct"
@@ -140,7 +139,6 @@
         {
             "tag": "Apple",
             "outbounds": [
-                "hk",
                 "us",
                 "jp1",
                 "direct"
@@ -183,30 +181,6 @@
                 "type": "ws",
                 "path": "/ccc"
             }
-        },
-        {
-            "type": "vless",
-            "tag": "hk",
-            "server": "193.200.130.61",
-            "server_port": 443,
-            "uuid": "7dd1e296-27a1-4daa-b2f9-0cf83232ef2c",
-            "flow": "xtls-rprx-vision",
-            "network": "tcp",
-            "tls": {
-                "enabled": true,
-                "server_name": "dnzq8866.com",
-                "insecure": false,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                },
-                "reality": {
-                    "enabled": true,
-                    "public_key": "CH6yjYieaN0O1EL-Jn3XtpzU_60PzKKhwUQSqiZrJz0",
-                    "short_id": "9df4bb72"
-                }
-            },
-            "packet_encoding": "xudp"
         }
     ],
     "ntp": {
