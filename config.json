@@ -129,11 +129,10 @@
             "tag": "Proxy",
             "outbounds": [
                 "us",
-                "kr",
-                "jp1",
+                "jp",
                 "direct"
             ],
-            "default": "kr",
+            "default": "jp",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -141,11 +140,10 @@
             "tag": "Apple",
             "outbounds": [
                 "us",
-                "kr",
-                "jp1",
+                "jp",
                 "direct"
             ],
-            "default": "kr",
+            "default": "jp",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -154,7 +152,7 @@
             "tag": "direct"
         },
         {
-            "tag": "jp1",
+            "tag": "jp",
             "server": "soft.speedtestwget.life",
             "server_port": 443,
             "type": "trojan",
@@ -183,30 +181,6 @@
                 "type": "ws",
                 "path": "/ccc"
             }
-        },
-        {
-            "type": "vless",
-            "tag": "kr",
-            "server": "203.227.44.94",
-            "server_port": 443,
-            "uuid": "f59116b3-c3d7-40a6-98d2-a938d73d5820",
-            "flow": "xtls-rprx-vision",
-            "network": "tcp",
-            "tls": {
-                "enabled": true,
-                "server_name": "shinsung.co.kr",
-                "insecure": false,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                },
-                "reality": {
-                    "enabled": true,
-                    "public_key": " tWx975IE10-ZDyla-ffi06t7yPdBw7P-_CxnztWLUgY",
-                    "short_id": "9df4bb72"
-                }
-            },
-            "packet_encoding": "xudp"
         }
     ],
     "ntp": {
