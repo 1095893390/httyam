@@ -207,7 +207,7 @@
             "tag": "direct"
         },
         {
-            "tag": "jp1",
+            "tag": "jp",
             "server": "soft.speedtestwget.life",
             "server_port": 443,
             "type": "trojan",
