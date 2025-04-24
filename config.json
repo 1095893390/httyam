@@ -128,22 +128,22 @@
         {
             "tag": "Proxy",
             "outbounds": [
-                "us",
+                "kr",
                 "jp",
                 "direct"
             ],
-            "default": "jp",
+            "default": "kr",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
         {
             "tag": "Apple",
             "outbounds": [
-                "us",
+                "kr",
                 "jp",
                 "direct"
             ],
-            "default": "jp",
+            "default": "kr",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -164,23 +164,28 @@
             }
         },
         {
-            "tag": "us",
             "type": "vless",
-            "server": "38.246.229.153",
-            "server_port": 31888,
-            "uuid": "68d0a25e-e415-4df3-d924-d91a602a0b35",
+            "tag": "kr",
+            "server": "45.141.136.48",
+            "server_port": 443,
+            "uuid": "f59116b3-c3d7-40a6-98d2-a938d73d5820",
+            "flow": "xtls-rprx-vision",
             "network": "tcp",
             "tls": {
-
+                "enabled": true,
+                "server_name": "bybook.net",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "tWx975IE10-ZDyla-ffi06t7yPdBw7P-_CxnztWLUgY",
+                    "short_id": "9df4bb72"
+                }
             },
-            "packet_encoding": "",
-            "multiplex": {
-
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/ccc"
-            }
+            "packet_encoding": "xudp"
         }
     ],
     "ntp": {
