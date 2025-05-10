@@ -49,7 +49,7 @@
             },
             {
                 "tag": "local-dns",
-                "address": "223.5.5.5",
+                "address": "119.29.29.29",
                 "detour": "direct"
             },
             {
@@ -185,6 +185,7 @@
             "outbounds": [
                 "kr",
                 "jp",
+				"hy2",
                 "direct"
             ],
             "default": "kr",
@@ -196,6 +197,7 @@
             "outbounds": [
                 "kr",
                 "jp",
+				"hy2",
                 "direct"
             ],
             "default": "kr",
@@ -219,16 +221,33 @@
             }
         },
         {
+            "type": "hysteria2",
+            "tag": "hy2",
+            "server": "music.speedtestwget.life",
+            "server_port": 443,
+            "up_mbps": 60,
+            "down_mbps": 60,
+            "password": "smxmm1314",
+            "tls": {
+                "enabled": true,
+                "server_name": "music.speedtestwget.life",
+                "alpn": [
+                    "h3"
+                ]
+            },
+            "brutal_debug": false
+        },
+        {
             "type": "vless",
             "tag": "kr",
-            "server": "45.141.136.48",
+            "server": "music.speedtestwget.life",
             "server_port": 443,
             "uuid": "f59116b3-c3d7-40a6-98d2-a938d73d5820",
             "flow": "xtls-rprx-vision",
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "bybook.net",
+                "server_name": "music.speedtestwget.life",
                 "insecure": false,
                 "utls": {
                     "enabled": true,
@@ -342,19 +361,6 @@
                     }
                 ],
                 "action": "hijack-dns"
-            },
-            {
-                "type": "logical",
-                "mode": "and",
-                "rules": [
-                    {
-                        "port": 443
-                    },
-                    {
-                        "network": "udp"
-                    }
-                ],
-                "action": "reject"
             },
             {
                 "clash_mode": "direct",

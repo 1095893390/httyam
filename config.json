@@ -142,6 +142,7 @@
             "outbounds": [
                 "kr",
                 "jp",
+				"hy2",
                 "direct"
             ],
             "default": "kr",
@@ -291,6 +292,18 @@
                     "Adobe"
                 ],
                 "action": "reject"
+            },
+            {
+                "domain_keyword": [
+                    "missav",
+                    "91short",
+					"xvideo",
+					"pron",
+					"pornhub",
+					"91porna"
+                ],
+                "action": "route",
+                "outbound": "jp"
             },
             {
                 "clash_mode": "direct",
