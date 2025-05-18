@@ -183,24 +183,24 @@
         {
             "tag": "Proxy",
             "outbounds": [
-                "kr",
+                "hk",
                 "jp",
-				"hy2",
+				"hkhy2",
                 "direct"
             ],
-            "default": "kr",
+            "default": "hk",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
         {
             "tag": "Apple",
             "outbounds": [
-                "kr",
+                "hk",
                 "jp",
-				"hy2",
+				"hkhy2",
                 "direct"
             ],
-            "default": "kr",
+            "default": "hk",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -222,15 +222,15 @@
         },
         {
             "type": "hysteria2",
-            "tag": "hy2",
-            "server": "music.speedtestwget.life",
+            "tag": "hkhy2",
+            "server": "kidko.speedtestwget.life",
             "server_port": 443,
-            "up_mbps": 60,
-            "down_mbps": 60,
+            "up_mbps": 100,
+            "down_mbps": 100,
             "password": "smxmm1314",
             "tls": {
                 "enabled": true,
-                "server_name": "music.speedtestwget.life",
+                "server_name": "kidko.speedtestwget.life",
                 "alpn": [
                     "h3"
                 ]
@@ -239,15 +239,15 @@
         },
         {
             "type": "vless",
-            "tag": "kr",
-            "server": "music.speedtestwget.life",
+            "tag": "hk",
+            "server": "kidko.speedtestwget.life",
             "server_port": 443,
             "uuid": "f59116b3-c3d7-40a6-98d2-a938d73d5820",
             "flow": "xtls-rprx-vision",
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "music.speedtestwget.life",
+                "server_name": "kidko.speedtestwget.life",
                 "insecure": false,
                 "utls": {
                     "enabled": true,
