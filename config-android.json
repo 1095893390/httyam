@@ -107,14 +107,6 @@
                 "server": "remote-dns"
             },
             {
-                "rule_set": [
-                    "CATEGORY-ADS"
-                ],
-                "action": "reject",
-                "method": "default",
-                "no_drop": false
-            },
-            {
                 "clash_mode": "direct",
                 "action": "route",
                 "server": "local-dns"
@@ -469,12 +461,6 @@
                 ],
                 "action": "route",
                 "outbound": "Proxy"
-            },
-            {
-                "rule_set": [
-                    "CATEGORY-ADS"
-                ],
-                "action": "reject"
             },
             {
                 "ip_is_private": true,
