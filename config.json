@@ -124,7 +124,8 @@
             "outbounds": [
                 "us-vless",
                 "us-hy2",
-                "jp-trojan",
+                "us-trojan-hostyun",
+				"us-hy2-hostyun",
                 "direct"
             ],
             "default": "us-vless",
@@ -136,7 +137,8 @@
             "outbounds": [
                 "us-vless",
                 "us-hy2",
-                "jp-trojan",
+                "us-trojan-hostyun",
+				"us-hy2-hostyun",
                 "direct"
             ],
             "default": "us-vless",
@@ -148,15 +150,32 @@
             "tag": "direct"
         },
         {
-            "tag": "jp-trojan",
-            "server": "soft.speedtestwget.life",
+            "type": "hysteria2",
+            "tag": "us-hy2-hostyun",
+            "server": "kidko.speedtestwget.life",
+            "server_port": 443,
+            "up_mbps": 100,
+            "down_mbps": 100,
+            "password": "smxmm1314",
+            "tls": {
+                "enabled": true,
+                "server_name": "kidko.speedtestwget.life",
+                "alpn": [
+                    "h3"
+                ]
+            },
+            "brutal_debug": false
+        },
+        {
+            "tag": "us-trojan-hostyun",
+            "server": "kidko.speedtestwget.life",
             "server_port": 443,
             "type": "trojan",
             "password": "smxmm1314",
             "tls": {
                 "enabled": true,
                 "insecure": false,
-                "server_name": "soft.speedtestwget.life"
+                "server_name": "kidko.speedtestwget.life"
             }
         },
         {
