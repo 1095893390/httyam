@@ -30,7 +30,7 @@
             },
             {
                 "tag": "localMiWifiDNS",
-                "address": "192.168.1.119",
+                "address": "192.168.31.171",
                 "address_strategy": "ipv4_only",
                 "detour": "direct"
             },
@@ -277,7 +277,7 @@
         {
             "tag": "socksXMwifi",
             "type": "socks",
-            "server": "192.168.1.119",
+            "server": "192.168.31.171",
             "server_port": 2080,
             "version": "5"
         },
