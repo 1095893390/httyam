@@ -180,7 +180,7 @@
                 "us-vless",
                 "us-hy2",
                 "us-trojan-hostyun",
-				"us-hy2-hostyun",
+                "us-hy2-hostyun",
                 "direct"
             ],
             "default": "us-vless",
@@ -193,7 +193,7 @@
                 "us-vless",
                 "us-hy2",
                 "us-trojan-hostyun",
-				"us-hy2-hostyun",
+                "us-hy2-hostyun",
                 "direct"
             ],
             "default": "us-vless",
@@ -279,6 +279,8 @@
             "type": "socks",
             "server": "192.168.31.171",
             "server_port": 2080,
+            "username": "mx",
+            "password": "smxmm1314",
             "version": "5"
         },
         {
