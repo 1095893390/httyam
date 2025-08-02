@@ -115,7 +115,13 @@
             "type": "mixed",
             "tag": "in",
             "listen": "0.0.0.0",
-            "listen_port": 2080
+            "listen_port": 2080,
+            "users": [
+                {
+                    "username": "mx",
+                    "password": "smxmm1314"
+                }
+            ]
         }
     ],
     "outbounds": [
@@ -125,7 +131,7 @@
                 "us-vless",
                 "us-hy2",
                 "us-trojan-hostyun",
-				"us-hy2-hostyun",
+                "us-hy2-hostyun",
                 "direct"
             ],
             "default": "us-vless",
@@ -138,7 +144,7 @@
                 "us-vless",
                 "us-hy2",
                 "us-trojan-hostyun",
-				"us-hy2-hostyun",
+                "us-hy2-hostyun",
                 "direct"
             ],
             "default": "us-vless",
