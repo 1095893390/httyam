@@ -23,22 +23,21 @@
     "dns": {
         "servers": [
             {
+                "type": "https",
                 "tag": "remote-dns",
-                "address": "https://dns.google/dns-query",
-                "address_resolver": "remote-resolver-dns",
-                "address_strategy": "ipv4_only",
+                "server": "dns.google",
+                "domain_resolver": "remote-resolver-dns",
                 "detour": "Proxy"
             },
             {
+                "type": "udp",
                 "tag": "local-dns",
-                "address": "119.29.29.29",
-                "address_strategy": "ipv4_only",
-                "detour": "direct"
+                "server": "119.29.29.29"
             },
             {
+                "type": "udp",
                 "tag": "remote-resolver-dns",
-                "address": "8.8.8.8",
-                "address_strategy": "ipv4_only",
+                "server": "8.8.8.8",
                 "detour": "Proxy"
             }
         ],
@@ -46,12 +45,6 @@
         "disable_expire": false,
         "independent_cache": false,
         "rules": [
-            {
-                "outbound": "any",
-                "disable_cache": false,
-                "action": "route",
-                "server": "local-dns"
-            },
             {
                 "domain_keyword": [
                     "adobe",
@@ -234,6 +227,9 @@
         "detour": "direct"
     },
     "route": {
+        "default_domain_resolver": {
+            "server": "local-dns"
+        },
         "rule_set": [
             {
                 "type": "remote",
