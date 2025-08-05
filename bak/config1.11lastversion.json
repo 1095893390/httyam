@@ -1,0 +1,357 @@
+{
+    "log": {
+        "disabled": false,
+        "level": "trace",
+        "timestamp": true
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": "0.0.0.0:9095",
+            "external_ui": "/etc/sing-box/ui",
+            "secret": "",
+            "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
+            "external_ui_download_detour": "Proxy",
+            "default_mode": "rule"
+        },
+        "cache_file": {
+            "enabled": true,
+            "path": "cache.db",
+            "store_fakeip": false,
+            "store_rdrc": false
+        }
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "remote-dns",
+                "address": "https://dns.google/dns-query",
+                "address_resolver": "remote-resolver-dns",
+                "address_strategy": "ipv4_only",
+                "detour": "Proxy"
+            },
+            {
+                "tag": "local-dns",
+                "address": "119.29.29.29",
+                "address_strategy": "ipv4_only",
+                "detour": "direct"
+            },
+            {
+                "tag": "remote-resolver-dns",
+                "address": "8.8.8.8",
+                "address_strategy": "ipv4_only",
+                "detour": "Proxy"
+            }
+        ],
+        "disable_cache": false,
+        "disable_expire": false,
+        "independent_cache": false,
+        "rules": [
+            {
+                "outbound": "any",
+                "disable_cache": false,
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "domain_keyword": [
+                    "adobe",
+                    "Adobe"
+                ],
+                "action": "reject",
+                "method": "default",
+                "no_drop": false
+            },
+            {
+                "rule_set": [
+                    "GEOSITE-CN",
+                    "GEOSITE-APPLE"
+                ],
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
+                "clash_mode": "direct",
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "global",
+                "action": "route",
+                "server": "remote-dns"
+            }
+        ],
+        "fakeip": {
+            "enabled": false,
+            "inet4_range": "198.18.0.1/16"
+        },
+        "final": "remote-dns",
+        "strategy": "ipv4_only"
+    },
+    "inbounds": [
+        {
+            "type": "tun",
+            "address": "172.19.0.1/24",
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "auto_redirect": true,
+            "stack": "mixed",
+            "platform": {
+                "http_proxy": {
+                    "enabled": true,
+                    "server": "127.0.0.1",
+                    "server_port": 2080
+                }
+            }
+        },
+        {
+            "type": "mixed",
+            "tag": "in",
+            "listen": "0.0.0.0",
+            "listen_port": 2080,
+            "users": [
+                {
+                    "username": "mx",
+                    "password": "smxmm1314"
+                }
+            ]
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "Proxy",
+            "outbounds": [
+                "us-vless",
+                "us-hy2",
+                "us-trojan-hostyun",
+                "us-hy2-hostyun",
+                "direct"
+            ],
+            "default": "us-vless",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "Apple",
+            "outbounds": [
+                "us-vless",
+                "us-hy2",
+                "us-trojan-hostyun",
+                "us-hy2-hostyun",
+                "direct"
+            ],
+            "default": "us-vless",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "type": "direct",
+            "tag": "direct"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "us-hy2-hostyun",
+            "server": "kidko.speedtestwget.life",
+            "server_port": 443,
+            "up_mbps": 100,
+            "down_mbps": 100,
+            "password": "smxmm1314",
+            "tls": {
+                "enabled": true,
+                "server_name": "kidko.speedtestwget.life",
+                "alpn": [
+                    "h3"
+                ]
+            },
+            "brutal_debug": false
+        },
+        {
+            "tag": "us-trojan-hostyun",
+            "server": "kidko.speedtestwget.life",
+            "server_port": 443,
+            "type": "trojan",
+            "password": "smxmm1314",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "kidko.speedtestwget.life"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "us-hy2",
+            "server": "kidkoo.speedtestwget.life",
+            "server_port": 443,
+            "up_mbps": 200,
+            "down_mbps": 200,
+            "password": "smxmm1314",
+            "tls": {
+                "enabled": true,
+                "server_name": "kidkoo.speedtestwget.life",
+                "alpn": [
+                    "h3"
+                ]
+            },
+            "brutal_debug": false
+        },
+        {
+            "type": "vless",
+            "tag": "us-vless",
+            "server": "kidkoo.speedtestwget.life",
+            "server_port": 443,
+            "uuid": "f59116b3-c3d7-40a6-98d2-a938d73d5820",
+            "flow": "xtls-rprx-vision",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "kidkoo.speedtestwget.life",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "random"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "tWx975IE10-ZDyla-ffi06t7yPdBw7P-_CxnztWLUgY",
+                    "short_id": "9df4bb72"
+                }
+            },
+            "packet_encoding": "xudp"
+        }
+    ],
+    "ntp": {
+        "enabled": true,
+        "server": "time.apple.com",
+        "server_port": 123,
+        "interval": "30m",
+        "detour": "direct"
+    },
+    "route": {
+        "rule_set": [
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOSITE-APPLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOIP-APPLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geoip/apple.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOIP-CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOSITE-CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOLOCATION-!CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "CATEGORY-ADS",
+                "url": "https://anti-ad.net/anti-ad-sing-box.srs"
+            }
+        ],
+        "rules": [
+            {
+                "inbound": "in",
+                "action": "resolve",
+                "strategy": "prefer_ipv4"
+            },
+            {
+                "inbound": "in",
+                "action": "sniff",
+                "timeout": "1s"
+            },
+            {
+                "action": "sniff"
+            },
+            {
+                "type": "logical",
+                "mode": "or",
+                "rules": [
+                    {
+                        "port": 53
+                    },
+                    {
+                        "protocol": "dns"
+                    }
+                ],
+                "action": "hijack-dns"
+            },
+            {
+                "domain_keyword": [
+                    "adobe",
+                    "Adobe"
+                ],
+                "action": "reject"
+            },
+            {
+                "clash_mode": "direct",
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "global",
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
+                "rule_set": [
+                    "GEOSITE-APPLE",
+                    "GEOIP-APPLE"
+                ],
+                "action": "route",
+                "outbound": "Apple"
+            },
+            {
+                "rule_set": [
+                    "GEOIP-CN",
+                    "GEOSITE-CN"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
+            }
+        ],
+        "auto_detect_interface": true,
+        "final": "Proxy"
+    }
+}
