@@ -41,7 +41,7 @@
                 "type": "https",
                 "tag": "remote-dns",
                 "server": "dns.google",
-                "address_resolver": "remote-resolver-dns",
+                "domain_resolver": "remote-resolver-dns",
                 "detour": "Proxy"
             },
             {
