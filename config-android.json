@@ -23,40 +23,36 @@
     "dns": {
         "servers": [
             {
+                "type": "udp",
                 "tag": "localChai123456",
-                "address": "192.168.1.115",
-                "address_strategy": "ipv4_only",
-                "detour": "direct"
+                "server": "192.168.1.115"
             },
             {
+                "type": "udp",
                 "tag": "localMiWifiDNS",
-                "address": "192.168.31.171",
-                "address_strategy": "ipv4_only",
-                "detour": "direct"
+                "server": "192.168.31.171"
             },
             {
+                "type": "udp",
                 "tag": "localOpenWRTDNS",
-                "address": "192.168.3.111",
-                "address_strategy": "ipv4_only",
-                "detour": "direct"
+                "server": "192.168.3.111"
             },
             {
+                "type": "https",
                 "tag": "remote-dns",
-                "address": "https://dns.google/dns-query",
+                "server": "dns.google",
                 "address_resolver": "remote-resolver-dns",
-                "address_strategy": "ipv4_only",
                 "detour": "Proxy"
             },
             {
+                "type": "udp",
                 "tag": "local-dns",
-                "address": "119.29.29.29",
-                "address_strategy": "ipv4_only",
-                "detour": "direct"
+                "server": "119.29.29.29"
             },
             {
+                "type": "udp",
                 "tag": "remote-resolver-dns",
-                "address": "8.8.8.8",
-                "address_strategy": "ipv4_only",
+                "server": "8.8.8.8",
                 "detour": "Proxy"
             }
         ],
@@ -84,12 +80,6 @@
                 ],
                 "action": "route",
                 "server": "localOpenWRTDNS"
-            },
-            {
-                "outbound": "any",
-                "disable_cache": false,
-                "action": "route",
-                "server": "local-dns"
             },
             {
                 "rule_set": [
@@ -306,6 +296,9 @@
         "detour": "direct"
     },
     "route": {
+        "default_domain_resolver": {
+            "server": "local-dns"
+        },
         "rule_set": [
             {
                 "type": "remote",
