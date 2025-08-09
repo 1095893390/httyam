@@ -190,6 +190,19 @@
             "type": "selector"
         },
         {
+            "tag": "Youtube",
+            "outbounds": [
+                "us-vless",
+                "us-hy2",
+                "us-trojan-hostyun",
+                "us-hy2-hostyun",
+                "direct"
+            ],
+            "default": "us-trojan-hostyun",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
             "type": "direct",
             "tag": "direct"
         },
@@ -410,6 +423,14 @@
                 ],
                 "action": "route",
                 "outbound": "Apple"
+            },
+            {
+                "package_name": [
+                    "com.google.android.youtube",
+                    "com.google.android.apps.youtube.music"
+                ],
+                "action": "route",
+                "outbound": "Youtube"
             },
             {
                 "rule_set": [
