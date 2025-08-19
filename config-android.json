@@ -427,6 +427,26 @@
                 "outbound": "socksChai123456"
             },
             {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "wifi_ssid": [
+                            "Xiaomi_4B33_5G"
+                        ],
+                        "domain_keyword": [
+                            "ddns"
+                        ],
+                        "package_name": [
+                            "org.jellyfin.mobile"
+                        ]
+                    }
+                ],
+                "invert": false,
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
                 "wifi_ssid": [
                     "Xiaomi_4B33_5G"
                 ],
