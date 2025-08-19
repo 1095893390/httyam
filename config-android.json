@@ -75,6 +75,31 @@
                 "server": "localMiWifiDNS"
             },
             {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "wifi_ssid": [
+                            "OpenWrt5G"
+                        ],
+                        "domain": [
+                            "ddns.net"
+                        ]
+                    }
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "masonsuen.ddns.net. IN A 38.147.161.82"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
+                ]
+            },
+            {
                 "wifi_ssid": [
                     "OpenWrt5G"
                 ],
