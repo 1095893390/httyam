@@ -75,8 +75,11 @@
                         "wifi_ssid": [
                             "Xiaomi_4B33_5G"
                         ],
-                        "domain": [
-                            "masonsuen.ddns.net"
+                        "domain_keyword": [
+                            "ddns"
+                        ],
+                        "package_name": [
+                            "org.jellyfin.mobile"
                         ]
                     }
                 ],
