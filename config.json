@@ -151,14 +151,14 @@
         {
             "type": "hysteria2",
             "tag": "us-hy2-hostyun",
-            "server": "kidko.speedtestwget.life",
+            "server": "kidko.speedtestcurl.club",
             "server_port": 443,
             "up_mbps": 100,
             "down_mbps": 100,
             "password": "smxmm1314",
             "tls": {
                 "enabled": true,
-                "server_name": "kidko.speedtestwget.life",
+                "server_name": "kidko.speedtestcurl.club",
                 "alpn": [
                     "h3"
                 ]
@@ -167,27 +167,27 @@
         },
         {
             "tag": "us-trojan-hostyun",
-            "server": "kidko.speedtestwget.life",
+            "server": "kidko.speedtestcurl.club",
             "server_port": 443,
             "type": "trojan",
             "password": "smxmm1314",
             "tls": {
                 "enabled": true,
                 "insecure": false,
-                "server_name": "kidko.speedtestwget.life"
+                "server_name": "kidko.speedtestcurl.club"
             }
         },
         {
             "type": "hysteria2",
             "tag": "us-hy2",
-            "server": "kidkoo.speedtestwget.life",
+            "server": "kidkoo.speedtestcurl.club",
             "server_port": 443,
             "up_mbps": 200,
             "down_mbps": 200,
             "password": "smxmm1314",
             "tls": {
                 "enabled": true,
-                "server_name": "kidkoo.speedtestwget.life",
+                "server_name": "kidkoo.speedtestcurl.club",
                 "alpn": [
                     "h3"
                 ]
@@ -197,14 +197,14 @@
         {
             "type": "vless",
             "tag": "us-vless",
-            "server": "kidkoo.speedtestwget.life",
+            "server": "kidkoo.speedtestcurl.club",
             "server_port": 443,
             "uuid": "f59116b3-c3d7-40a6-98d2-a938d73d5820",
             "flow": "xtls-rprx-vision",
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "kidkoo.speedtestwget.life",
+                "server_name": "kidkoo.speedtestcurl.club",
                 "insecure": false,
                 "utls": {
                     "enabled": true,
