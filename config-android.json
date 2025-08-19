@@ -83,14 +83,14 @@
                             "OpenWrt5G"
                         ],
                         "domain": [
-                            "masonsuen.ddns.net"
+                            "masonsuen.net"
                         ]
                     }
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
                 "answer": [
-                    "masonsuen.ddns.net. IN A 192.168.3.111"
+                    "masonsuen.net. IN A 202.99.150.236"
                 ],
                 "ns": [
 
