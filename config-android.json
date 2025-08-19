@@ -68,6 +68,31 @@
                 "server": "localChai123456"
             },
             {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "wifi_ssid": [
+                            "Xiaomi_4B33_5G"
+                        ],
+                        "domain": [
+                            "masonsuen.ddns.net"
+                        ]
+                    }
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "masonsuen.ddns.net. IN A 192.168.31.171"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
+                ]
+            },
+            {
                 "wifi_ssid": [
                     "Xiaomi_4B33_5G"
                 ],
