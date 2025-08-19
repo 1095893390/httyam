@@ -76,7 +76,8 @@
                             "Xiaomi_4B33_5G"
                         ],
                         "domain_keyword": [
-                            "ddns"
+                            "ddns",
+							"test"
                         ],
                         "package_name": [
                             "org.jellyfin.mobile"
@@ -86,7 +87,8 @@
                 "action": "predefined",
                 "rcode": "NOERROR",
                 "answer": [
-                    "masonsuen.ddns.net. IN A 192.168.31.171"
+                    "masonsuen.ddns.net. IN A 192.168.31.171",
+					"test.net. IN A 192.168.31.171"
                 ],
                 "ns": [
 
@@ -435,7 +437,8 @@
                             "Xiaomi_4B33_5G"
                         ],
                         "domain_keyword": [
-                            "ddns"
+                            "ddns",
+							"test",
                         ],
                         "package_name": [
                             "org.jellyfin.mobile"
