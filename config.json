@@ -47,15 +47,15 @@
         "rules": [
             {
                 "rule_set": [
-                    "GEOSITE-CN",
-                    "GEOSITE-APPLE"
+                    "GEOSITE-CN"
                 ],
                 "action": "route",
                 "server": "local-dns"
             },
             {
                 "rule_set": [
-                    "GEOLOCATION-!CN"
+                    "GEOLOCATION-!CN",
+                    "GEOSITE-APPLE"
                 ],
                 "action": "route",
                 "server": "remote-dns"
