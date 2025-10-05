@@ -125,7 +125,7 @@
                 "us-trojan-hostyun",
                 "us-hy2-hostyun",
                 "direct",
-				"block"
+                "block"
             ],
             "default": "us-vless",
             "interrupt_exist_connections": true,
@@ -139,7 +139,7 @@
                 "us-trojan-hostyun",
                 "us-hy2-hostyun",
                 "direct",
-				"block"
+                "block"
             ],
             "default": "block",
             "interrupt_exist_connections": true,
