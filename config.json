@@ -290,6 +290,16 @@
                 "timeout": "1s"
             },
             {
+                "inbound": "socks-in",
+                "action": "resolve",
+                "strategy": "prefer_ipv4"
+            },
+            {
+                "inbound": "socks-in",
+                "action": "sniff",
+                "timeout": "1s"
+            },
+            {
                 "action": "sniff"
             },
             {
