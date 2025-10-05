@@ -46,6 +46,15 @@
         "independent_cache": false,
         "rules": [
             {
+                "domain_keyword": [
+                    "adobe",
+                    "Adobe"
+                ],
+                "action": "reject",
+                "method": "default",
+                "no_drop": false
+            },
+            {
                 "rule_set": [
                     "GEOSITE-CN",
                     "GEOSITE-APPLE"
@@ -98,8 +107,14 @@
         {
             "type": "mixed",
             "tag": "in",
-            "listen": "127.0.0.1",
-            "listen_port": 2080
+            "listen": "0.0.0.0",
+            "listen_port": 2080,
+            "users": [
+                {
+                    "username": "mx",
+                    "password": "smxmm1314"
+                }
+            ]
         }
     ],
     "outbounds": [
@@ -110,8 +125,7 @@
                 "us-hy2",
                 "us-trojan-hostyun",
                 "us-hy2-hostyun",
-                "direct",
-                "block"
+                "direct"
             ],
             "default": "us-vless",
             "interrupt_exist_connections": true,
@@ -255,6 +269,13 @@
                 "download_detour": "Proxy",
                 "tag": "GEOLOCATION-!CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "CATEGORY-ADS",
+                "url": "https://anti-ad.net/anti-ad-sing-box.srs"
             }
         ],
         "rules": [
@@ -289,8 +310,7 @@
                     "adobe",
                     "Adobe"
                 ],
-                "action": "route",
-                "outbound": "Proxy"
+                "action": "reject"
             },
             {
                 "clash_mode": "direct",
