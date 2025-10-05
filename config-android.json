@@ -176,14 +176,7 @@
                 "com.ss.android.ugc.aweme",
                 "app.landrop.landrop_flutter",
                 "com.tencent.mm"
-            ],
-            "platform": {
-                "http_proxy": {
-                    "enabled": true,
-                    "server": "127.0.0.1",
-                    "server_port": 2080
-                }
-            }
+            ]
         },
         {
             "type": "mixed",
@@ -235,6 +228,10 @@
         {
             "type": "direct",
             "tag": "direct"
+        },
+        {
+            "type": "block",
+            "tag": "block"
         },
         {
             "type": "hysteria2",
@@ -328,7 +325,7 @@
             "tag": "socksChai123456",
             "type": "socks",
             "server": "192.168.1.115",
-            "server_port": 2080,
+            "server_port": 3080,
             "username": "mx",
             "password": "smxmm1314",
             "version": "5"
