@@ -124,9 +124,24 @@
                 "us-hy2",
                 "us-trojan-hostyun",
                 "us-hy2-hostyun",
-                "direct"
+                "direct",
+				"block"
             ],
             "default": "us-vless",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "Adobe",
+            "outbounds": [
+                "us-vless",
+                "us-hy2",
+                "us-trojan-hostyun",
+                "us-hy2-hostyun",
+                "direct",
+				"block"
+            ],
+            "default": "block",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -290,7 +305,7 @@
                     "Adobe"
                 ],
                 "action": "route",
-                "outbound": "Proxy"
+                "outbound": "Adobe"
             },
             {
                 "clash_mode": "direct",
