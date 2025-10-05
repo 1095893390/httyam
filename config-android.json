@@ -325,7 +325,7 @@
             "tag": "socksChai123456",
             "type": "socks",
             "server": "192.168.1.115",
-            "server_port": 3080,
+            "server_port": 2080,
             "username": "mx",
             "password": "smxmm1314",
             "version": "5"
