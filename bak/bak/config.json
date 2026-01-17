@@ -1,0 +1,303 @@
+{
+    "log": {
+        "disabled": false,
+        "level": "trace",
+        "timestamp": true
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": "0.0.0.0:9095",
+            "external_ui": "/etc/sing-box/ui",
+            "secret": "",
+            "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
+            "external_ui_download_detour": "Proxy",
+            "default_mode": "rule"
+        },
+        "cache_file": {
+            "enabled": true,
+            "path": "cache.db",
+            "store_fakeip": false,
+            "store_rdrc": false
+        }
+    },
+    "outbounds": [
+        {
+            "tag": "Proxy",
+            "outbounds": [
+                "hk",
+                "jp1",
+                "direct",
+                "socks01"
+            ],
+            "default": "hk",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "FrontProxy",
+            "outbounds": [
+                "hk",
+                "jp1",
+                "direct"
+            ],
+            "default": "hk",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "type": "direct",
+            "tag": "direct"
+        },
+        {
+            "type": "dns",
+            "tag": "dns-out"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "tag": "jp1",
+            "server": "soft.speedtestwget.life",
+            "server_port": 443,
+            "type": "trojan",
+            "password": "smxmm1314",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "soft.speedtestwget.life"
+            }
+        },
+        {
+            "tag": "hk",
+            "server": "clawhk.speedtestwget.life",
+            "server_port": 443,
+            "type": "trojan",
+            "password": "smxmm1314",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "clawhk.speedtestwget.life"
+            }
+        },
+        {
+            "tag": "socks01",
+            "type": "socks",
+            "server": "1.37.70.225",
+            "server_port": 42000,
+            "username": "kiwz5f",
+            "password": "vkaqcjyw",
+            "version": "5",
+            "detour": "FrontProxy"
+        }
+    ],
+    "dns": {
+        "servers": [
+            {
+                "tag": "remote-dns",
+                "address": "https://dns.google/dns-query",
+                "address_resolver": "remote-resolver-dns",
+                "address_strategy": "ipv4_only",
+                "detour": "Proxy"
+            },
+            {
+                "tag": "local-dns",
+                "address": "223.5.5.5",
+                "detour": "direct"
+            },
+            {
+                "tag": "remote-resolver-dns",
+                "address": "8.8.8.8",
+                "detour": "Proxy"
+            },
+            {
+                "tag": "block",
+                "address": "rcode://success"
+            }
+        ],
+        "disable_cache": false,
+        "disable_expire": false,
+        "independent_cache": false,
+        "rules": [
+            {
+                "outbound": "any",
+                "disable_cache": true,
+                "server": "local-dns"
+            },
+            {
+                "domain_keyword": [
+                    "adobe",
+                    "Adobe"
+                ],
+                "server": "block"
+            },
+            {
+                "rule_set": [
+                    "GEOSITE-CN"
+                ],
+                "server": "local-dns"
+            },
+            {
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
+                "server": "remote-dns"
+            },
+            {
+                "rule_set": [
+                    "CATEGORY-ADS"
+                ],
+                "server": "block"
+            },
+            {
+                "clash_mode": "direct",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "global",
+                "server": "remote-dns"
+            }
+        ],
+        "fakeip": {
+            "enabled": false,
+            "inet4_range": "198.18.0.1/16"
+        },
+        "final": "local-dns",
+        "strategy": "ipv4_only"
+    },
+    "ntp": {
+        "enabled": true,
+        "server": "time.apple.com",
+        "server_port": 123,
+        "interval": "30m",
+        "detour": "direct"
+    },
+    "inbounds": [
+        {
+            "type": "tun",
+            "address": "172.19.0.1/30",
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "auto_redirect": true,
+            "sniff": true,
+            "stack": "system",
+            "platform": {
+                "http_proxy": {
+                    "enabled": true,
+                    "server": "127.0.0.1",
+                    "server_port": 2080
+                }
+            }
+        },
+        {
+            "type": "mixed",
+            "listen": "0.0.0.0",
+            "listen_port": 2080,
+            "sniff": true,
+            "users": [
+
+            ]
+        }
+    ],
+    "route": {
+        "rule_set": [
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOIP-CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOSITE-CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOLOCATION-!CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "CATEGORY-ADS",
+                "url": "https://anti-ad.net/anti-ad-sing-box.srs"
+            }
+        ],
+        "rules": [
+            {
+                "type": "logical",
+                "mode": "or",
+                "rules": [
+                    {
+                        "port": 53
+                    },
+                    {
+                        "protocol": "dns"
+                    }
+                ],
+                "outbound": "dns-out"
+            },
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "port": 443
+                    },
+                    {
+                        "network": "udp"
+                    }
+                ],
+                "outbound": "block"
+            },
+            {
+                "domain_keyword": [
+                    "adobe",
+                    "Adobe"
+                ],
+                "outbound": "block"
+            },
+            {
+                "clash_mode": "direct",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "global",
+                "outbound": "Proxy"
+            },
+            {
+                "rule_set": [
+                    "GEOIP-CN",
+                    "GEOSITE-CN"
+                ],
+                "outbound": "direct"
+            },
+            {
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
+                "outbound": "Proxy"
+            },
+            {
+                "rule_set": [
+                    "CATEGORY-ADS"
+                ],
+                "outbound": "block"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "direct"
+            }
+        ],
+        "auto_detect_interface": true,
+        "final": "Proxy"
+    }
+}
