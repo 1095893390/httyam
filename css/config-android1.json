@@ -1,0 +1,338 @@
+{
+    "log": {
+        "disabled": false,
+        "level": "trace",
+        "timestamp": true
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": "0.0.0.0:9095",
+            "external_ui": "",
+            "external_ui_download_url": "",
+            "external_ui_download_detour": "Proxy",
+            "default_mode": "rule",
+            "access_control_allow_private_network": true
+        },
+        "cache_file": {
+            "enabled": true,
+            "path": "cache.db",
+            "store_fakeip": false,
+            "store_rdrc": false
+        }
+    },
+    "dns": {
+        "servers": [
+            {
+                "type": "https",
+                "tag": "remote-dns",
+                "server": "dns.cloudflare.com",
+                "detour": "Proxy"
+            },
+            {
+                "type": "udp",
+                "tag": "local-dns",
+                "server": "119.29.29.29"
+            }
+        ],
+        "disable_cache": false,
+        "disable_expire": false,
+        "independent_cache": false,
+        "rules": [
+            {
+                "domain": [
+                    "kidko.speedtestcurl.club"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "kidko.speedtestcurl.club. IN A 38.147.161.82"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
+                ]
+            },
+            {
+                "domain": [
+                    "dns.cloudflare.com"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "dns.cloudflare.com. IN A 1.1.1.1"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
+                ]
+            },
+            {
+                "rule_set": [
+                    "GEOSITE-CN",
+                    "GEOSITE-APPLE"
+                ],
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
+                "clash_mode": "direct",
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "global",
+                "action": "route",
+                "server": "remote-dns"
+            }
+        ],
+        "fakeip": {
+            "enabled": false,
+            "inet4_range": "198.18.0.1/16"
+        },
+        "final": "remote-dns",
+        "strategy": "ipv4_only"
+    },
+    "inbounds": [
+        {
+            "type": "tun",
+            "address": "172.19.0.2/24",
+            "mtu": 1500,
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "mixed",
+            "exclude_package": [
+                "com.zhihu.android",
+                "io.homeassistant.companion.android",
+                "com.milink.service",
+                "com.xiaomi.smarthome",
+                "com.xiaomi.mico",
+                "com.miui.voiceassist",
+                "com.xiaomi.xmsf",
+                "com.xiaomi.mi_connect_service",
+                "tv.danmaku.bili",
+                "com.jingdong.app.mall",
+                "com.sankuai.meituan",
+                "com.taobao.taobao",
+                "com.taobao.idlefish",
+                "com.eg.android.AlipayGphone",
+                "com.xingin.xhs",
+                "com.xiaomi.shop",
+                "com.youku.phone",
+                "com.zjkccb.mbank",
+                "com.eg.android.AlipayGphone",
+                "com.wuba.zhuanzhuan",
+                "com.tencent.mobileqq",
+                "app.landrop.landrop_flutter",
+                "com.xiaomi.market",
+                "com.ss.android.ugc.aweme",
+                "com.tencent.mm"
+            ]
+        },
+        {
+            "type": "mixed",
+            "tag": "in",
+            "listen": "0.0.0.0",
+            "listen_port": 2080
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "Proxy",
+            "outbounds": [
+                "naive-hostUS",
+                "direct"
+            ],
+            "default": "naive-hostUS",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "Apple",
+            "outbounds": [
+                "naive-hostUS",
+                "direct"
+            ],
+            "default": "naive-hostUS",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "Youtube",
+            "outbounds": [
+                "naive-hostUS",
+                "direct"
+            ],
+            "default": "naive-hostUS",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "type": "direct",
+            "tag": "direct"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "type": "naive",
+            "tag": "naive-hostUS",
+            "server": "kidko.speedtestcurl.club",
+            "server_port": 443,
+            "username": "mason",
+            "password": "smxmm1314",
+            "insecure_concurrency": 0,
+            "extra_headers": {
+
+            },
+            "udp_over_tcp": false,
+            "quic": false,
+            "quic_congestion_control": "",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "kidko.speedtestcurl.club"
+            }
+        }
+    ],
+    "ntp": {
+        "enabled": true,
+        "server": "time.apple.com",
+        "server_port": 123,
+        "interval": "30m"
+    },
+    "route": {
+        "default_domain_resolver": {
+            "server": "local-dns"
+        },
+        "rule_set": [
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOSITE-APPLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOIP-APPLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geoip/apple.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOIP-CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOSITE-CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOLOCATION-!CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "CATEGORY-ADS",
+                "url": "https://anti-ad.net/anti-ad-sing-box.srs"
+            }
+        ],
+        "rules": [
+            {
+                "inbound": "in",
+                "action": "resolve",
+                "strategy": "prefer_ipv4"
+            },
+            {
+                "inbound": "in",
+                "action": "sniff",
+                "timeout": "1s"
+            },
+            {
+                "action": "sniff"
+            },
+            {
+                "type": "logical",
+                "mode": "or",
+                "rules": [
+                    {
+                        "port": 53
+                    },
+                    {
+                        "protocol": "dns"
+                    }
+                ],
+                "action": "hijack-dns"
+            },
+            {
+                "clash_mode": "direct",
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "global",
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
+                "package_name": [
+                    "com.apple.android.music"
+                ],
+                "action": "route",
+                "outbound": "Apple"
+            },
+            {
+                "package_name": [
+                    "com.google.android.youtube"
+                ],
+                "action": "route",
+                "outbound": "Youtube"
+            },
+            {
+                "rule_set": [
+                    "GEOIP-CN",
+                    "GEOSITE-CN"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
+            }
+        ],
+        "auto_detect_interface": true,
+        "final": "Proxy"
+    }
+}

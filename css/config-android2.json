@@ -1,0 +1,509 @@
+{
+    "log": {
+        "disabled": false,
+        "level": "trace",
+        "timestamp": true
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": "0.0.0.0:9095",
+            "external_ui": "",
+            "external_ui_download_url": "",
+            "external_ui_download_detour": "Proxy",
+            "default_mode": "rule",
+            "access_control_allow_private_network": true
+        },
+        "cache_file": {
+            "enabled": true,
+            "path": "cache.db",
+            "store_fakeip": false,
+            "store_rdrc": false
+        }
+    },
+    "dns": {
+        "servers": [
+            {
+                "type": "udp",
+                "tag": "localChai123456",
+                "server": "192.168.1.115"
+            },
+            {
+                "type": "udp",
+                "tag": "localMiWifiDNS",
+                "server": "192.168.31.171"
+            },
+            {
+                "type": "udp",
+                "tag": "localOpenWRTDNS",
+                "server": "192.168.3.111"
+            },
+            {
+                "type": "https",
+                "tag": "remote-dns",
+                "server": "dns.cloudflare.com",
+                "detour": "Proxy"
+            },
+            {
+                "type": "udp",
+                "tag": "local-dns",
+                "server": "119.29.29.29"
+            }
+        ],
+        "disable_cache": false,
+        "disable_expire": false,
+        "independent_cache": false,
+        "rules": [
+            {
+                "domain": [
+                    "kidko.speedtestcurl.club"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "kidko.speedtestcurl.club. IN A 38.147.161.82"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
+                ]
+            },
+            {
+                "domain": [
+                    "kidkoo.speedtestcurl.club"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "kidkoo.speedtestcurl.club. IN A 38.47.116.71"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
+                ]
+            },
+            {
+                "domain": [
+                    "dns.cloudflare.com"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "dns.cloudflare.com. IN A 1.1.1.1"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
+                ]
+            },
+            {
+                "wifi_ssid": [
+                    "123456"
+                ],
+                "action": "route",
+                "server": "localChai123456"
+            },
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "wifi_ssid": [
+                            "Xiaomi_4B33_5G"
+                        ],
+                        "domain_keyword": [
+                            "11on2nr093847"
+                        ],
+                        "package_name": [
+                            "org.jellyfin.mobile"
+                        ]
+                    }
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "11on2nr093847.vicp.fun. IN A 192.168.31.171"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
+                ]
+            },
+            {
+                "wifi_ssid": [
+                    "Xiaomi_4B33_5G"
+                ],
+                "action": "route",
+                "server": "localMiWifiDNS"
+            },
+            {
+                "wifi_ssid": [
+                    "OpenWrt5G"
+                ],
+                "action": "route",
+                "server": "localOpenWRTDNS"
+            },
+            {
+                "rule_set": [
+                    "GEOSITE-CN",
+                    "GEOSITE-APPLE"
+                ],
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
+                "clash_mode": "direct",
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "global",
+                "action": "route",
+                "server": "remote-dns"
+            }
+        ],
+        "fakeip": {
+            "enabled": false,
+            "inet4_range": "198.18.0.1/16"
+        },
+        "final": "remote-dns",
+        "strategy": "ipv4_only"
+    },
+    "inbounds": [
+        {
+            "type": "tun",
+            "address": "172.19.0.2/24",
+            "mtu": 1500,
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "mixed",
+            "exclude_package": [
+                "com.zhihu.android",
+                "io.homeassistant.companion.android",
+                "com.milink.service",
+                "com.xiaomi.smarthome",
+                "com.xiaomi.mico",
+                "com.miui.voiceassist",
+                "com.xiaomi.xmsf",
+                "com.xiaomi.mi_connect_service",
+                "tv.danmaku.bili",
+                "com.jingdong.app.mall",
+                "com.sankuai.meituan",
+                "com.taobao.taobao",
+                "com.taobao.idlefish",
+                "com.eg.android.AlipayGphone",
+                "com.xingin.xhs",
+                "com.xiaomi.shop",
+                "com.youku.phone",
+                "com.zjkccb.mbank",
+                "com.eg.android.AlipayGphone",
+                "com.wuba.zhuanzhuan",
+                "com.tencent.mobileqq",
+                "app.landrop.landrop_flutter",
+                "com.xiaomi.market",
+                "com.ss.android.ugc.aweme",
+                "com.tencent.mm"
+            ]
+        },
+        {
+            "type": "mixed",
+            "tag": "in",
+            "listen": "0.0.0.0",
+            "listen_port": 2080
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "Proxy",
+            "outbounds": [
+                "naive-hostUS",
+                "naive-VmissUS",
+                "direct"
+            ],
+            "default": "naive-VmissUS",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "Apple",
+            "outbounds": [
+                "naive-hostUS",
+                "naive-VmissUS",
+                "direct"
+            ],
+            "default": "naive-VmissUS",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "Youtube",
+            "outbounds": [
+                "naive-hostUS",
+                "naive-VmissUS",
+                "direct"
+            ],
+            "default": "naive-VmissUS",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "type": "direct",
+            "tag": "direct"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "type": "naive",
+            "tag": "naive-hostUS",
+            "server": "kidko.speedtestcurl.club",
+            "server_port": 443,
+            "username": "mason",
+            "password": "smxmm1314",
+            "insecure_concurrency": 0,
+            "extra_headers": {
+
+            },
+            "udp_over_tcp": false,
+            "quic": false,
+            "quic_congestion_control": "",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "kidko.speedtestcurl.club"
+            }
+        },
+        {
+            "type": "naive",
+            "tag": "naive-VmissUS",
+            "server": "kidkoo.speedtestcurl.club",
+            "server_port": 443,
+            "username": "mason",
+            "password": "smxmm1314",
+            "insecure_concurrency": 0,
+            "extra_headers": {
+
+            },
+            "udp_over_tcp": false,
+            "quic": false,
+            "quic_congestion_control": "",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "kidkoo.speedtestcurl.club"
+            }
+        },
+        {
+            "tag": "socksXMwifi",
+            "type": "socks",
+            "server": "192.168.31.171",
+            "server_port": 2080,
+            "username": "mx",
+            "password": "smxmm1314",
+            "version": "5"
+        },
+        {
+            "tag": "socksOpenWRT",
+            "type": "socks",
+            "server": "192.168.3.111",
+            "server_port": 2080,
+            "username": "mx",
+            "password": "smxmm1314",
+            "version": "5"
+        },
+        {
+            "tag": "socksChai123456",
+            "type": "socks",
+            "server": "192.168.1.115",
+            "server_port": 2080,
+            "username": "mx",
+            "password": "smxmm1314",
+            "version": "5"
+        }
+    ],
+    "ntp": {
+        "enabled": true,
+        "server": "time.apple.com",
+        "server_port": 123,
+        "interval": "30m"
+    },
+    "route": {
+        "default_domain_resolver": {
+            "server": "local-dns"
+        },
+        "rule_set": [
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOSITE-APPLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOIP-APPLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geoip/apple.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOIP-CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOSITE-CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GEOLOCATION-!CN",
+                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "CATEGORY-ADS",
+                "url": "https://anti-ad.net/anti-ad-sing-box.srs"
+            }
+        ],
+        "rules": [
+            {
+                "inbound": "in",
+                "action": "resolve",
+                "strategy": "prefer_ipv4"
+            },
+            {
+                "inbound": "in",
+                "action": "sniff",
+                "timeout": "1s"
+            },
+            {
+                "action": "sniff"
+            },
+            {
+                "type": "logical",
+                "mode": "or",
+                "rules": [
+                    {
+                        "port": 53
+                    },
+                    {
+                        "protocol": "dns"
+                    }
+                ],
+                "action": "hijack-dns"
+            },
+            {
+                "clash_mode": "direct",
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "wifi_ssid": [
+                    "123456"
+                ],
+                "action": "route",
+                "outbound": "socksChai123456"
+            },
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "wifi_ssid": [
+                            "Xiaomi_4B33_5G"
+                        ],
+                        "domain_keyword": [
+                            "11on2nr093847"
+                        ],
+                        "package_name": [
+                            "org.jellyfin.mobile"
+                        ]
+                    }
+                ],
+                "invert": false,
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "wifi_ssid": [
+                    "Xiaomi_4B33_5G"
+                ],
+                "action": "route",
+                "outbound": "socksXMwifi"
+            },
+            {
+                "wifi_ssid": [
+                    "OpenWrt5G"
+                ],
+                "action": "route",
+                "outbound": "socksOpenWRT"
+            },
+            {
+                "clash_mode": "global",
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
+                "package_name": [
+                    "com.apple.android.music"
+                ],
+                "action": "route",
+                "outbound": "Apple"
+            },
+            {
+                "package_name": [
+                    "com.google.android.youtube"
+                ],
+                "action": "route",
+                "outbound": "Youtube"
+            },
+            {
+                "rule_set": [
+                    "GEOIP-CN",
+                    "GEOSITE-CN"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
+            }
+        ],
+        "auto_detect_interface": true,
+        "final": "Proxy"
+    }
+}
