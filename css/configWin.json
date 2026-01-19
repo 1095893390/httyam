@@ -257,8 +257,7 @@
         "enabled": true,
         "server": "time.apple.com",
         "server_port": 123,
-        "interval": "30m",
-        "detour": "direct"
+        "interval": "30m"
     },
     "route": {
         "default_domain_resolver": {
