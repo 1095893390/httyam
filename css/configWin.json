@@ -7,7 +7,7 @@
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
-            "external_ui": "/etc/sing-box/ui",
+            "external_ui": "/ui",
             "secret": "smxmm1314",
             "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
             "external_ui_download_detour": "Proxy",
