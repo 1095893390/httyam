@@ -163,7 +163,7 @@
             },
             {
                 "rule_set": [
-                    "PRON"
+                    "PORN"
                 ],
                 "action": "reject",
                 "method": "",
@@ -368,7 +368,7 @@
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
-                "tag": "PRON",
+                "tag": "PORN",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-porn.srs"
             }
         ],
