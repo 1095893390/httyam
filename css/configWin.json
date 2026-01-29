@@ -87,6 +87,25 @@
                 ]
             },
             {
+                "domain_suffix": [
+                    "91short",
+                    "rou.video",
+                    "missav.ws",
+                    "missav.live"
+                ],
+                "action": "reject",
+                "method": "",
+                "no_drop": false
+            },
+            {
+                "rule_set": [
+                    "PRON"
+                ],
+                "action": "reject",
+                "method": "",
+                "no_drop": false
+            },
+            {
                 "rule_set": [
                     "GEOSITE-CN"
                 ],
@@ -334,13 +353,6 @@
                 "clash_mode": "global",
                 "action": "route",
                 "outbound": "Proxy"
-            },
-            {
-                "rule_set": [
-                    "PRON"
-                ],
-                "action": "route",
-                "outbound": "block"
             },
             {
                 "rule_set": [
