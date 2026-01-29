@@ -56,12 +56,12 @@
             },
             {
                 "domain": [
-					"kidkoo.speedtestcurl.club"
+                    "kidkoo.speedtestcurl.club"
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
                 "answer": [
-					"kidkoo.speedtestcurl.club. IN A 38.47.116.71"
+                    "kidkoo.speedtestcurl.club. IN A 38.47.116.71"
                 ],
                 "ns": [
 
@@ -95,8 +95,7 @@
             },
             {
                 "rule_set": [
-                    "GEOLOCATION-!CN",
-                    "GEOSITE-APPLE"
+                    "GEOLOCATION-!CN"
                 ],
                 "action": "route",
                 "server": "remote-dns"
@@ -153,20 +152,8 @@
             "tag": "Proxy",
             "outbounds": [
                 "naive-hostUS",
-				"naive-VmissUS",
+                "naive-VmissUS",
                 "socksZhangXiaoMi",
-                "direct",
-                "block"
-            ],
-            "default": "naive-VmissUS",
-            "interrupt_exist_connections": true,
-            "type": "selector"
-        },
-        {
-            "tag": "Apple",
-            "outbounds": [
-                "naive-hostUS",
-				"naive-VmissUS",
                 "direct",
                 "block"
             ],
@@ -188,7 +175,7 @@
             "tag": "Adobe",
             "outbounds": [
                 "naive-hostUS",
-				"naive-VmissUS",
+                "naive-VmissUS",
                 "direct",
                 "block"
             ],
@@ -269,20 +256,6 @@
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
-                "tag": "GEOSITE-APPLE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "GEOIP-APPLE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geoip/apple.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
                 "tag": "GEOIP-CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
             },
@@ -299,6 +272,13 @@
                 "download_detour": "Proxy",
                 "tag": "GEOLOCATION-!CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "PRON",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-porn.srs"
             }
         ],
         "rules": [
@@ -358,11 +338,10 @@
             },
             {
                 "rule_set": [
-                    "GEOSITE-APPLE",
-                    "GEOIP-APPLE"
+                    "PRON"
                 ],
                 "action": "route",
-                "outbound": "Apple"
+                "outbound": "block"
             },
             {
                 "rule_set": [

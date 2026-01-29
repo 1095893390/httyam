@@ -152,8 +152,7 @@
             },
             {
                 "rule_set": [
-                    "GEOSITE-CN",
-                    "GEOSITE-APPLE"
+                    "GEOSITE-CN"
                 ],
                 "action": "route",
                 "server": "local-dns"
@@ -229,28 +228,6 @@
     "outbounds": [
         {
             "tag": "Proxy",
-            "outbounds": [
-                "naive-hostUS",
-                "naive-VmissUS",
-                "direct"
-            ],
-            "default": "naive-VmissUS",
-            "interrupt_exist_connections": true,
-            "type": "selector"
-        },
-        {
-            "tag": "Apple",
-            "outbounds": [
-                "naive-hostUS",
-                "naive-VmissUS",
-                "direct"
-            ],
-            "default": "naive-VmissUS",
-            "interrupt_exist_connections": true,
-            "type": "selector"
-        },
-        {
-            "tag": "Youtube",
             "outbounds": [
                 "naive-hostUS",
                 "naive-VmissUS",
@@ -351,20 +328,6 @@
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
-                "tag": "GEOSITE-APPLE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "GEOIP-APPLE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geoip/apple.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
                 "tag": "GEOIP-CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
             },
@@ -386,8 +349,8 @@
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
-                "tag": "CATEGORY-ADS",
-                "url": "https://anti-ad.net/anti-ad-sing-box.srs"
+                "tag": "PRON",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-porn.srs"
             }
         ],
         "rules": [
@@ -469,18 +432,11 @@
                 "outbound": "Proxy"
             },
             {
-                "package_name": [
-                    "com.apple.android.music"
+                "rule_set": [
+                    "PRON"
                 ],
                 "action": "route",
-                "outbound": "Apple"
-            },
-            {
-                "package_name": [
-                    "com.google.android.youtube"
-                ],
-                "action": "route",
-                "outbound": "Youtube"
+                "outbound": "block"
             },
             {
                 "rule_set": [

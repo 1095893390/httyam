@@ -72,8 +72,7 @@
             },
             {
                 "rule_set": [
-                    "GEOSITE-CN",
-                    "GEOSITE-APPLE"
+                    "GEOSITE-CN"
                 ],
                 "action": "route",
                 "server": "local-dns"
@@ -158,26 +157,6 @@
             "type": "selector"
         },
         {
-            "tag": "Apple",
-            "outbounds": [
-                "naive-hostUS",
-                "direct"
-            ],
-            "default": "naive-hostUS",
-            "interrupt_exist_connections": true,
-            "type": "selector"
-        },
-        {
-            "tag": "Youtube",
-            "outbounds": [
-                "naive-hostUS",
-                "direct"
-            ],
-            "default": "naive-hostUS",
-            "interrupt_exist_connections": true,
-            "type": "selector"
-        },
-        {
             "type": "direct",
             "tag": "direct"
         },
@@ -221,20 +200,6 @@
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
-                "tag": "GEOSITE-APPLE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "GEOIP-APPLE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geoip/apple.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
                 "tag": "GEOIP-CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
             },
@@ -251,13 +216,6 @@
                 "download_detour": "Proxy",
                 "tag": "GEOLOCATION-!CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "CATEGORY-ADS",
-                "url": "https://anti-ad.net/anti-ad-sing-box.srs"
             }
         ],
         "rules": [
@@ -296,20 +254,6 @@
                 "clash_mode": "global",
                 "action": "route",
                 "outbound": "Proxy"
-            },
-            {
-                "package_name": [
-                    "com.apple.android.music"
-                ],
-                "action": "route",
-                "outbound": "Apple"
-            },
-            {
-                "package_name": [
-                    "com.google.android.youtube"
-                ],
-                "action": "route",
-                "outbound": "Youtube"
             },
             {
                 "rule_set": [
