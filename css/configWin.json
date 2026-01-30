@@ -169,8 +169,8 @@
         {
             "tag": "Proxy",
             "outbounds": [
-                "naive-hostUS",
                 "naive-VmissUS",
+                "naive-hostUS",
                 "socksZhangXiaoMi",
                 "direct",
                 "block"
