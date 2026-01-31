@@ -98,6 +98,14 @@
                 "no_drop": false
             },
             {
+                "domain_keyword": [
+                    "jav"
+                ],
+                "action": "reject",
+                "method": "",
+                "no_drop": false
+            },
+            {
                 "rule_set": [
                     "PORN"
                 ],
