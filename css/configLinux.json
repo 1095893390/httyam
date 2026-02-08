@@ -181,6 +181,7 @@
                 "naive-VmissUS",
                 "naive-hostUS",
                 "socksZhangXiaoMi",
+                "httpTemp",
                 "direct",
                 "block"
             ],
@@ -266,6 +267,15 @@
             "username": "mx",
             "password": "smxmm1314",
             "version": "5"
+        },
+        {
+            "tag": "httpTemp",
+            "type": "http",
+            "server": "20.205.138.223",
+            "server_port": 443,
+            "username": "",
+            "password": "",
+            "detour": "naive-VmissUS"
         }
     ],
     "ntp": {
