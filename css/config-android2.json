@@ -87,31 +87,6 @@
                 ]
             },
             {
-                "type": "logical",
-                "mode": "and",
-                "rules": [
-                    {
-                        "wifi_ssid": [
-                            "Xiaomi_4B33_5G"
-                        ],
-                        "domain_keyword": [
-                            "11on2nr093847"
-                        ]
-                    }
-                ],
-                "action": "predefined",
-                "rcode": "NOERROR",
-                "answer": [
-                    "11on2nr093847.vicp.fun. IN A 192.168.31.171"
-                ],
-                "ns": [
-
-                ],
-                "extra": [
-
-                ]
-            },
-            {
                 "domain_suffix": [
                     "91short",
                     "rou.video",
