@@ -108,7 +108,7 @@
             "address": "172.19.0.2/24",
             "mtu": 1500,
             "auto_route": true,
-            "strict_route": false,
+            "strict_route": true,
             "stack": "mixed",
             "exclude_package": [
                 "com.zhihu.android",
