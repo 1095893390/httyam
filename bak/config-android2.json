@@ -23,6 +23,21 @@
     "dns": {
         "servers": [
             {
+                "type": "udp",
+                "tag": "localChai123456",
+                "server": "192.168.1.115"
+            },
+            {
+                "type": "udp",
+                "tag": "localMiWifiDNS",
+                "server": "192.168.31.171"
+            },
+            {
+                "type": "udp",
+                "tag": "localOpenWRTDNS",
+                "server": "192.168.3.111"
+            },
+            {
                 "type": "https",
                 "tag": "remote-dns",
                 "server": "dns.cloudflare.com",
@@ -87,6 +102,13 @@
                 ]
             },
             {
+                "wifi_ssid": [
+                    "123456"
+                ],
+                "action": "route",
+                "server": "localChai123456"
+            },
+            {
                 "type": "logical",
                 "mode": "and",
                 "rules": [
@@ -96,6 +118,9 @@
                         ],
                         "domain_keyword": [
                             "11on2nr093847"
+                        ],
+                        "package_name": [
+                            "org.jellyfin.mobile"
                         ]
                     }
                 ],
@@ -110,6 +135,20 @@
                 "extra": [
 
                 ]
+            },
+            {
+                "wifi_ssid": [
+                    "Xiaomi_4B33_5G"
+                ],
+                "action": "route",
+                "server": "localMiWifiDNS"
+            },
+            {
+                "wifi_ssid": [
+                    "OpenWrt5G"
+                ],
+                "action": "route",
+                "server": "localOpenWRTDNS"
             },
             {
                 "domain_suffix": [
@@ -272,6 +311,33 @@
                 "insecure": false,
                 "server_name": "kidkoo.speedtestcurl.club"
             }
+        },
+        {
+            "tag": "socksXMwifi",
+            "type": "socks",
+            "server": "192.168.31.171",
+            "server_port": 2080,
+            "username": "mx",
+            "password": "smxmm1314",
+            "version": "5"
+        },
+        {
+            "tag": "socksOpenWRT",
+            "type": "socks",
+            "server": "192.168.3.111",
+            "server_port": 2080,
+            "username": "mx",
+            "password": "smxmm1314",
+            "version": "5"
+        },
+        {
+            "tag": "socksChai123456",
+            "type": "socks",
+            "server": "192.168.1.115",
+            "server_port": 2080,
+            "username": "mx",
+            "password": "smxmm1314",
+            "version": "5"
         }
     ],
     "route": {
@@ -339,6 +405,47 @@
                 "clash_mode": "direct",
                 "action": "route",
                 "outbound": "direct"
+            },
+            {
+                "wifi_ssid": [
+                    "123456"
+                ],
+                "action": "route",
+                "outbound": "socksChai123456"
+            },
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "wifi_ssid": [
+                            "Xiaomi_4B33_5G"
+                        ],
+                        "domain_keyword": [
+                            "11on2nr093847"
+                        ],
+                        "package_name": [
+                            "org.jellyfin.mobile"
+                        ]
+                    }
+                ],
+                "invert": false,
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "wifi_ssid": [
+                    "Xiaomi_4B33_5G"
+                ],
+                "action": "route",
+                "outbound": "socksXMwifi"
+            },
+            {
+                "wifi_ssid": [
+                    "OpenWrt5G"
+                ],
+                "action": "route",
+                "outbound": "socksOpenWRT"
             },
             {
                 "clash_mode": "global",
