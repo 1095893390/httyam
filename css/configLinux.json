@@ -365,11 +365,6 @@
                 "outbound": "Adobe"
             },
             {
-                "ip_is_private": true,
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
                 "clash_mode": "direct",
                 "action": "route",
                 "outbound": "direct"
@@ -393,6 +388,11 @@
                 ],
                 "action": "route",
                 "outbound": "Proxy"
+            },
+            {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
             }
         ],
         "auto_detect_interface": true,
