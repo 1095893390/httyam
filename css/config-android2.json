@@ -39,6 +39,16 @@
         "independent_cache": false,
         "rules": [
             {
+                "query_type": [
+                    "AAAA"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+
+                ]
+            },
+            {
                 "domain": [
                     "kidko.speedtestcurl.club"
                 ],
@@ -219,7 +229,7 @@
             "extra_headers": {
 
             },
-            "udp_over_tcp": false,
+            "udp_over_tcp": true,
             "quic": false,
             "quic_congestion_control": "",
             "tls": {
@@ -239,7 +249,7 @@
             "extra_headers": {
 
             },
-            "udp_over_tcp": false,
+            "udp_over_tcp": true,
             "quic": false,
             "quic_congestion_control": "",
             "tls": {
