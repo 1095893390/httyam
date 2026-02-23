@@ -1,7 +1,7 @@
 {
     "log": {
         "disabled": false,
-        "level": "trace",
+        "level": "info",
         "timestamp": true
     },
     "experimental": {
@@ -122,6 +122,30 @@
                 "action": "reject",
                 "method": "",
                 "no_drop": false
+            },
+            {
+                "domain_suffix": [
+                    "bing.com",
+                    "bing.net"
+                ],
+                "domain_keyword": [
+                    "copilot"
+                ],
+                "domain": [
+                    "copilot.microsoft.com"
+                ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
+                "domain_suffix": [
+                    "microsoft.com",
+                    "windowsupdate.com",
+                    "msn.com",
+                    "lenovo.com"
+                ],
+                "action": "route",
+                "server": "local-dns"
             },
             {
                 "rule_set": [
@@ -313,9 +337,15 @@
         ],
         "rules": [
             {
+                "ip_cidr": [
+                    "::/0"
+                ],
+                "action": "reject"
+            },
+            {
                 "inbound": "in",
                 "action": "resolve",
-                "strategy": "prefer_ipv4"
+                "strategy": "ipv4_only"
             },
             {
                 "inbound": "in",
@@ -325,7 +355,7 @@
             {
                 "inbound": "socks-in",
                 "action": "resolve",
-                "strategy": "prefer_ipv4"
+                "strategy": "ipv4_only"
             },
             {
                 "inbound": "socks-in",
@@ -333,7 +363,8 @@
                 "timeout": "1s"
             },
             {
-                "action": "sniff"
+                "action": "sniff",
+                "timeout": "1s"
             },
             {
                 "type": "logical",
@@ -347,6 +378,30 @@
                     }
                 ],
                 "action": "hijack-dns"
+            },
+            {
+                "domain_suffix": [
+                    "bing.com",
+                    "bing.net"
+                ],
+                "domain_keyword": [
+                    "copilot"
+                ],
+                "domain": [
+                    "copilot.microsoft.com"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
+                "domain_suffix": [
+                    "microsoft.com",
+                    "windowsupdate.com",
+                    "msn.com",
+                    "lenovo.com"
+                ],
+                "action": "route",
+                "outbound": "direct"
             },
             {
                 "domain_keyword": [

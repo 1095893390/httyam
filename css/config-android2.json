@@ -1,7 +1,7 @@
 {
     "log": {
         "disabled": false,
-        "level": "trace",
+        "level": "info",
         "timestamp": true
     },
     "experimental": {
@@ -295,9 +295,15 @@
         ],
         "rules": [
             {
+                "ip_cidr": [
+                    "::/0"
+                ],
+                "action": "reject"
+            },
+            {
                 "inbound": "in",
                 "action": "resolve",
-                "strategy": "prefer_ipv4"
+                "strategy": "ipv4_only"
             },
             {
                 "inbound": "in",
@@ -305,7 +311,8 @@
                 "timeout": "1s"
             },
             {
-                "action": "sniff"
+                "action": "sniff",
+                "timeout": "1s"
             },
             {
                 "type": "logical",
