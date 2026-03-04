@@ -8,12 +8,7 @@
         {
             "type": "tailscale",
             "tag": "tailscale-ep",
-            "state_directory": "/data/data/io.nekohasekai.sfa/files",
-            "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3",
-            "relay_server_port": 33443,
-            "relay_server_static_endpoints": [
-                "zjk.speedtestwget.xyz:33443"
-            ]
+            "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3"
         }
     ],
     "experimental": {
@@ -298,22 +293,6 @@
                 "action": "reject"
             },
             {
-                "ip_cidr": [
-                    "100.64.0.0/10",
-                    "192.168.31.0/24",
-                    "192.168.1.0/24"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
-                "domain_suffix": [
-                    "ts.net"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
                 "inbound": "in",
                 "action": "resolve",
                 "strategy": "ipv4_only"
@@ -339,6 +318,36 @@
                     }
                 ],
                 "action": "hijack-dns"
+            },
+            {
+                "domain": [
+                    "zjk.speedtestwget.xyz",
+                    "controlplane.tailscale.com",
+                    "log.tailscale.io"
+                ],
+                "outbound": "direct"
+            },
+            {
+                "ip_cidr": [
+                    "39.98.57.168/32"
+                ],
+                "outbound": "direct"
+            },
+            {
+                "ip_cidr": [
+                    "100.64.0.0/10",
+                    "192.168.31.0/24",
+                    "192.168.1.0/24"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
+                "domain_suffix": [
+                    "ts.net"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
             },
             {
                 "ip_is_private": true,

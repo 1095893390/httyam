@@ -2,13 +2,16 @@
     "log": {
         "disabled": false,
         "level": "info",
-		"output": "/etc/sing-box/box.log",
+        "output": "/etc/sing-box/box.log",
         "timestamp": true
     },
     "endpoints": [
         {
             "type": "tailscale",
             "tag": "tailscale-ep",
+            "state_directory": "/etc/sing-box/files",
+            "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3",
+            "relay_server_port": 50001,
             "advertise_routes": [
                 "192.168.31.0/24",
                 "192.168.1.0/24"
@@ -61,13 +64,25 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": []
+                "answer": [
+
+                ]
             },
             {
                 "domain_suffix": [
                     "ts.net"
                 ],
                 "server": "tailscale-dns"
+            },
+            {
+                "domain": [
+                    "zjk.speedtestwget.xyz"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "zjk.speedtestwget.xyz. IN A 39.98.57.168"
+                ]
             },
             {
                 "domain": [
@@ -180,7 +195,7 @@
         {
             "type": "tun",
             "address": "172.19.0.1/24",
-            "mtu": 1500,
+            "mtu": 1280,
             "auto_route": true,
             "strict_route": true,
             "auto_redirect": true,
@@ -337,22 +352,6 @@
                 "action": "reject"
             },
             {
-                "ip_cidr": [
-                    "100.64.0.0/10",
-                    "192.168.31.0/24",
-                    "192.168.1.0/24"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
-                "domain_suffix": [
-                    "ts.net"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
                 "inbound": "in",
                 "action": "resolve",
                 "strategy": "ipv4_only"
@@ -388,6 +387,36 @@
                     }
                 ],
                 "action": "hijack-dns"
+            },
+            {
+                "domain": [
+                    "zjk.speedtestwget.xyz",
+                    "controlplane.tailscale.com",
+                    "log.tailscale.io"
+                ],
+                "outbound": "direct"
+            },
+            {
+                "ip_cidr": [
+                    "39.98.57.168/32"
+                ],
+                "outbound": "direct"
+            },
+            {
+                "ip_cidr": [
+                    "100.64.0.0/10",
+                    "192.168.31.0/24",
+                    "192.168.1.0/24"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
+                "domain_suffix": [
+                    "ts.net"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
             },
             {
                 "domain_suffix": [
