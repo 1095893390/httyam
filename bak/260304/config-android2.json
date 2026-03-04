@@ -4,12 +4,6 @@
         "level": "info",
         "timestamp": true
     },
-    "endpoints": [
-        {
-            "type": "tailscale",
-            "tag": "tailscale-ep"
-        }
-    ],
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
@@ -38,12 +32,6 @@
                 "type": "udp",
                 "tag": "local-dns",
                 "server": "119.29.29.29"
-            },
-            {
-                "type": "tailscale",
-                "tag": "tailscale-dns",
-                "endpoint": "tailscale-ep",
-                "accept_default_resolvers": false
             }
         ],
         "disable_cache": false,
@@ -56,13 +44,9 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": []
-            },
-            {
-                "domain_suffix": [
-                    "ts.net"
-                ],
-                "server": "tailscale-dns"
+                "answer": [
+
+                ]
             },
             {
                 "domain": [
@@ -72,6 +56,12 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "kidko.speedtestcurl.club. IN A 154.40.34.140"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
                 ]
             },
             {
@@ -82,6 +72,12 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "kidkoo.speedtestcurl.club. IN A 38.47.116.71"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
                 ]
             },
             {
@@ -92,6 +88,12 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "dns.cloudflare.com. IN A 1.1.1.1"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
                 ]
             },
             {
@@ -101,19 +103,25 @@
                     "missav.ws",
                     "missav.live"
                 ],
-                "action": "reject"
+                "action": "reject",
+                "method": "",
+                "no_drop": false
             },
             {
                 "domain_keyword": [
                     "jav"
                 ],
-                "action": "reject"
+                "action": "reject",
+                "method": "",
+                "no_drop": false
             },
             {
                 "rule_set": [
                     "PORN"
                 ],
-                "action": "reject"
+                "action": "reject",
+                "method": "",
+                "no_drop": false
             },
             {
                 "rule_set": [
@@ -174,6 +182,7 @@
                 "com.xiaomi.shop",
                 "com.youku.phone",
                 "com.zjkccb.mbank",
+                "com.eg.android.AlipayGphone",
                 "com.wuba.zhuanzhuan",
                 "com.tencent.mobileqq",
                 "app.landrop.landrop_flutter",
@@ -217,9 +226,15 @@
             "username": "mason",
             "password": "smxmm1314",
             "insecure_concurrency": 0,
+            "extra_headers": {
+
+            },
             "udp_over_tcp": true,
+            "quic": false,
+            "quic_congestion_control": "",
             "tls": {
                 "enabled": true,
+                "insecure": false,
                 "server_name": "kidko.speedtestcurl.club"
             }
         },
@@ -231,9 +246,15 @@
             "username": "mason",
             "password": "smxmm1314",
             "insecure_concurrency": 0,
+            "extra_headers": {
+
+            },
             "udp_over_tcp": true,
+            "quic": false,
+            "quic_congestion_control": "",
             "tls": {
                 "enabled": true,
+                "insecure": false,
                 "server_name": "kidkoo.speedtestcurl.club"
             }
         }
@@ -278,22 +299,6 @@
                     "::/0"
                 ],
                 "action": "reject"
-            },
-            {
-                "ip_cidr": [
-                    "100.64.0.0/10",
-                    "192.168.31.0/24",
-                    "192.168.1.0/24"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
-                "domain_suffix": [
-                    "ts.net"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
             },
             {
                 "inbound": "in",

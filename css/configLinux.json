@@ -2,8 +2,19 @@
     "log": {
         "disabled": false,
         "level": "info",
+		"output": "/etc/sing-box/box.log",
         "timestamp": true
     },
+    "endpoints": [
+        {
+            "type": "tailscale",
+            "tag": "tailscale-ep",
+            "advertise_routes": [
+                "192.168.31.0/24",
+                "192.168.1.0/24"
+            ]
+        }
+    ],
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
@@ -15,7 +26,7 @@
         },
         "cache_file": {
             "enabled": true,
-            "path": "cache.db",
+            "path": "/etc/sing-box/cache.db",
             "store_fakeip": false,
             "store_rdrc": false
         }
@@ -32,6 +43,12 @@
                 "type": "udp",
                 "tag": "local-dns",
                 "server": "119.29.29.29"
+            },
+            {
+                "type": "tailscale",
+                "tag": "tailscale-dns",
+                "endpoint": "tailscale-ep",
+                "accept_default_resolvers": false
             }
         ],
         "disable_cache": false,
@@ -44,9 +61,13 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": [
-
-                ]
+                "answer": []
+            },
+            {
+                "domain_suffix": [
+                    "ts.net"
+                ],
+                "server": "tailscale-dns"
             },
             {
                 "domain": [
@@ -56,12 +77,6 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "kidko.speedtestcurl.club. IN A 154.40.34.140"
-                ],
-                "ns": [
-
-                ],
-                "extra": [
-
                 ]
             },
             {
@@ -72,12 +87,6 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "kidkoo.speedtestcurl.club. IN A 38.47.116.71"
-                ],
-                "ns": [
-
-                ],
-                "extra": [
-
                 ]
             },
             {
@@ -88,12 +97,6 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "dns.cloudflare.com. IN A 1.1.1.1"
-                ],
-                "ns": [
-
-                ],
-                "extra": [
-
                 ]
             },
             {
@@ -103,25 +106,19 @@
                     "missav.ws",
                     "missav.live"
                 ],
-                "action": "reject",
-                "method": "",
-                "no_drop": false
+                "action": "reject"
             },
             {
                 "domain_keyword": [
                     "jav"
                 ],
-                "action": "reject",
-                "method": "",
-                "no_drop": false
+                "action": "reject"
             },
             {
                 "rule_set": [
                     "PORN"
                 ],
-                "action": "reject",
-                "method": "",
-                "no_drop": false
+                "action": "reject"
             },
             {
                 "domain_suffix": [
@@ -261,15 +258,9 @@
             "username": "mason",
             "password": "smxmm1314",
             "insecure_concurrency": 0,
-            "extra_headers": {
-
-            },
             "udp_over_tcp": true,
-            "quic": false,
-            "quic_congestion_control": "",
             "tls": {
                 "enabled": true,
-                "insecure": false,
                 "server_name": "kidko.speedtestcurl.club"
             }
         },
@@ -281,15 +272,9 @@
             "username": "mason",
             "password": "smxmm1314",
             "insecure_concurrency": 0,
-            "extra_headers": {
-
-            },
             "udp_over_tcp": true,
-            "quic": false,
-            "quic_congestion_control": "",
             "tls": {
                 "enabled": true,
-                "insecure": false,
                 "server_name": "kidkoo.speedtestcurl.club"
             }
         },
@@ -307,8 +292,6 @@
             "type": "http",
             "server": "20.205.138.223",
             "server_port": 443,
-            "username": "",
-            "password": "",
             "detour": "naive-VmissUS"
         }
     ],
@@ -352,6 +335,22 @@
                     "::/0"
                 ],
                 "action": "reject"
+            },
+            {
+                "ip_cidr": [
+                    "100.64.0.0/10",
+                    "192.168.31.0/24",
+                    "192.168.1.0/24"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
+                "domain_suffix": [
+                    "ts.net"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
             },
             {
                 "inbound": "in",

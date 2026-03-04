@@ -4,20 +4,14 @@
         "level": "info",
         "timestamp": true
     },
-    "endpoints": [
-        {
-            "type": "tailscale",
-            "tag": "tailscale-ep"
-        }
-    ],
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
-            "external_ui": "",
-            "external_ui_download_url": "",
+            "external_ui": "ui",
+            "secret": "smxmm1314",
+            "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
             "external_ui_download_detour": "Proxy",
-            "default_mode": "rule",
-            "access_control_allow_private_network": true
+            "default_mode": "rule"
         },
         "cache_file": {
             "enabled": true,
@@ -38,12 +32,6 @@
                 "type": "udp",
                 "tag": "local-dns",
                 "server": "119.29.29.29"
-            },
-            {
-                "type": "tailscale",
-                "tag": "tailscale-dns",
-                "endpoint": "tailscale-ep",
-                "accept_default_resolvers": false
             }
         ],
         "disable_cache": false,
@@ -56,13 +44,9 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": []
-            },
-            {
-                "domain_suffix": [
-                    "ts.net"
-                ],
-                "server": "tailscale-dns"
+                "answer": [
+
+                ]
             },
             {
                 "domain": [
@@ -72,6 +56,12 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "kidko.speedtestcurl.club. IN A 154.40.34.140"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
                 ]
             },
             {
@@ -82,6 +72,12 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "kidkoo.speedtestcurl.club. IN A 38.47.116.71"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
                 ]
             },
             {
@@ -92,6 +88,12 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "dns.cloudflare.com. IN A 1.1.1.1"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
                 ]
             },
             {
@@ -101,19 +103,49 @@
                     "missav.ws",
                     "missav.live"
                 ],
-                "action": "reject"
+                "action": "reject",
+                "method": "",
+                "no_drop": false
             },
             {
                 "domain_keyword": [
                     "jav"
                 ],
-                "action": "reject"
+                "action": "reject",
+                "method": "",
+                "no_drop": false
             },
             {
                 "rule_set": [
                     "PORN"
                 ],
-                "action": "reject"
+                "action": "reject",
+                "method": "",
+                "no_drop": false
+            },
+            {
+                "domain_suffix": [
+                    "bing.com",
+                    "bing.net"
+                ],
+                "domain_keyword": [
+                    "copilot"
+                ],
+                "domain": [
+                    "copilot.microsoft.com"
+                ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
+                "domain_suffix": [
+                    "microsoft.com",
+                    "windowsupdate.com",
+                    "msn.com",
+                    "lenovo.com"
+                ],
+                "action": "route",
+                "server": "local-dns"
             },
             {
                 "rule_set": [
@@ -150,43 +182,29 @@
     "inbounds": [
         {
             "type": "tun",
-            "address": "172.19.0.2/24",
+            "address": "172.19.0.1/24",
             "mtu": 1500,
             "auto_route": true,
             "strict_route": true,
-            "stack": "mixed",
-            "exclude_package": [
-                "com.zhihu.android",
-                "io.homeassistant.companion.android",
-                "com.milink.service",
-                "com.xiaomi.smarthome",
-                "com.xiaomi.mico",
-                "com.miui.voiceassist",
-                "com.xiaomi.xmsf",
-                "com.xiaomi.mi_connect_service",
-                "tv.danmaku.bili",
-                "com.jingdong.app.mall",
-                "com.sankuai.meituan",
-                "com.taobao.taobao",
-                "com.taobao.idlefish",
-                "com.eg.android.AlipayGphone",
-                "com.xingin.xhs",
-                "com.xiaomi.shop",
-                "com.youku.phone",
-                "com.zjkccb.mbank",
-                "com.wuba.zhuanzhuan",
-                "com.tencent.mobileqq",
-                "app.landrop.landrop_flutter",
-                "com.xiaomi.market",
-                "com.ss.android.ugc.aweme",
-                "com.tencent.mm"
-            ]
+            "stack": "mixed"
         },
         {
             "type": "mixed",
             "tag": "in",
+            "listen": "127.0.0.1",
+            "listen_port": 3080
+        },
+        {
+            "type": "socks",
+            "tag": "socks-in",
             "listen": "0.0.0.0",
-            "listen_port": 2080
+            "listen_port": 2080,
+            "users": [
+                {
+                    "username": "mx",
+                    "password": "smxmm1314"
+                }
+            ]
         }
     ],
     "outbounds": [
@@ -195,9 +213,33 @@
             "outbounds": [
                 "naive-VmissUS",
                 "naive-hostUS",
-                "direct"
+                "socksZhangXiaoMi",
+                "direct",
+                "block"
             ],
             "default": "naive-VmissUS",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "ProxyZhang",
+            "outbounds": [
+                "direct",
+                "socksZhangXiaoMi"
+            ],
+            "default": "direct",
+            "interrupt_exist_connections": true,
+            "type": "selector"
+        },
+        {
+            "tag": "Adobe",
+            "outbounds": [
+                "naive-hostUS",
+                "naive-VmissUS",
+                "direct",
+                "block"
+            ],
+            "default": "block",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -217,9 +259,15 @@
             "username": "mason",
             "password": "smxmm1314",
             "insecure_concurrency": 0,
+            "extra_headers": {
+
+            },
             "udp_over_tcp": true,
+            "quic": false,
+            "quic_congestion_control": "",
             "tls": {
                 "enabled": true,
+                "insecure": false,
                 "server_name": "kidko.speedtestcurl.club"
             }
         },
@@ -231,11 +279,26 @@
             "username": "mason",
             "password": "smxmm1314",
             "insecure_concurrency": 0,
+            "extra_headers": {
+
+            },
             "udp_over_tcp": true,
+            "quic": false,
+            "quic_congestion_control": "",
             "tls": {
                 "enabled": true,
+                "insecure": false,
                 "server_name": "kidkoo.speedtestcurl.club"
             }
+        },
+        {
+            "tag": "socksZhangXiaoMi",
+            "type": "socks",
+            "server": "11on2nr093847.vicp.fun",
+            "server_port": 2080,
+            "username": "mx",
+            "password": "smxmm1314",
+            "version": "5"
         }
     ],
     "route": {
@@ -280,28 +343,22 @@
                 "action": "reject"
             },
             {
-                "ip_cidr": [
-                    "100.64.0.0/10",
-                    "192.168.31.0/24",
-                    "192.168.1.0/24"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
-                "domain_suffix": [
-                    "ts.net"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
                 "inbound": "in",
                 "action": "resolve",
                 "strategy": "ipv4_only"
             },
             {
                 "inbound": "in",
+                "action": "sniff",
+                "timeout": "1s"
+            },
+            {
+                "inbound": "socks-in",
+                "action": "resolve",
+                "strategy": "ipv4_only"
+            },
+            {
+                "inbound": "socks-in",
                 "action": "sniff",
                 "timeout": "1s"
             },
@@ -323,9 +380,36 @@
                 "action": "hijack-dns"
             },
             {
-                "ip_is_private": true,
+                "domain_suffix": [
+                    "bing.com",
+                    "bing.net"
+                ],
+                "domain_keyword": [
+                    "copilot"
+                ],
+                "domain": [
+                    "copilot.microsoft.com"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
+                "domain_suffix": [
+                    "microsoft.com",
+                    "windowsupdate.com",
+                    "msn.com",
+                    "lenovo.com"
+                ],
                 "action": "route",
                 "outbound": "direct"
+            },
+            {
+                "domain_keyword": [
+                    "adobe",
+                    "Adobe"
+                ],
+                "action": "route",
+                "outbound": "Adobe"
             },
             {
                 "clash_mode": "direct",
@@ -343,7 +427,7 @@
                     "GEOSITE-CN"
                 ],
                 "action": "route",
-                "outbound": "direct"
+                "outbound": "ProxyZhang"
             },
             {
                 "rule_set": [
@@ -351,6 +435,11 @@
                 ],
                 "action": "route",
                 "outbound": "Proxy"
+            },
+            {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
             }
         ],
         "auto_detect_interface": true,

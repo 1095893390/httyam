@@ -4,12 +4,6 @@
         "level": "info",
         "timestamp": true
     },
-    "endpoints": [
-        {
-            "type": "tailscale",
-            "tag": "tailscale-ep"
-        }
-    ],
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
@@ -38,12 +32,6 @@
                 "type": "udp",
                 "tag": "local-dns",
                 "server": "119.29.29.29"
-            },
-            {
-                "type": "tailscale",
-                "tag": "tailscale-dns",
-                "endpoint": "tailscale-ep",
-                "accept_default_resolvers": false
             }
         ],
         "disable_cache": false,
@@ -56,13 +44,9 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": []
-            },
-            {
-                "domain_suffix": [
-                    "ts.net"
-                ],
-                "server": "tailscale-dns"
+                "answer": [
+
+                ]
             },
             {
                 "domain": [
@@ -72,16 +56,12 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "kidko.speedtestcurl.club. IN A 154.40.34.140"
-                ]
-            },
-            {
-                "domain": [
-                    "kidkoo.speedtestcurl.club"
                 ],
-                "action": "predefined",
-                "rcode": "NOERROR",
-                "answer": [
-                    "kidkoo.speedtestcurl.club. IN A 38.47.116.71"
+                "ns": [
+
+                ],
+                "extra": [
+
                 ]
             },
             {
@@ -92,28 +72,13 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "dns.cloudflare.com. IN A 1.1.1.1"
+                ],
+                "ns": [
+
+                ],
+                "extra": [
+
                 ]
-            },
-            {
-                "domain_suffix": [
-                    "91short",
-                    "rou.video",
-                    "missav.ws",
-                    "missav.live"
-                ],
-                "action": "reject"
-            },
-            {
-                "domain_keyword": [
-                    "jav"
-                ],
-                "action": "reject"
-            },
-            {
-                "rule_set": [
-                    "PORN"
-                ],
-                "action": "reject"
             },
             {
                 "rule_set": [
@@ -174,6 +139,7 @@
                 "com.xiaomi.shop",
                 "com.youku.phone",
                 "com.zjkccb.mbank",
+                "com.eg.android.AlipayGphone",
                 "com.wuba.zhuanzhuan",
                 "com.tencent.mobileqq",
                 "app.landrop.landrop_flutter",
@@ -193,11 +159,10 @@
         {
             "tag": "Proxy",
             "outbounds": [
-                "naive-VmissUS",
                 "naive-hostUS",
                 "direct"
             ],
-            "default": "naive-VmissUS",
+            "default": "naive-hostUS",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
@@ -217,24 +182,16 @@
             "username": "mason",
             "password": "smxmm1314",
             "insecure_concurrency": 0,
+            "extra_headers": {
+
+            },
             "udp_over_tcp": true,
+            "quic": false,
+            "quic_congestion_control": "",
             "tls": {
                 "enabled": true,
+                "insecure": false,
                 "server_name": "kidko.speedtestcurl.club"
-            }
-        },
-        {
-            "type": "naive",
-            "tag": "naive-VmissUS",
-            "server": "kidkoo.speedtestcurl.club",
-            "server_port": 443,
-            "username": "mason",
-            "password": "smxmm1314",
-            "insecure_concurrency": 0,
-            "udp_over_tcp": true,
-            "tls": {
-                "enabled": true,
-                "server_name": "kidkoo.speedtestcurl.club"
             }
         }
     ],
@@ -263,13 +220,6 @@
                 "download_detour": "Proxy",
                 "tag": "GEOLOCATION-!CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "PORN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-porn.srs"
             }
         ],
         "rules": [
@@ -278,22 +228,6 @@
                     "::/0"
                 ],
                 "action": "reject"
-            },
-            {
-                "ip_cidr": [
-                    "100.64.0.0/10",
-                    "192.168.31.0/24",
-                    "192.168.1.0/24"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
-                "domain_suffix": [
-                    "ts.net"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
             },
             {
                 "inbound": "in",
@@ -323,11 +257,6 @@
                 "action": "hijack-dns"
             },
             {
-                "ip_is_private": true,
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
                 "clash_mode": "direct",
                 "action": "route",
                 "outbound": "direct"
@@ -351,6 +280,11 @@
                 ],
                 "action": "route",
                 "outbound": "Proxy"
+            },
+            {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
             }
         ],
         "auto_detect_interface": true,
