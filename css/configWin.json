@@ -7,7 +7,8 @@
     "endpoints": [
         {
             "type": "tailscale",
-            "tag": "tailscale-ep"
+            "tag": "tailscale-ep",
+            "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3"
         }
     ],
     "experimental": {
@@ -56,7 +57,9 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": []
+                "answer": [
+
+                ]
             },
             {
                 "domain_suffix": [
@@ -175,7 +178,7 @@
         {
             "type": "tun",
             "address": "172.19.0.1/24",
-            "mtu": 1500,
+            "mtu": 1280,
             "auto_route": true,
             "strict_route": true,
             "stack": "mixed"
@@ -323,22 +326,6 @@
                 "action": "reject"
             },
             {
-                "ip_cidr": [
-                    "100.64.0.0/10",
-                    "192.168.31.0/24",
-                    "192.168.1.0/24"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
-                "domain_suffix": [
-                    "ts.net"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
                 "inbound": "in",
                 "action": "resolve",
                 "strategy": "ipv4_only"
@@ -374,6 +361,22 @@
                     }
                 ],
                 "action": "hijack-dns"
+            },
+            {
+                "ip_cidr": [
+                    "100.64.0.0/10",
+                    "192.168.31.0/24",
+                    "192.168.1.0/24"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
+                "domain_suffix": [
+                    "ts.net"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
             },
             {
                 "domain_suffix": [
@@ -423,7 +426,7 @@
                     "GEOSITE-CN"
                 ],
                 "action": "route",
-                "outbound": "ProxyZhang"
+                "outbound": "direct"
             },
             {
                 "rule_set": [

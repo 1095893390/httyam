@@ -11,7 +11,6 @@
             "tag": "tailscale-ep",
             "state_directory": "/etc/sing-box/files",
             "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3",
-            "relay_server_port": 50001,
             "advertise_routes": [
                 "192.168.31.0/24",
                 "192.168.1.0/24"
@@ -64,25 +63,13 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": [
-
-                ]
+                "answer": []
             },
             {
                 "domain_suffix": [
                     "ts.net"
                 ],
                 "server": "tailscale-dns"
-            },
-            {
-                "domain": [
-                    "zjk.speedtestwget.xyz"
-                ],
-                "action": "predefined",
-                "rcode": "NOERROR",
-                "answer": [
-                    "zjk.speedtestwget.xyz. IN A 39.98.57.168"
-                ]
             },
             {
                 "domain": [
@@ -389,20 +376,6 @@
                 "action": "hijack-dns"
             },
             {
-                "domain": [
-                    "zjk.speedtestwget.xyz",
-                    "controlplane.tailscale.com",
-                    "log.tailscale.io"
-                ],
-                "outbound": "direct"
-            },
-            {
-                "ip_cidr": [
-                    "39.98.57.168/32"
-                ],
-                "outbound": "direct"
-            },
-            {
                 "ip_cidr": [
                     "100.64.0.0/10",
                     "192.168.31.0/24",
@@ -466,7 +439,7 @@
                     "GEOSITE-CN"
                 ],
                 "action": "route",
-                "outbound": "ProxyZhang"
+                "outbound": "direct"
             },
             {
                 "rule_set": [
