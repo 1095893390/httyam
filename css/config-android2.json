@@ -66,6 +66,16 @@
             },
             {
                 "domain": [
+                    "zjk.speedtestwget.xyz"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "zjk.speedtestwget.xyz. IN A 39.98.57.168"
+                ]
+            },
+            {
+                "domain": [
                     "kidko.speedtestcurl.club"
                 ],
                 "action": "predefined",
