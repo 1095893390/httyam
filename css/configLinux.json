@@ -12,8 +12,7 @@
             "state_directory": "/etc/sing-box/files",
             "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3",
             "advertise_routes": [
-                "192.168.31.0/24",
-                "192.168.1.0/24"
+                "192.168.31.0/24"
             ]
         }
     ],
@@ -377,9 +376,7 @@
             },
             {
                 "ip_cidr": [
-                    "100.64.0.0/10",
-                    "192.168.31.0/24",
-                    "192.168.1.0/24"
+                    "100.64.0.0/10"
                 ],
                 "action": "route",
                 "outbound": "tailscale-ep"

@@ -115,7 +115,7 @@
     "inbounds": [
         {
             "type": "tun",
-            "address": "172.19.0.2/24",
+            "address": "172.19.0.4/24",
             "mtu": 1500,
             "auto_route": true,
             "strict_route": true,
