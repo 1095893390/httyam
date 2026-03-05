@@ -153,7 +153,7 @@
         {
             "type": "tun",
             "address": "172.19.0.2/24",
-            "mtu": 1280,
+            "mtu": 1500,
             "auto_route": true,
             "strict_route": true,
             "stack": "mixed",
