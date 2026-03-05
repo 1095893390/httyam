@@ -8,7 +8,8 @@
         {
             "type": "tailscale",
             "tag": "tailscale-ep",
-            "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3"
+            "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3",
+			"accept_routes": true
         }
     ],
     "experimental": {
