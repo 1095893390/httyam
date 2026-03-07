@@ -9,6 +9,7 @@
         {
             "type": "tailscale",
             "tag": "tailscale-ep",
+			"accept_routes": true,
             "state_directory": "/etc/sing-box/files",
             "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3",
             "advertise_routes": [
