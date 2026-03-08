@@ -182,7 +182,7 @@
             "mtu": 1500,
             "auto_route": true,
             "strict_route": true,
-            "stack": "mixed"
+            "stack": "gvisor"
         },
         {
             "type": "mixed",
@@ -423,6 +423,6 @@
             }
         ],
         "auto_detect_interface": true,
-        "final": "Proxy"
+        "final": "direct"
     }
 }

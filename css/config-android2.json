@@ -156,7 +156,7 @@
             "mtu": 1500,
             "auto_route": true,
             "strict_route": true,
-            "stack": "mixed",
+            "stack": "gvisor",
             "exclude_package": [
                 "com.zhihu.android",
                 "io.homeassistant.companion.android",
@@ -180,6 +180,7 @@
                 "com.tencent.mobileqq",
                 "app.landrop.landrop_flutter",
                 "com.xiaomi.market",
+				"com.autonavi.minimap",
                 "com.ss.android.ugc.aweme",
                 "com.tencent.mm"
             ]
@@ -356,6 +357,6 @@
             }
         ],
         "auto_detect_interface": true,
-        "final": "Proxy"
+        "final": "direct"
     }
 }
