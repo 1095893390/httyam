@@ -37,9 +37,9 @@
                 "detour": "Proxy"
             },
             {
-                "type": "udp",
+                "type": "https",
                 "tag": "local-dns",
-                "server": "119.29.29.29"
+                "server": "223.5.5.5"
             },
             {
                 "type": "tailscale",
@@ -58,7 +58,9 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": []
+                "answer": [
+
+                ]
             },
             {
                 "domain_suffix": [
@@ -180,8 +182,13 @@
                 "com.tencent.mobileqq",
                 "app.landrop.landrop_flutter",
                 "com.xiaomi.market",
-				"com.autonavi.minimap",
+                "com.autonavi.minimap",
                 "com.ss.android.ugc.aweme",
+                "com.xiaomi.metoknlp",
+                "com.android.bluetooth",
+                "com.xiaomi.location.fused",
+                "com.android.settings",
+                "com.android.networkstack.tethering",
                 "com.tencent.mm"
             ]
         },
