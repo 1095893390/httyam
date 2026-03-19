@@ -184,12 +184,13 @@
                 "com.xiaomi.market",
                 "com.autonavi.minimap",
                 "com.ss.android.ugc.aweme",
+                "com.tencent.mm",
                 "com.xiaomi.metoknlp",
                 "com.android.bluetooth",
                 "com.xiaomi.location.fused",
                 "com.android.settings",
                 "com.android.networkstack.tethering",
-                "com.tencent.mm"
+                "com.xiaomi.ab"
             ]
         },
         {

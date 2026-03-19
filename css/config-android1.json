@@ -139,14 +139,19 @@
                 "com.xiaomi.shop",
                 "com.youku.phone",
                 "com.zjkccb.mbank",
-                "com.eg.android.AlipayGphone",
                 "com.wuba.zhuanzhuan",
                 "com.tencent.mobileqq",
                 "app.landrop.landrop_flutter",
                 "com.xiaomi.market",
+                "com.autonavi.minimap",
                 "com.ss.android.ugc.aweme",
-				"com.autonavi.minimap",
-                "com.tencent.mm"
+                "com.tencent.mm",
+                "com.xiaomi.metoknlp",
+                "com.android.bluetooth",
+                "com.xiaomi.location.fused",
+                "com.android.settings",
+                "com.android.networkstack.tethering",
+                "com.xiaomi.ab"
             ]
         },
         {
