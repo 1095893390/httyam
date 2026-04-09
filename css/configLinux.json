@@ -383,6 +383,7 @@
             {
                 "domain_suffix": [
                     "bing.com",
+					"cambridge.org",
                     "bing.net"
                 ],
                 "domain_keyword": [
@@ -424,7 +425,6 @@
             },
             {
                 "rule_set": [
-                    "GEOIP-CN",
                     "GEOSITE-CN"
                 ],
                 "action": "route",
@@ -436,6 +436,13 @@
                 ],
                 "action": "route",
                 "outbound": "Proxy"
+            },
+            {
+                "rule_set": [
+                    "GEOIP-CN"
+                ],
+                "action": "route",
+                "outbound": "direct"
             },
             {
                 "ip_is_private": true,
