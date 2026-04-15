@@ -46,6 +46,11 @@
                 "tag": "tailscale-dns",
                 "endpoint": "tailscale-ep",
                 "accept_default_resolvers": false
+            },
+            {
+                "type": "fakeip",
+                "tag": "fakeip",
+                "inet4_range": "198.18.0.0/15"
             }
         ],
         "disable_cache": false,
@@ -58,9 +63,7 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": [
-
-                ]
+                "answer": []
             },
             {
                 "domain_suffix": [
@@ -99,6 +102,13 @@
                 ]
             },
             {
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
+                "server": "fakeip"
+            },
+            {
                 "rule_set": [
                     "GEOSITE-CN"
                 ],
@@ -123,10 +133,6 @@
                 "server": "remote-dns"
             }
         ],
-        "fakeip": {
-            "enabled": false,
-            "inet4_range": "198.18.0.1/16"
-        },
         "final": "remote-dns",
         "strategy": "ipv4_only"
     },
@@ -323,7 +329,7 @@
             {
                 "domain_suffix": [
                     "bing.com",
-					"cambridge.org",
+                    "cambridge.org",
                     "bing.net"
                 ],
                 "domain_keyword": [
