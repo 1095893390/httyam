@@ -306,6 +306,11 @@
                 "outbound": "tailscale-ep"
             },
             {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
                 "clash_mode": "direct",
                 "action": "route",
                 "outbound": "direct"
@@ -339,22 +344,17 @@
             },
             {
                 "rule_set": [
-                    "GEOLOCATION-!CN"
-                ],
-                "action": "route",
-                "outbound": "Proxy"
-            },
-            {
-                "rule_set": [
                     "GEOIP-CN"
                 ],
                 "action": "route",
                 "outbound": "direct"
             },
             {
-                "ip_is_private": true,
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
                 "action": "route",
-                "outbound": "direct"
+                "outbound": "Proxy"
             }
         ],
         "auto_detect_interface": true,

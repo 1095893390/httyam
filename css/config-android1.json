@@ -273,6 +273,11 @@
                 "outbound": "Proxy"
             },
             {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
                 "domain_suffix": [
                     "bing.com",
 					"cambridge.org",
@@ -296,22 +301,17 @@
             },
             {
                 "rule_set": [
-                    "GEOLOCATION-!CN"
-                ],
-                "action": "route",
-                "outbound": "Proxy"
-            },
-            {
-                "rule_set": [
                     "GEOIP-CN"
                 ],
                 "action": "route",
                 "outbound": "direct"
             },
             {
-                "ip_is_private": true,
+                "rule_set": [
+                    "GEOLOCATION-!CN"
+                ],
                 "action": "route",
-                "outbound": "direct"
+                "outbound": "Proxy"
             }
         ],
         "auto_detect_interface": true,
