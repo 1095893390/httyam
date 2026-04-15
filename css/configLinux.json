@@ -51,6 +51,11 @@
                 "tag": "tailscale-dns",
                 "endpoint": "tailscale-ep",
                 "accept_default_resolvers": false
+            },
+            {
+                "type": "fakeip",
+                "tag": "fakeip",
+                "inet4_range": "198.18.0.0/15"
             }
         ],
         "disable_cache": false,
@@ -63,9 +68,7 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": [
-
-                ]
+                "answer": []
             },
             {
                 "domain_suffix": [
@@ -102,6 +105,13 @@
                 "answer": [
                     "dns.cloudflare.com. IN A 1.1.1.1"
                 ]
+            },
+            {
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
+                "server": "fakeip"
             },
             {
                 "domain_suffix": [
@@ -152,10 +162,6 @@
                 "server": "remote-dns"
             }
         ],
-        "fakeip": {
-            "enabled": false,
-            "inet4_range": "198.18.0.1/16"
-        },
         "final": "remote-dns",
         "strategy": "ipv4_only"
     },
@@ -356,11 +362,11 @@
                 "ip_is_private": true,
                 "action": "route",
                 "outbound": "direct"
-            },		
+            },      
             {
                 "domain_suffix": [
                     "bing.com",
-					"cambridge.org",
+                    "cambridge.org",
                     "bing.net"
                 ],
                 "domain_keyword": [
