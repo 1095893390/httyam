@@ -1,9 +1,22 @@
 {
     "log": {
         "disabled": false,
-        "level": "trace",
+        "level": "info",
+        "output": "/etc/sing-box/box.log",
         "timestamp": true
     },
+    "endpoints": [
+        {
+            "type": "tailscale",
+            "tag": "tailscale-ep",
+            "accept_routes": true,
+            "state_directory": "/etc/sing-box/files",
+            "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3",
+            "advertise_routes": [
+                "192.168.31.0/24"
+            ]
+        }
+    ],
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
@@ -15,7 +28,7 @@
         },
         "cache_file": {
             "enabled": true,
-            "path": "cache.db",
+            "path": "/etc/sing-box/cache.db",
             "store_fakeip": false,
             "store_rdrc": false
         }
@@ -25,26 +38,95 @@
             {
                 "type": "https",
                 "tag": "remote-dns",
-                "server": "dns.google",
-                "domain_resolver": "remote-resolver-dns",
+                "server": "dns.cloudflare.com",
                 "detour": "Proxy"
             },
             {
-                "type": "udp",
+                "type": "https",
                 "tag": "local-dns",
-                "server": "119.29.29.29"
+                "server": "223.5.5.5"
             },
             {
-                "type": "udp",
-                "tag": "remote-resolver-dns",
-                "server": "8.8.8.8",
-                "detour": "Proxy"
+                "type": "tailscale",
+                "tag": "tailscale-dns",
+                "endpoint": "tailscale-ep",
+                "accept_default_resolvers": false
             }
         ],
         "disable_cache": false,
         "disable_expire": false,
         "independent_cache": false,
         "rules": [
+            {
+                "query_type": [
+                    "AAAA"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+
+                ]
+            },
+            {
+                "domain_suffix": [
+                    "ts.net"
+                ],
+                "server": "tailscale-dns"
+            },
+            {
+                "domain": [
+                    "kidko.speedtestcurl.club"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "kidko.speedtestcurl.club. IN A 154.40.34.140"
+                ]
+            },
+            {
+                "domain": [
+                    "kidkoo.speedtestcurl.club"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "kidkoo.speedtestcurl.club. IN A 38.47.116.71"
+                ]
+            },
+            {
+                "domain": [
+                    "dns.cloudflare.com"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+                    "dns.cloudflare.com. IN A 1.1.1.1"
+                ]
+            },
+            {
+                "domain_suffix": [
+                    "bing.com",
+                    "bing.net"
+                ],
+                "domain_keyword": [
+                    "copilot"
+                ],
+                "domain": [
+                    "copilot.microsoft.com"
+                ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
+                "domain_suffix": [
+                    "microsoft.com",
+                    "windowsupdate.com",
+                    "msn.com",
+                    "lenovo.com"
+                ],
+                "action": "route",
+                "server": "local-dns"
+            },
             {
                 "rule_set": [
                     "GEOSITE-CN"
@@ -54,8 +136,7 @@
             },
             {
                 "rule_set": [
-                    "GEOLOCATION-!CN",
-                    "GEOSITE-APPLE"
+                    "GEOLOCATION-!CN"
                 ],
                 "action": "route",
                 "server": "remote-dns"
@@ -82,11 +163,11 @@
         {
             "type": "tun",
             "address": "172.19.0.1/24",
-            "mtu": 9000,
+            "mtu": 1500,
             "auto_route": true,
             "strict_route": true,
             "auto_redirect": true,
-            "stack": "mixed"
+            "stack": "system"
         },
         {
             "type": "mixed",
@@ -111,49 +192,20 @@
         {
             "tag": "Proxy",
             "outbounds": [
-                "us-vless",
-                "us-hy2",
-                "us-trojan-hostyun",
-                "us-hy2-hostyun",
-                "socksZhangXiaoMi",
+                "naive-VmissUS",
+                "naive-hostUS",
                 "direct",
                 "block"
             ],
-            "default": "us-vless",
-            "interrupt_exist_connections": true,
-            "type": "selector"
-        },
-        {
-            "tag": "Apple",
-            "outbounds": [
-                "us-vless",
-                "us-hy2",
-                "us-trojan-hostyun",
-                "us-hy2-hostyun",
-                "direct",
-                "block"
-            ],
-            "default": "us-vless",
-            "interrupt_exist_connections": true,
-            "type": "selector"
-        },
-        {
-            "tag": "ProxyZhang",
-            "outbounds": [
-                "direct",
-                "socksZhangXiaoMi"
-            ],
-            "default": "direct",
+            "default": "naive-VmissUS",
             "interrupt_exist_connections": true,
             "type": "selector"
         },
         {
             "tag": "Adobe",
             "outbounds": [
-                "us-vless",
-                "us-hy2",
-                "us-trojan-hostyun",
-                "us-hy2-hostyun",
+                "naive-hostUS",
+                "naive-VmissUS",
                 "direct",
                 "block"
             ],
@@ -170,111 +222,39 @@
             "tag": "block"
         },
         {
-            "type": "hysteria2",
-            "tag": "us-hy2-hostyun",
+            "type": "naive",
+            "tag": "naive-hostUS",
             "server": "kidko.speedtestcurl.club",
             "server_port": 443,
-            "up_mbps": 100,
-            "down_mbps": 100,
+            "username": "mason",
             "password": "smxmm1314",
+            "insecure_concurrency": 0,
+            "udp_over_tcp": true,
             "tls": {
                 "enabled": true,
-                "server_name": "kidko.speedtestcurl.club",
-                "alpn": [
-                    "h3"
-                ]
-            },
-            "brutal_debug": false
-        },
-        {
-            "tag": "us-trojan-hostyun",
-            "server": "kidko.speedtestcurl.club",
-            "server_port": 443,
-            "type": "trojan",
-            "password": "smxmm1314",
-            "tls": {
-                "enabled": true,
-                "insecure": false,
                 "server_name": "kidko.speedtestcurl.club"
             }
         },
         {
-            "type": "hysteria2",
-            "tag": "us-hy2",
+            "type": "naive",
+            "tag": "naive-VmissUS",
             "server": "kidkoo.speedtestcurl.club",
             "server_port": 443,
-            "up_mbps": 200,
-            "down_mbps": 200,
+            "username": "mason",
             "password": "smxmm1314",
+            "insecure_concurrency": 0,
+            "udp_over_tcp": true,
             "tls": {
                 "enabled": true,
-                "server_name": "kidkoo.speedtestcurl.club",
-                "alpn": [
-                    "h3"
-                ]
-            },
-            "brutal_debug": false
-        },
-        {
-            "type": "vless",
-            "tag": "us-vless",
-            "server": "kidkoo.speedtestcurl.club",
-            "server_port": 443,
-            "uuid": "f59116b3-c3d7-40a6-98d2-a938d73d5820",
-            "flow": "xtls-rprx-vision",
-            "network": "tcp",
-            "tls": {
-                "enabled": true,
-                "server_name": "kidkoo.speedtestcurl.club",
-                "insecure": false,
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "random"
-                },
-                "reality": {
-                    "enabled": true,
-                    "public_key": "tWx975IE10-ZDyla-ffi06t7yPdBw7P-_CxnztWLUgY",
-                    "short_id": "9df4bb72"
-                }
-            },
-            "packet_encoding": "xudp"
-        },
-        {
-            "tag": "socksZhangXiaoMi",
-            "type": "socks",
-            "server": "11on2nr093847.vicp.fun",
-            "server_port": 2080,
-            "username": "mx",
-            "password": "smxmm1314",
-            "version": "5"
+                "server_name": "kidkoo.speedtestcurl.club"
+            }
         }
     ],
-    "ntp": {
-        "enabled": true,
-        "server": "time.apple.com",
-        "server_port": 123,
-        "interval": "30m",
-        "detour": "direct"
-    },
     "route": {
         "default_domain_resolver": {
             "server": "local-dns"
         },
         "rule_set": [
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "GEOSITE-APPLE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/apple.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "GEOIP-APPLE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo-lite/geoip/apple.srs"
-            },
             {
                 "type": "remote",
                 "format": "binary",
@@ -299,9 +279,15 @@
         ],
         "rules": [
             {
+                "ip_cidr": [
+                    "::/0"
+                ],
+                "action": "reject"
+            },
+            {
                 "inbound": "in",
                 "action": "resolve",
-                "strategy": "prefer_ipv4"
+                "strategy": "ipv4_only"
             },
             {
                 "inbound": "in",
@@ -311,7 +297,7 @@
             {
                 "inbound": "socks-in",
                 "action": "resolve",
-                "strategy": "prefer_ipv4"
+                "strategy": "ipv4_only"
             },
             {
                 "inbound": "socks-in",
@@ -319,7 +305,8 @@
                 "timeout": "1s"
             },
             {
-                "action": "sniff"
+                "action": "sniff",
+                "timeout": "1s"
             },
             {
                 "type": "logical",
@@ -333,6 +320,67 @@
                     }
                 ],
                 "action": "hijack-dns"
+            },
+            {
+                "ip_cidr": [
+                    "127.0.0.0/8"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "ip_cidr": [
+                    "100.64.0.0/10"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
+                "source_ip_cidr": [
+                    "192.168.1.0/24"
+                ],
+                "ip_cidr": [
+                    "192.168.31.0/24"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
+                "domain_suffix": [
+                    "ts.net"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
+            },		
+            {
+                "domain_suffix": [
+                    "bing.com",
+					"cambridge.org",
+                    "bing.net"
+                ],
+                "domain_keyword": [
+                    "copilot"
+                ],
+                "domain": [
+                    "copilot.microsoft.com"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
+                "domain_suffix": [
+                    "microsoft.com",
+                    "windowsupdate.com",
+                    "msn.com",
+                    "lenovo.com"
+                ],
+                "action": "route",
+                "outbound": "direct"
             },
             {
                 "domain_keyword": [
@@ -354,19 +402,17 @@
             },
             {
                 "rule_set": [
-                    "GEOSITE-APPLE",
-                    "GEOIP-APPLE"
-                ],
-                "action": "route",
-                "outbound": "Apple"
-            },
-            {
-                "rule_set": [
-                    "GEOIP-CN",
                     "GEOSITE-CN"
                 ],
                 "action": "route",
-                "outbound": "ProxyZhang"
+                "outbound": "direct"
+            },
+            {
+                "rule_set": [
+                    "GEOIP-CN"
+                ],
+                "action": "route",
+                "outbound": "direct"
             },
             {
                 "rule_set": [
@@ -374,11 +420,6 @@
                 ],
                 "action": "route",
                 "outbound": "Proxy"
-            },
-            {
-                "ip_is_private": true,
-                "action": "route",
-                "outbound": "direct"
             }
         ],
         "auto_detect_interface": true,

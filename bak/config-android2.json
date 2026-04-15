@@ -1,9 +1,17 @@
 {
     "log": {
         "disabled": false,
-        "level": "trace",
+        "level": "info",
         "timestamp": true
     },
+    "endpoints": [
+        {
+            "type": "tailscale",
+            "tag": "tailscale-ep",
+            "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3",
+            "accept_routes": true
+        }
+    ],
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
@@ -23,30 +31,21 @@
     "dns": {
         "servers": [
             {
-                "type": "udp",
-                "tag": "localChai123456",
-                "server": "192.168.1.115"
-            },
-            {
-                "type": "udp",
-                "tag": "localMiWifiDNS",
-                "server": "192.168.31.171"
-            },
-            {
-                "type": "udp",
-                "tag": "localOpenWRTDNS",
-                "server": "192.168.3.111"
-            },
-            {
                 "type": "https",
                 "tag": "remote-dns",
                 "server": "dns.cloudflare.com",
                 "detour": "Proxy"
             },
             {
-                "type": "udp",
+                "type": "https",
                 "tag": "local-dns",
-                "server": "119.29.29.29"
+                "server": "223.5.5.5"
+            },
+            {
+                "type": "tailscale",
+                "tag": "tailscale-dns",
+                "endpoint": "tailscale-ep",
+                "accept_default_resolvers": false
             }
         ],
         "disable_cache": false,
@@ -54,19 +53,29 @@
         "independent_cache": false,
         "rules": [
             {
+                "query_type": [
+                    "AAAA"
+                ],
+                "action": "predefined",
+                "rcode": "NOERROR",
+                "answer": [
+
+                ]
+            },
+            {
+                "domain_suffix": [
+                    "ts.net"
+                ],
+                "server": "tailscale-dns"
+            },
+            {
                 "domain": [
                     "kidko.speedtestcurl.club"
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
                 "answer": [
-                    "kidko.speedtestcurl.club. IN A 38.147.161.82"
-                ],
-                "ns": [
-
-                ],
-                "extra": [
-
+                    "kidko.speedtestcurl.club. IN A 154.40.34.140"
                 ]
             },
             {
@@ -77,12 +86,6 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "kidkoo.speedtestcurl.club. IN A 38.47.116.71"
-                ],
-                "ns": [
-
-                ],
-                "extra": [
-
                 ]
             },
             {
@@ -93,89 +96,7 @@
                 "rcode": "NOERROR",
                 "answer": [
                     "dns.cloudflare.com. IN A 1.1.1.1"
-                ],
-                "ns": [
-
-                ],
-                "extra": [
-
                 ]
-            },
-            {
-                "wifi_ssid": [
-                    "123456"
-                ],
-                "action": "route",
-                "server": "localChai123456"
-            },
-            {
-                "type": "logical",
-                "mode": "and",
-                "rules": [
-                    {
-                        "wifi_ssid": [
-                            "Xiaomi_4B33_5G"
-                        ],
-                        "domain_keyword": [
-                            "11on2nr093847"
-                        ],
-                        "package_name": [
-                            "org.jellyfin.mobile"
-                        ]
-                    }
-                ],
-                "action": "predefined",
-                "rcode": "NOERROR",
-                "answer": [
-                    "11on2nr093847.vicp.fun. IN A 192.168.31.171"
-                ],
-                "ns": [
-
-                ],
-                "extra": [
-
-                ]
-            },
-            {
-                "wifi_ssid": [
-                    "Xiaomi_4B33_5G"
-                ],
-                "action": "route",
-                "server": "localMiWifiDNS"
-            },
-            {
-                "wifi_ssid": [
-                    "OpenWrt5G"
-                ],
-                "action": "route",
-                "server": "localOpenWRTDNS"
-            },
-            {
-                "domain_suffix": [
-                    "91short",
-                    "rou.video",
-                    "missav.ws",
-                    "missav.live"
-                ],
-                "action": "reject",
-                "method": "",
-                "no_drop": false
-            },
-            {
-                "domain_keyword": [
-                    "jav"
-                ],
-                "action": "reject",
-                "method": "",
-                "no_drop": false
-            },
-            {
-                "rule_set": [
-                    "PORN"
-                ],
-                "action": "reject",
-                "method": "",
-                "no_drop": false
             },
             {
                 "rule_set": [
@@ -216,7 +137,7 @@
             "mtu": 1500,
             "auto_route": true,
             "strict_route": true,
-            "stack": "mixed",
+            "stack": "gvisor",
             "exclude_package": [
                 "com.zhihu.android",
                 "io.homeassistant.companion.android",
@@ -236,20 +157,26 @@
                 "com.xiaomi.shop",
                 "com.youku.phone",
                 "com.zjkccb.mbank",
-                "com.eg.android.AlipayGphone",
                 "com.wuba.zhuanzhuan",
                 "com.tencent.mobileqq",
                 "app.landrop.landrop_flutter",
                 "com.xiaomi.market",
+                "com.autonavi.minimap",
                 "com.ss.android.ugc.aweme",
-                "com.tencent.mm"
+                "com.tencent.mm",
+                "com.xiaomi.metoknlp",
+                "com.android.bluetooth",
+                "com.xiaomi.location.fused",
+                "com.android.settings",
+                "com.android.networkstack.tethering",
+                "com.xiaomi.ab"
             ]
         },
         {
             "type": "mixed",
             "tag": "in",
             "listen": "0.0.0.0",
-            "listen_port": 2080
+            "listen_port": 3080
         }
     ],
     "outbounds": [
@@ -280,15 +207,9 @@
             "username": "mason",
             "password": "smxmm1314",
             "insecure_concurrency": 0,
-            "extra_headers": {
-
-            },
-            "udp_over_tcp": false,
-            "quic": false,
-            "quic_congestion_control": "",
+            "udp_over_tcp": true,
             "tls": {
                 "enabled": true,
-                "insecure": false,
                 "server_name": "kidko.speedtestcurl.club"
             }
         },
@@ -300,44 +221,11 @@
             "username": "mason",
             "password": "smxmm1314",
             "insecure_concurrency": 0,
-            "extra_headers": {
-
-            },
-            "udp_over_tcp": false,
-            "quic": false,
-            "quic_congestion_control": "",
+            "udp_over_tcp": true,
             "tls": {
                 "enabled": true,
-                "insecure": false,
                 "server_name": "kidkoo.speedtestcurl.club"
             }
-        },
-        {
-            "tag": "socksXMwifi",
-            "type": "socks",
-            "server": "192.168.31.171",
-            "server_port": 2080,
-            "username": "mx",
-            "password": "smxmm1314",
-            "version": "5"
-        },
-        {
-            "tag": "socksOpenWRT",
-            "type": "socks",
-            "server": "192.168.3.111",
-            "server_port": 2080,
-            "username": "mx",
-            "password": "smxmm1314",
-            "version": "5"
-        },
-        {
-            "tag": "socksChai123456",
-            "type": "socks",
-            "server": "192.168.1.115",
-            "server_port": 2080,
-            "username": "mx",
-            "password": "smxmm1314",
-            "version": "5"
         }
     ],
     "route": {
@@ -365,20 +253,19 @@
                 "download_detour": "Proxy",
                 "tag": "GEOLOCATION-!CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "PORN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-porn.srs"
             }
         ],
         "rules": [
             {
+                "ip_cidr": [
+                    "::/0"
+                ],
+                "action": "reject"
+            },
+            {
                 "inbound": "in",
                 "action": "resolve",
-                "strategy": "prefer_ipv4"
+                "strategy": "ipv4_only"
             },
             {
                 "inbound": "in",
@@ -386,7 +273,8 @@
                 "timeout": "1s"
             },
             {
-                "action": "sniff"
+                "action": "sniff",
+                "timeout": "1s"
             },
             {
                 "type": "logical",
@@ -402,50 +290,30 @@
                 "action": "hijack-dns"
             },
             {
+                "ip_cidr": [
+                    "100.64.0.0/10",
+                    "192.168.31.0/24",
+                    "192.168.1.0/24"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
+                "domain_suffix": [
+                    "ts.net"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
+                "ip_is_private": true,
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
                 "clash_mode": "direct",
                 "action": "route",
                 "outbound": "direct"
-            },
-            {
-                "wifi_ssid": [
-                    "123456"
-                ],
-                "action": "route",
-                "outbound": "socksChai123456"
-            },
-            {
-                "type": "logical",
-                "mode": "and",
-                "rules": [
-                    {
-                        "wifi_ssid": [
-                            "Xiaomi_4B33_5G"
-                        ],
-                        "domain_keyword": [
-                            "11on2nr093847"
-                        ],
-                        "package_name": [
-                            "org.jellyfin.mobile"
-                        ]
-                    }
-                ],
-                "invert": false,
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
-                "wifi_ssid": [
-                    "Xiaomi_4B33_5G"
-                ],
-                "action": "route",
-                "outbound": "socksXMwifi"
-            },
-            {
-                "wifi_ssid": [
-                    "OpenWrt5G"
-                ],
-                "action": "route",
-                "outbound": "socksOpenWRT"
             },
             {
                 "clash_mode": "global",
@@ -453,9 +321,30 @@
                 "outbound": "Proxy"
             },
             {
+                "domain_suffix": [
+                    "bing.com",
+					"cambridge.org",
+                    "bing.net"
+                ],
+                "domain_keyword": [
+                    "copilot"
+                ],
+                "domain": [
+                    "copilot.microsoft.com"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
                 "rule_set": [
-                    "GEOIP-CN",
                     "GEOSITE-CN"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "rule_set": [
+                    "GEOIP-CN"
                 ],
                 "action": "route",
                 "outbound": "direct"
@@ -466,11 +355,6 @@
                 ],
                 "action": "route",
                 "outbound": "Proxy"
-            },
-            {
-                "ip_is_private": true,
-                "action": "route",
-                "outbound": "direct"
             }
         ],
         "auto_detect_interface": true,
