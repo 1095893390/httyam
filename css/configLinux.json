@@ -105,27 +105,6 @@
             },
             {
                 "domain_suffix": [
-                    "91short",
-                    "rou.video",
-                    "missav.ws",
-                    "missav.live"
-                ],
-                "action": "reject"
-            },
-            {
-                "domain_keyword": [
-                    "jav"
-                ],
-                "action": "reject"
-            },
-            {
-                "rule_set": [
-                    "PORN"
-                ],
-                "action": "reject"
-            },
-            {
-                "domain_suffix": [
                     "bing.com",
                     "bing.net"
                 ],
@@ -296,13 +275,6 @@
                 "download_detour": "Proxy",
                 "tag": "GEOLOCATION-!CN",
                 "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
-            },
-            {
-                "type": "remote",
-                "format": "binary",
-                "download_detour": "Proxy",
-                "tag": "PORN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-porn.srs"
             }
         ],
         "rules": [
