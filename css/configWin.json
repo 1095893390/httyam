@@ -111,6 +111,7 @@
                     "GOOGLE",
                     "TGSITE",
                     "GITHUB",
+					"YOUTUBE",
                     "DOCKER"
                 ],
                 "action": "route",
@@ -282,6 +283,13 @@
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
+                "tag": "YOUTUBE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youtube.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
                 "tag": "DOCKER",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/docker.srs"
             }
@@ -365,6 +373,7 @@
                     "TGSITE",
                     "TGIP",
                     "GITHUB",
+					"YOUTUBE",
                     "DOCKER"
                 ],
                 "action": "route",
