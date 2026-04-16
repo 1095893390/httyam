@@ -46,11 +46,6 @@
                 "tag": "tailscale-dns",
                 "endpoint": "tailscale-ep",
                 "accept_default_resolvers": false
-            },
-            {
-                "type": "fakeip",
-                "tag": "fakeip",
-                "inet4_range": "198.18.0.0/15"
             }
         ],
         "disable_cache": false,
@@ -100,13 +95,6 @@
                 "answer": [
                     "dns.cloudflare.com. IN A 1.1.1.1"
                 ]
-            },
-            {
-                "query_type": [
-                    "A",
-                    "AAAA"
-                ],
-                "server": "fakeip"
             },
             {
                 "rule_set": [
