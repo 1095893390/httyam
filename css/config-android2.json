@@ -98,6 +98,13 @@
             },
             {
                 "rule_set": [
+                    "GOOGLE"
+                ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
+                "rule_set": [
                     "GEOSITE-CN"
                 ],
                 "action": "route",
@@ -232,21 +239,28 @@
                 "format": "binary",
                 "download_detour": "Proxy",
                 "tag": "GEOIP-CN",
-                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
                 "tag": "GEOSITE-CN",
-                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
                 "tag": "GEOLOCATION-!CN",
-                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/geolocation-!cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GOOGLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google.srs"
             }
         ],
         "rules": [
@@ -325,6 +339,13 @@
                 ],
                 "domain": [
                     "copilot.microsoft.com"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
+                "rule_set": [
+                    "GOOGLE"
                 ],
                 "action": "route",
                 "outbound": "Proxy"
