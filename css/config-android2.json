@@ -97,8 +97,21 @@
                 ]
             },
             {
+                "clash_mode": "direct",
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "global",
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
                 "rule_set": [
-                    "GOOGLE"
+                    "GOOGLE",
+                    "TGSITE",
+                    "GITHUB",
+                    "DOCKER"
                 ],
                 "action": "route",
                 "server": "remote-dns"
@@ -114,16 +127,6 @@
                 "rule_set": [
                     "GEOLOCATION-!CN"
                 ],
-                "action": "route",
-                "server": "remote-dns"
-            },
-            {
-                "clash_mode": "direct",
-                "action": "route",
-                "server": "local-dns"
-            },
-            {
-                "clash_mode": "global",
                 "action": "route",
                 "server": "remote-dns"
             }
@@ -176,7 +179,7 @@
         {
             "type": "mixed",
             "tag": "in",
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "listen_port": 3080
         }
     ],
@@ -261,6 +264,34 @@
                 "download_detour": "Proxy",
                 "tag": "GOOGLE",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "TGIP",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "TGSITE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GITHUB",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/github.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "DOCKER",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/docker.srs"
             }
         ],
         "rules": [
@@ -274,11 +305,6 @@
                 "inbound": "in",
                 "action": "resolve",
                 "strategy": "ipv4_only"
-            },
-            {
-                "inbound": "in",
-                "action": "sniff",
-                "timeout": "1s"
             },
             {
                 "action": "sniff",
@@ -329,23 +355,12 @@
                 "outbound": "Proxy"
             },
             {
-                "domain_suffix": [
-                    "bing.com",
-                    "cambridge.org",
-                    "bing.net"
-                ],
-                "domain_keyword": [
-                    "copilot"
-                ],
-                "domain": [
-                    "copilot.microsoft.com"
-                ],
-                "action": "route",
-                "outbound": "Proxy"
-            },
-            {
                 "rule_set": [
-                    "GOOGLE"
+                    "GOOGLE",
+                    "TGSITE",
+                    "TGIP",
+                    "GITHUB",
+                    "DOCKER"
                 ],
                 "action": "route",
                 "outbound": "Proxy"
