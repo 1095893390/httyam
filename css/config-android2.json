@@ -139,7 +139,7 @@
         {
             "type": "tun",
             "address": "172.19.0.2/24",
-            "mtu": 1500,
+            "mtu": 9000,
             "auto_route": true,
             "strict_route": true,
             "stack": "gvisor",
@@ -307,6 +307,11 @@
                 "ip_cidr": [
                     "::/0"
                 ],
+                "action": "reject"
+            },
+			{
+                "port": 443,
+                "network": "udp",
                 "action": "reject"
             },
             {
