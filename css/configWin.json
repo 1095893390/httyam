@@ -58,7 +58,9 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": []
+                "answer": [
+
+                ]
             },
             {
                 "domain_suffix": [
@@ -107,11 +109,21 @@
                 "server": "remote-dns"
             },
             {
+                "process_name": [
+                    "JagexLauncher.exe",
+                    "RuneLite.exe",
+                    "osclient.exe",
+                    "JagexLauncherService.exe"
+                ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
                 "rule_set": [
                     "GOOGLE",
                     "TGSITE",
                     "GITHUB",
-					"YOUTUBE",
+                    "YOUTUBE",
                     "DOCKER"
                 ],
                 "action": "route",
@@ -301,7 +313,7 @@
                 ],
                 "action": "reject"
             },
-			{
+            {
                 "port": 443,
                 "network": "udp",
                 "action": "reject"
@@ -373,12 +385,22 @@
                 "outbound": "Proxy"
             },
             {
+                "process_name": [
+                    "JagexLauncher.exe",
+                    "RuneLite.exe",
+                    "osclient.exe",
+                    "JagexLauncherService.exe"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
                 "rule_set": [
                     "GOOGLE",
                     "TGSITE",
                     "TGIP",
                     "GITHUB",
-					"YOUTUBE",
+                    "YOUTUBE",
                     "DOCKER"
                 ],
                 "action": "route",
