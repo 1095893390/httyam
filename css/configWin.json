@@ -113,6 +113,7 @@
                     "JagexLauncher.exe",
                     "RuneLite.exe",
                     "osclient.exe",
+					"HDOS.exe",
                     "JagexLauncherService.exe"
                 ],
                 "action": "route",
@@ -389,6 +390,7 @@
                     "JagexLauncher.exe",
                     "RuneLite.exe",
                     "osclient.exe",
+					"HDOS.exe",
                     "JagexLauncherService.exe"
                 ],
                 "action": "route",
