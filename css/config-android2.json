@@ -58,7 +58,9 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": []
+                "answer": [
+
+                ]
             },
             {
                 "domain_suffix": [
@@ -111,7 +113,7 @@
                     "GOOGLE",
                     "TGSITE",
                     "GITHUB",
-					"YOUTUBE",
+                    "YOUTUBE",
                     "DOCKER"
                 ],
                 "action": "route",
@@ -309,7 +311,7 @@
                 ],
                 "action": "reject"
             },
-			{
+            {
                 "port": 443,
                 "network": "udp",
                 "action": "reject"
@@ -368,12 +370,19 @@
                 "outbound": "Proxy"
             },
             {
+                "package_name": [
+                    "com.jagex.oldscape.android"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
                 "rule_set": [
                     "GOOGLE",
                     "TGSITE",
                     "TGIP",
                     "GITHUB",
-					"YOUTUBE",
+                    "YOUTUBE",
                     "DOCKER"
                 ],
                 "action": "route",
