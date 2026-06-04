@@ -118,7 +118,7 @@
                     "GOOGLE",
                     "TGSITE",
                     "GITHUB",
-					"YOUTUBE",
+                    "YOUTUBE",
                     "DOCKER"
                 ],
                 "action": "route",
@@ -163,6 +163,18 @@
             "tag": "socks-in",
             "listen": "0.0.0.0",
             "listen_port": 2080,
+            "users": [
+                {
+                    "username": "mx",
+                    "password": "smxmm1314"
+                }
+            ]
+        },
+        {
+            "type": "socks",
+            "tag": "socks-in2",
+            "listen": "0.0.0.0",
+            "listen_port": 2082,
             "users": [
                 {
                     "username": "mx",
@@ -309,7 +321,7 @@
                 ],
                 "action": "reject"
             },
-			{
+            {
                 "port": 443,
                 "network": "udp",
                 "action": "reject"
@@ -388,6 +400,13 @@
                 "outbound": "Proxy"
             },
             {
+                "inbound": [
+                    "socks-in2"
+                ],
+                "action": "route",
+                "outbound": "naive-hostUS"
+            },
+            {
                 "domain_keyword": [
                     "adobe",
                     "Adobe"
@@ -401,7 +420,7 @@
                     "TGSITE",
                     "TGIP",
                     "GITHUB",
-					"YOUTUBE",
+                    "YOUTUBE",
                     "DOCKER"
                 ],
                 "action": "route",
