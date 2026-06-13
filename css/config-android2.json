@@ -28,6 +28,21 @@
             "store_rdrc": false
         }
     },
+    "http_clients": [
+        {
+            "tag": "rule_downloader",
+            "detour": "Proxy"
+        }
+    ],
+    "services": [
+        {
+            "type": "api",
+            "listen": "0.0.0.0",
+            "listen_port": 9094,
+            "secret": "smxmm1314",
+            "access_control_allow_private_network": true
+        }
+    ],
     "dns": {
         "servers": [
             {
@@ -243,63 +258,63 @@
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOIP-CN",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOSITE-CN",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOLOCATION-!CN",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/geolocation-!cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GOOGLE",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "TGIP",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "TGSITE",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GITHUB",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/github.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "YOUTUBE",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youtube.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "DOCKER",
                 "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/docker.srs"
             }
