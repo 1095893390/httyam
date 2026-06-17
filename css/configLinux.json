@@ -181,6 +181,18 @@
                     "password": "smxmm1314"
                 }
             ]
+        },
+        {
+            "type": "socks",
+            "tag": "socks-in3",
+            "listen": "0.0.0.0",
+            "listen_port": 2083,
+            "users": [
+                {
+                    "username": "mx",
+                    "password": "smxmm1314"
+                }
+            ]
         }
     ],
     "outbounds": [
@@ -405,6 +417,13 @@
                 ],
                 "action": "route",
                 "outbound": "naive-hostUS"
+            },
+            {
+                "inbound": [
+                    "socks-in3"
+                ],
+                "action": "route",
+                "outbound": "naive-VmissUS"
             },
             {
                 "domain_keyword": [
