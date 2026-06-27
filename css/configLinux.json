@@ -11,7 +11,9 @@
             "tag": "tailscale-ep",
             "accept_routes": true,
             "state_directory": "/etc/sing-box/files",
-            "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3",
+			"system_interface": true,
+			"ephemeral": false,
+            "auth_key": "tskey-auth-kDxtzDzZTa11CNTRL-nBbPFZTq8N7AhxZgy4VGN7nd6kmMMoiK",
             "advertise_routes": [
                 "192.168.31.0/24",
 				"192.168.1.0/24"
