@@ -393,6 +393,16 @@
                 "outbound": "tailscale-ep"
             },
             {
+                "source_ip_cidr": [
+                    "192.168.31.0/24"
+                ],
+                "ip_cidr": [
+                    "192.168.1.0/24"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
                 "domain_suffix": [
                     "ts.net"
                 ],
