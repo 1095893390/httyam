@@ -8,6 +8,8 @@
         {
             "type": "tailscale",
             "tag": "tailscale-ep",
+			"state_directory": "ts_state",
+			"ephemeral": false,
             "auth_key": "tskey-auth-kDxtzDzZTa11CNTRL-nBbPFZTq8N7AhxZgy4VGN7nd6kmMMoiK",
             "accept_routes": true
         }
@@ -159,7 +161,7 @@
             "mtu": 9000,
             "auto_route": true,
             "strict_route": true,
-            "stack": "gvisor",
+            "stack": "system",
             "exclude_package": [
                 "com.zhihu.android",
                 "io.homeassistant.companion.android",

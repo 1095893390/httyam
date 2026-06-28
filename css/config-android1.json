@@ -114,7 +114,7 @@
             "mtu": 9000,
             "auto_route": true,
             "strict_route": true,
-            "stack": "gvisor",
+            "stack": "system",
             "exclude_package": [
                 "com.zhihu.android",
                 "io.homeassistant.companion.android",
