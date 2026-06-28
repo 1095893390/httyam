@@ -5,6 +5,19 @@
         "output": "/etc/sing-box/box.log",
         "timestamp": true
     },
+    "endpoints": [
+        {
+            "type": "tailscale",
+            "tag": "tailscale-ep",
+            "accept_routes": true,
+            "state_directory": "/etc/sing-box/files",
+            "auth_key": "tskey-auth-kDxtzDzZTa11CNTRL-nBbPFZTq8N7AhxZgy4VGN7nd6kmMMoiK",
+            "advertise_routes": [
+                "192.168.31.0/24",
+				"192.168.1.0/24"
+            ]
+        }
+    ],
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
@@ -33,6 +46,12 @@
                 "type": "https",
                 "tag": "local-dns",
                 "server": "223.5.5.5"
+            },
+            {
+                "type": "tailscale",
+                "tag": "tailscale-dns",
+                "endpoint": "tailscale-ep",
+                "accept_default_resolvers": false
             }
         ],
         "disable_cache": false,
@@ -48,6 +67,12 @@
                 "answer": [
 
                 ]
+            },
+            {
+                "domain_suffix": [
+                    "ts.net"
+                ],
+                "server": "tailscale-dns"
             },
             {
                 "domain": [
@@ -122,14 +147,11 @@
         {
             "type": "tun",
             "address": "172.19.0.1/24",
-            "mtu": 1280,
+            "mtu": 9000,
             "auto_route": true,
             "strict_route": true,
             "auto_redirect": true,
-            "stack": "system",
-            "route_exclude_address": [
-                "39.98.57.168/32"
-            ]
+            "stack": "system"
         },
         {
             "type": "mixed",
@@ -308,13 +330,6 @@
         "rules": [
             {
                 "ip_cidr": [
-                    "39.98.57.168/32"
-                ],
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
-                "ip_cidr": [
                     "::/0"
                 ],
                 "action": "reject"
@@ -350,6 +365,37 @@
                     }
                 ],
                 "action": "hijack-dns"
+            },
+            {
+                "ip_cidr": [
+                    "127.0.0.0/8"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "ip_cidr": [
+                    "100.64.0.0/10"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
+                "source_ip_cidr": [
+                    "192.168.1.0/24"
+                ],
+                "ip_cidr": [
+                    "192.168.31.0/24"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
+            },
+            {
+                "domain_suffix": [
+                    "ts.net"
+                ],
+                "action": "route",
+                "outbound": "tailscale-ep"
             },
             {
                 "ip_is_private": true,

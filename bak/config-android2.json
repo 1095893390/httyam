@@ -8,7 +8,9 @@
         {
             "type": "tailscale",
             "tag": "tailscale-ep",
-            "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3",
+			"state_directory": "ts_state",
+			"ephemeral": false,
+            "auth_key": "tskey-auth-kDxtzDzZTa11CNTRL-nBbPFZTq8N7AhxZgy4VGN7nd6kmMMoiK",
             "accept_routes": true
         }
     ],
@@ -28,6 +30,21 @@
             "store_rdrc": false
         }
     },
+    "http_clients": [
+        {
+            "tag": "rule_downloader",
+            "detour": "Proxy"
+        }
+    ],
+    "services": [
+        {
+            "type": "api",
+            "listen": "0.0.0.0",
+            "listen_port": 9094,
+            "secret": "smxmm1314",
+            "access_control_allow_private_network": true
+        }
+    ],
     "dns": {
         "servers": [
             {
@@ -99,6 +116,27 @@
                 ]
             },
             {
+                "clash_mode": "direct",
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "global",
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
+                "rule_set": [
+                    "GOOGLE",
+                    "TGSITE",
+                    "GITHUB",
+                    "YOUTUBE",
+                    "DOCKER"
+                ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
                 "rule_set": [
                     "GEOSITE-CN"
                 ],
@@ -111,22 +149,8 @@
                 ],
                 "action": "route",
                 "server": "remote-dns"
-            },
-            {
-                "clash_mode": "direct",
-                "action": "route",
-                "server": "local-dns"
-            },
-            {
-                "clash_mode": "global",
-                "action": "route",
-                "server": "remote-dns"
             }
         ],
-        "fakeip": {
-            "enabled": false,
-            "inet4_range": "198.18.0.1/16"
-        },
         "final": "remote-dns",
         "strategy": "ipv4_only"
     },
@@ -134,10 +158,10 @@
         {
             "type": "tun",
             "address": "172.19.0.2/24",
-            "mtu": 1500,
+            "mtu": 9000,
             "auto_route": true,
             "strict_route": true,
-            "stack": "gvisor",
+            "stack": "system",
             "exclude_package": [
                 "com.zhihu.android",
                 "io.homeassistant.companion.android",
@@ -175,7 +199,7 @@
         {
             "type": "mixed",
             "tag": "in",
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "listen_port": 3080
         }
     ],
@@ -236,23 +260,65 @@
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOIP-CN",
-                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOSITE-CN",
-                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOLOCATION-!CN",
-                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/geolocation-!cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "http_client": "rule_downloader",
+                "tag": "GOOGLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "http_client": "rule_downloader",
+                "tag": "TGIP",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "http_client": "rule_downloader",
+                "tag": "TGSITE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "http_client": "rule_downloader",
+                "tag": "GITHUB",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/github.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "http_client": "rule_downloader",
+                "tag": "YOUTUBE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youtube.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "http_client": "rule_downloader",
+                "tag": "DOCKER",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/docker.srs"
             }
         ],
         "rules": [
@@ -263,14 +329,14 @@
                 "action": "reject"
             },
             {
-                "inbound": "in",
-                "action": "resolve",
-                "strategy": "ipv4_only"
+                "port": 443,
+                "network": "udp",
+                "action": "reject"
             },
             {
                 "inbound": "in",
-                "action": "sniff",
-                "timeout": "1s"
+                "action": "resolve",
+                "strategy": "ipv4_only"
             },
             {
                 "action": "sniff",
@@ -288,6 +354,13 @@
                     }
                 ],
                 "action": "hijack-dns"
+            },
+            {
+                "package_name": [
+                    "com.jagex.oldscape.android"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
             },
             {
                 "ip_cidr": [
@@ -321,16 +394,13 @@
                 "outbound": "Proxy"
             },
             {
-                "domain_suffix": [
-                    "bing.com",
-					"cambridge.org",
-                    "bing.net"
-                ],
-                "domain_keyword": [
-                    "copilot"
-                ],
-                "domain": [
-                    "copilot.microsoft.com"
+                "rule_set": [
+                    "GOOGLE",
+                    "TGSITE",
+                    "TGIP",
+                    "GITHUB",
+                    "YOUTUBE",
+                    "DOCKER"
                 ],
                 "action": "route",
                 "outbound": "Proxy"

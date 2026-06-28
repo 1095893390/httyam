@@ -5,18 +5,6 @@
         "output": "/etc/sing-box/box.log",
         "timestamp": true
     },
-    "endpoints": [
-        {
-            "type": "tailscale",
-            "tag": "tailscale-ep",
-            "accept_routes": true,
-            "state_directory": "/etc/sing-box/files",
-            "auth_key": "tskey-auth-kvTu7zDqTH11CNTRL-C1yeNwSpYPTt1LurPreHQTEfQAqFRn9i3",
-            "advertise_routes": [
-                "192.168.31.0/24"
-            ]
-        }
-    ],
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
@@ -45,12 +33,6 @@
                 "type": "https",
                 "tag": "local-dns",
                 "server": "223.5.5.5"
-            },
-            {
-                "type": "tailscale",
-                "tag": "tailscale-dns",
-                "endpoint": "tailscale-ep",
-                "accept_default_resolvers": false
             }
         ],
         "disable_cache": false,
@@ -66,12 +48,6 @@
                 "answer": [
 
                 ]
-            },
-            {
-                "domain_suffix": [
-                    "ts.net"
-                ],
-                "server": "tailscale-dns"
             },
             {
                 "domain": [
@@ -104,28 +80,25 @@
                 ]
             },
             {
-                "domain_suffix": [
-                    "bing.com",
-                    "bing.net"
-                ],
-                "domain_keyword": [
-                    "copilot"
-                ],
-                "domain": [
-                    "copilot.microsoft.com"
-                ],
+                "clash_mode": "direct",
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "global",
                 "action": "route",
                 "server": "remote-dns"
             },
             {
-                "domain_suffix": [
-                    "microsoft.com",
-                    "windowsupdate.com",
-                    "msn.com",
-                    "lenovo.com"
+                "rule_set": [
+                    "GOOGLE",
+                    "TGSITE",
+                    "GITHUB",
+                    "YOUTUBE",
+                    "DOCKER"
                 ],
                 "action": "route",
-                "server": "local-dns"
+                "server": "remote-dns"
             },
             {
                 "rule_set": [
@@ -140,22 +113,8 @@
                 ],
                 "action": "route",
                 "server": "remote-dns"
-            },
-            {
-                "clash_mode": "direct",
-                "action": "route",
-                "server": "local-dns"
-            },
-            {
-                "clash_mode": "global",
-                "action": "route",
-                "server": "remote-dns"
             }
         ],
-        "fakeip": {
-            "enabled": false,
-            "inet4_range": "198.18.0.1/16"
-        },
         "final": "remote-dns",
         "strategy": "ipv4_only"
     },
@@ -163,11 +122,14 @@
         {
             "type": "tun",
             "address": "172.19.0.1/24",
-            "mtu": 1500,
+            "mtu": 1280,
             "auto_route": true,
             "strict_route": true,
             "auto_redirect": true,
-            "stack": "system"
+            "stack": "system",
+            "route_exclude_address": [
+                "39.98.57.168/32"
+            ]
         },
         {
             "type": "mixed",
@@ -180,6 +142,30 @@
             "tag": "socks-in",
             "listen": "0.0.0.0",
             "listen_port": 2080,
+            "users": [
+                {
+                    "username": "mx",
+                    "password": "smxmm1314"
+                }
+            ]
+        },
+        {
+            "type": "socks",
+            "tag": "socks-in2",
+            "listen": "0.0.0.0",
+            "listen_port": 2082,
+            "users": [
+                {
+                    "username": "mx",
+                    "password": "smxmm1314"
+                }
+            ]
+        },
+        {
+            "type": "socks",
+            "tag": "socks-in3",
+            "listen": "0.0.0.0",
+            "listen_port": 2083,
             "users": [
                 {
                     "username": "mx",
@@ -260,28 +246,82 @@
                 "format": "binary",
                 "download_detour": "Proxy",
                 "tag": "GEOIP-CN",
-                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
                 "tag": "GEOSITE-CN",
-                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "download_detour": "Proxy",
                 "tag": "GEOLOCATION-!CN",
-                "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/geolocation-!cn.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GOOGLE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "TGIP",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "TGSITE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "GITHUB",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/github.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "YOUTUBE",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youtube.srs"
+            },
+            {
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "Proxy",
+                "tag": "DOCKER",
+                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/docker.srs"
             }
         ],
         "rules": [
             {
                 "ip_cidr": [
+                    "39.98.57.168/32"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "ip_cidr": [
                     "::/0"
                 ],
+                "action": "reject"
+            },
+            {
+                "port": 443,
+                "network": "udp",
                 "action": "reject"
             },
             {
@@ -290,19 +330,9 @@
                 "strategy": "ipv4_only"
             },
             {
-                "inbound": "in",
-                "action": "sniff",
-                "timeout": "1s"
-            },
-            {
                 "inbound": "socks-in",
                 "action": "resolve",
                 "strategy": "ipv4_only"
-            },
-            {
-                "inbound": "socks-in",
-                "action": "sniff",
-                "timeout": "1s"
             },
             {
                 "action": "sniff",
@@ -322,65 +352,33 @@
                 "action": "hijack-dns"
             },
             {
-                "ip_cidr": [
-                    "127.0.0.0/8"
-                ],
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
-                "ip_cidr": [
-                    "100.64.0.0/10"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
-                "source_ip_cidr": [
-                    "192.168.1.0/24"
-                ],
-                "ip_cidr": [
-                    "192.168.31.0/24"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
-                "domain_suffix": [
-                    "ts.net"
-                ],
-                "action": "route",
-                "outbound": "tailscale-ep"
-            },
-            {
                 "ip_is_private": true,
                 "action": "route",
                 "outbound": "direct"
-            },		
+            },
             {
-                "domain_suffix": [
-                    "bing.com",
-					"cambridge.org",
-                    "bing.net"
-                ],
-                "domain_keyword": [
-                    "copilot"
-                ],
-                "domain": [
-                    "copilot.microsoft.com"
-                ],
+                "clash_mode": "direct",
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "global",
                 "action": "route",
                 "outbound": "Proxy"
             },
             {
-                "domain_suffix": [
-                    "microsoft.com",
-                    "windowsupdate.com",
-                    "msn.com",
-                    "lenovo.com"
+                "inbound": [
+                    "socks-in2"
                 ],
                 "action": "route",
-                "outbound": "direct"
+                "outbound": "naive-hostUS"
+            },
+            {
+                "inbound": [
+                    "socks-in3"
+                ],
+                "action": "route",
+                "outbound": "naive-VmissUS"
             },
             {
                 "domain_keyword": [
@@ -391,12 +389,14 @@
                 "outbound": "Adobe"
             },
             {
-                "clash_mode": "direct",
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
-                "clash_mode": "global",
+                "rule_set": [
+                    "GOOGLE",
+                    "TGSITE",
+                    "TGIP",
+                    "GITHUB",
+                    "YOUTUBE",
+                    "DOCKER"
+                ],
                 "action": "route",
                 "outbound": "Proxy"
             },
