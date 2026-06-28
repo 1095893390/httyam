@@ -10,7 +10,7 @@
             "tag": "tailscale-ep",
             "state_directory": "ts_state",
             "ephemeral": false,
-            "auth_key": "tskey-auth-k5uGkmtc7521CNTRL-3VRBSZeJDi69EWEHZTPzi65R26bdm2ci",
+            "auth_key": "tskey-auth-kDxtzDzZTa11CNTRL-nBbPFZTq8N7AhxZgy4VGN7nd6kmMMoiK",
             "system_interface": true,
             "accept_routes": true
         }
