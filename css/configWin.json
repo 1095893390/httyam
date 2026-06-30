@@ -2,16 +2,17 @@
     "log": {
         "disabled": false,
         "level": "info",
+		"output": "./box.log",
         "timestamp": true
     },
     "endpoints": [
         {
             "type": "tailscale",
             "tag": "tailscale-ep",
-            "state_directory": "ts_state",
+            "state_directory": "./ts_state",
             "ephemeral": false,
-            "auth_key": "tskey-auth-kDxtzDzZTa11CNTRL-nBbPFZTq8N7AhxZgy4VGN7nd6kmMMoiK",
-            "system_interface": true,
+            "auth_key": "tskey-auth-kdozQBnRfo11CNTRL-MwzFqA9MQX3PxxjkAd7yW36patovJGoL",
+            "system_interface": false,
             "accept_routes": true
         }
     ],
