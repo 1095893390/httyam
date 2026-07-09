@@ -8,8 +8,8 @@
         {
             "type": "tailscale",
             "tag": "tailscale-ep",
-			"state_directory": "ts_state",
-			"ephemeral": false,
+            "state_directory": "ts_state",
+            "ephemeral": false,
             "auth_key": "tskey-auth-kfSgnfWQT511CNTRL-knb2ggR9h3HcNQ33mV1s3H2SHZUZ8RxZT",
             "accept_routes": true
         }
@@ -192,16 +192,16 @@
                 "com.android.bluetooth",
                 "com.xiaomi.location.fused",
                 "com.android.settings",
-				"com.miui.analytics",
-				"com.sohu.inputmethod.sogou.xiaomi",
-				"com.miui.cloudservice",
-				"com.android.updater",
-				"com.miui.guardprovider",
-				"com.miui.weather2",
-				"com.android.htmlviewer",
-				"com.android.camera",
-				"com.miui.passwords",
-				"com.mobiletools.systemhelper",
+                "com.miui.analytics",
+                "com.sohu.inputmethod.sogou.xiaomi",
+                "com.miui.cloudservice",
+                "com.android.updater",
+                "com.miui.guardprovider",
+                "com.miui.weather2",
+                "com.android.htmlviewer",
+                "com.android.camera",
+                "com.miui.passwords",
+                "com.mobiletools.systemhelper",
                 "com.android.networkstack.tethering",
                 "com.xiaomi.ab"
             ]
