@@ -192,6 +192,16 @@
                 "com.android.bluetooth",
                 "com.xiaomi.location.fused",
                 "com.android.settings",
+				"com.miui.analytics",
+				"com.sohu.inputmethod.sogou.xiaomi",
+				"com.miui.cloudservice",
+				"com.android.updater",
+				"com.miui.guardprovider",
+				"com.miui.weather2",
+				"com.android.htmlviewer",
+				"com.android.camera",
+				"com.miui.passwords",
+				"com.mobiletools.systemhelper",
                 "com.android.networkstack.tethering",
                 "com.xiaomi.ab"
             ]
