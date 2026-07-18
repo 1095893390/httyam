@@ -203,6 +203,8 @@
                 "com.miui.passwords",
                 "com.mobiletools.systemhelper",
                 "com.android.networkstack.tethering",
+                "com.miui.cloudbackup",
+                "com.android.mms",
                 "com.xiaomi.ab"
             ]
         },
