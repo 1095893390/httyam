@@ -205,6 +205,10 @@
                 "com.android.networkstack.tethering",
                 "com.miui.cloudbackup",
                 "com.android.mms",
+                "com.lbe.security.miui",
+                "com.miui.hybrid",
+                "com.xiaomi.finddevice",
+                "com.xiaomi.account",
                 "com.xiaomi.ab"
             ]
         },
