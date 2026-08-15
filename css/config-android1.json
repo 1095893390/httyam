@@ -17,9 +17,23 @@
             "enabled": true,
             "path": "cache.db",
             "store_fakeip": false,
-            "store_rdrc": false
+            "store_dns": false
         }
     },
+    "http_clients": [
+        {
+            "tag": "rule_downloader"
+        }
+    ],
+    "services": [
+        {
+            "type": "api",
+            "listen": "0.0.0.0",
+            "listen_port": 9094,
+            "secret": "smxmm1314",
+            "access_control_allow_private_network": true
+        }
+    ],
     "dns": {
         "servers": [
             {
@@ -36,7 +50,6 @@
         ],
         "disable_cache": false,
         "disable_expire": false,
-        "independent_cache": false,
         "rules": [
             {
                 "query_type": [
@@ -46,16 +59,6 @@
                 "rcode": "NOERROR",
                 "answer": [
 
-                ]
-            },
-            {
-                "domain": [
-                    "kidko.speedtestcurl.club"
-                ],
-                "action": "predefined",
-                "rcode": "NOERROR",
-                "answer": [
-                    "kidko.speedtestcurl.club. IN A 154.40.34.140"
                 ]
             },
             {
@@ -83,7 +86,7 @@
                     "GOOGLE",
                     "TGSITE",
                     "GITHUB",
-					"YOUTUBE",
+                    "YOUTUBE",
                     "DOCKER"
                 ],
                 "action": "route",
@@ -100,6 +103,22 @@
                 "rule_set": [
                     "GEOLOCATION-!CN"
                 ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
+                "action": "evaluate",
+                "server": "remote-dns"
+            },
+            {
+                "match_response": true,
+                "rule_set": [
+                    "GEOIP-CN"
+                ],
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
                 "action": "route",
                 "server": "remote-dns"
             }
@@ -145,7 +164,23 @@
                 "com.android.bluetooth",
                 "com.xiaomi.location.fused",
                 "com.android.settings",
+                "com.miui.analytics",
+                "com.sohu.inputmethod.sogou.xiaomi",
+                "com.miui.cloudservice",
+                "com.android.updater",
+                "com.miui.guardprovider",
+                "com.miui.weather2",
+                "com.android.htmlviewer",
+                "com.android.camera",
+                "com.miui.passwords",
+                "com.mobiletools.systemhelper",
                 "com.android.networkstack.tethering",
+                "com.miui.cloudbackup",
+                "com.android.mms",
+                "com.lbe.security.miui",
+                "com.miui.hybrid",
+                "com.xiaomi.finddevice",
+                "com.xiaomi.account",
                 "com.xiaomi.ab"
             ]
         },
@@ -178,20 +213,14 @@
         {
             "type": "naive",
             "tag": "naive-hostUS",
-            "server": "kidko.speedtestcurl.club",
+            "server": "154.40.34.140",
             "server_port": 443,
             "username": "mason",
             "password": "smxmm1314",
             "insecure_concurrency": 0,
-            "extra_headers": {
-
-            },
             "udp_over_tcp": true,
-            "quic": false,
-            "quic_congestion_control": "",
             "tls": {
                 "enabled": true,
-                "insecure": false,
                 "server_name": "kidko.speedtestcurl.club"
             }
         }
@@ -204,65 +233,65 @@
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOIP-CN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOSITE-CN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/cn.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOLOCATION-!CN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/geolocation-!cn.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GOOGLE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "TGIP",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "TGSITE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GITHUB",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/github.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "YOUTUBE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youtube.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "DOCKER",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/docker.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/docker.srs"
             }
         ],
         "rules": [
@@ -272,7 +301,7 @@
                 ],
                 "action": "reject"
             },
-			{
+            {
                 "port": 443,
                 "network": "udp",
                 "action": "reject"
@@ -300,6 +329,13 @@
                 "action": "hijack-dns"
             },
             {
+                "package_name": [
+                    "com.jagex.oldscape.android"
+                ],
+                "action": "route",
+                "outbound": "Proxy"
+            },
+            {
                 "ip_is_private": true,
                 "action": "route",
                 "outbound": "direct"
@@ -320,7 +356,7 @@
                     "TGSITE",
                     "TGIP",
                     "GITHUB",
-					"YOUTUBE",
+                    "YOUTUBE",
                     "DOCKER"
                 ],
                 "action": "route",

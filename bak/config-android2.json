@@ -8,9 +8,9 @@
         {
             "type": "tailscale",
             "tag": "tailscale-ep",
-			"state_directory": "ts_state",
-			"ephemeral": false,
-            "auth_key": "tskey-auth-kDxtzDzZTa11CNTRL-nBbPFZTq8N7AhxZgy4VGN7nd6kmMMoiK",
+            "state_directory": "ts_state",
+            "ephemeral": false,
+            "auth_key": "tskey-auth-kfSgnfWQT511CNTRL-knb2ggR9h3HcNQ33mV1s3H2SHZUZ8RxZT",
             "accept_routes": true
         }
     ],
@@ -27,13 +27,12 @@
             "enabled": true,
             "path": "cache.db",
             "store_fakeip": false,
-            "store_rdrc": false
+            "store_dns": false
         }
     },
     "http_clients": [
         {
-            "tag": "rule_downloader",
-            "detour": "Proxy"
+            "tag": "rule_downloader"
         }
     ],
     "services": [
@@ -67,7 +66,6 @@
         ],
         "disable_cache": false,
         "disable_expire": false,
-        "independent_cache": false,
         "rules": [
             {
                 "query_type": [
@@ -84,26 +82,6 @@
                     "ts.net"
                 ],
                 "server": "tailscale-dns"
-            },
-            {
-                "domain": [
-                    "kidko.speedtestcurl.club"
-                ],
-                "action": "predefined",
-                "rcode": "NOERROR",
-                "answer": [
-                    "kidko.speedtestcurl.club. IN A 154.40.34.140"
-                ]
-            },
-            {
-                "domain": [
-                    "kidkoo.speedtestcurl.club"
-                ],
-                "action": "predefined",
-                "rcode": "NOERROR",
-                "answer": [
-                    "kidkoo.speedtestcurl.club. IN A 38.47.116.71"
-                ]
             },
             {
                 "domain": [
@@ -149,6 +127,22 @@
                 ],
                 "action": "route",
                 "server": "remote-dns"
+            },
+            {
+                "action": "evaluate",
+                "server": "remote-dns"
+            },
+            {
+                "match_response": true,
+                "rule_set": [
+                    "GEOIP-CN"
+                ],
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
+                "action": "route",
+                "server": "remote-dns"
             }
         ],
         "final": "remote-dns",
@@ -158,7 +152,7 @@
         {
             "type": "tun",
             "address": "172.19.0.2/24",
-            "mtu": 9000,
+            "mtu": 1500,
             "auto_route": true,
             "strict_route": true,
             "stack": "system",
@@ -192,7 +186,23 @@
                 "com.android.bluetooth",
                 "com.xiaomi.location.fused",
                 "com.android.settings",
+                "com.miui.analytics",
+                "com.sohu.inputmethod.sogou.xiaomi",
+                "com.miui.cloudservice",
+                "com.android.updater",
+                "com.miui.guardprovider",
+                "com.miui.weather2",
+                "com.android.htmlviewer",
+                "com.android.camera",
+                "com.miui.passwords",
+                "com.mobiletools.systemhelper",
                 "com.android.networkstack.tethering",
+                "com.miui.cloudbackup",
+                "com.android.mms",
+                "com.lbe.security.miui",
+                "com.miui.hybrid",
+                "com.xiaomi.finddevice",
+                "com.xiaomi.account",
                 "com.xiaomi.ab"
             ]
         },
@@ -226,7 +236,7 @@
         {
             "type": "naive",
             "tag": "naive-hostUS",
-            "server": "kidko.speedtestcurl.club",
+            "server": "154.40.34.140",
             "server_port": 443,
             "username": "mason",
             "password": "smxmm1314",
@@ -240,7 +250,7 @@
         {
             "type": "naive",
             "tag": "naive-VmissUS",
-            "server": "kidkoo.speedtestcurl.club",
+            "server": "38.47.116.71",
             "server_port": 443,
             "username": "mason",
             "password": "smxmm1314",
@@ -262,63 +272,63 @@
                 "format": "binary",
                 "http_client": "rule_downloader",
                 "tag": "GEOIP-CN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "http_client": "rule_downloader",
                 "tag": "GEOSITE-CN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/cn.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "http_client": "rule_downloader",
                 "tag": "GEOLOCATION-!CN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/geolocation-!cn.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "http_client": "rule_downloader",
                 "tag": "GOOGLE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "http_client": "rule_downloader",
                 "tag": "TGIP",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "http_client": "rule_downloader",
                 "tag": "TGSITE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "http_client": "rule_downloader",
                 "tag": "GITHUB",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/github.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "http_client": "rule_downloader",
                 "tag": "YOUTUBE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youtube.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
                 "http_client": "rule_downloader",
                 "tag": "DOCKER",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/docker.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/docker.srs"
             }
         ],
         "rules": [
@@ -366,7 +376,7 @@
                 "ip_cidr": [
                     "100.64.0.0/10",
                     "192.168.31.0/24",
-                    "192.168.1.0/24"
+                    "192.168.0.0/24"
                 ],
                 "action": "route",
                 "outbound": "tailscale-ep"
