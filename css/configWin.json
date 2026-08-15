@@ -2,7 +2,7 @@
     "log": {
         "disabled": false,
         "level": "info",
-		"output": "./box.log",
+        "output": "./box.log",
         "timestamp": true
     },
     "endpoints": [
@@ -29,9 +29,14 @@
             "enabled": true,
             "path": "cache.db",
             "store_fakeip": false,
-            "store_rdrc": false
+            "store_dns": false
         }
     },
+    "http_clients": [
+        {
+            "tag": "rule_downloader"
+        }
+    ],
     "dns": {
         "servers": [
             {
@@ -54,7 +59,6 @@
         ],
         "disable_cache": false,
         "disable_expire": false,
-        "independent_cache": false,
         "rules": [
             {
                 "query_type": [
@@ -71,26 +75,6 @@
                     "ts.net"
                 ],
                 "server": "tailscale-dns"
-            },
-            {
-                "domain": [
-                    "kidko.speedtestcurl.club"
-                ],
-                "action": "predefined",
-                "rcode": "NOERROR",
-                "answer": [
-                    "kidko.speedtestcurl.club. IN A 154.40.34.140"
-                ]
-            },
-            {
-                "domain": [
-                    "kidkoo.speedtestcurl.club"
-                ],
-                "action": "predefined",
-                "rcode": "NOERROR",
-                "answer": [
-                    "kidkoo.speedtestcurl.club. IN A 38.47.116.71"
-                ]
             },
             {
                 "domain": [
@@ -145,6 +129,22 @@
                 "rule_set": [
                     "GEOLOCATION-!CN"
                 ],
+                "action": "route",
+                "server": "remote-dns"
+            },
+            {
+                "action": "evaluate",
+                "server": "remote-dns"
+            },
+            {
+                "match_response": true,
+                "rule_set": [
+                    "GEOIP-CN"
+                ],
+                "action": "route",
+                "server": "local-dns"
+            },
+            {
                 "action": "route",
                 "server": "remote-dns"
             }
@@ -216,7 +216,7 @@
         {
             "type": "naive",
             "tag": "naive-hostUS",
-            "server": "kidko.speedtestcurl.club",
+            "server": "154.40.34.140",
             "server_port": 443,
             "username": "mason",
             "password": "smxmm1314",
@@ -230,7 +230,7 @@
         {
             "type": "naive",
             "tag": "naive-VmissUS",
-            "server": "kidkoo.speedtestcurl.club",
+            "server": "38.47.116.71",
             "server_port": 443,
             "username": "mason",
             "password": "smxmm1314",
@@ -250,65 +250,65 @@
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOIP-CN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOSITE-CN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/cn.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GEOLOCATION-!CN",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/geolocation-!cn.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GOOGLE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/google.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "TGIP",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "TGSITE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "GITHUB",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/github.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "YOUTUBE",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/youtube.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs"
             },
             {
                 "type": "remote",
                 "format": "binary",
-                "download_detour": "Proxy",
+                "http_client": "rule_downloader",
                 "tag": "DOCKER",
-                "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/docker.srs"
+                "url": "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/docker.srs"
             }
         ],
         "rules": [
