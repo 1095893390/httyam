@@ -32,7 +32,8 @@
     },
     "http_clients": [
         {
-            "tag": "rule_downloader"
+            "tag": "rule_downloader",
+			"detour": "Proxy"
         }
     ],
     "services": [
