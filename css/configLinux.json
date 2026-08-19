@@ -241,7 +241,7 @@
             "udp_over_tcp": true,
             "tls": {
                 "enabled": true,
-                "server_name": "kidko.speedtestcurl.club"
+                "server_name": "kidko.speedtestwget.xyz"
             }
         },
         {
