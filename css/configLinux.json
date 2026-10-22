@@ -18,6 +18,13 @@
             ]
         }
     ],
+    "certificate_providers": [
+        {
+            "type": "tailscale",
+            "tag": "ts-cert",
+            "endpoint": "tailscale-ep"
+        }
+    ],
     "experimental": {
         "clash_api": {
             "external_controller": "0.0.0.0:9095",
@@ -37,7 +44,7 @@
     "http_clients": [
         {
             "tag": "rule_downloader",
-			"detour": "Proxy"
+            "detour": "Proxy"
         }
     ],
     "dns": {
@@ -69,9 +76,7 @@
                 ],
                 "action": "predefined",
                 "rcode": "NOERROR",
-                "answer": [
-
-                ]
+                "answer": []
             },
             {
                 "domain_suffix": [
