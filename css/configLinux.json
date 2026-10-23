@@ -12,6 +12,8 @@
             "accept_routes": true,
             "state_directory": "/etc/sing-box/files",
             "auth_key": "tskey-auth-kDxtzDzZTa11CNTRL-nBbPFZTq8N7AhxZgy4VGN7nd6kmMMoiK",
+			"udp_timeout": "10m",
+			"listen_port": 41641,
             "advertise_routes": [
                 "192.168.31.0/24",
                 "192.168.0.0/24"

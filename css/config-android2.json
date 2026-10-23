@@ -11,7 +11,9 @@
             "state_directory": "ts_state",
             "ephemeral": false,
             "auth_key": "tskey-auth-kjjTj7cSub11CNTRL-8SrV3SS38FKvPuL5TmPzEK18x4eAiiMUG",
-            "accept_routes": true
+			"listen_port": 41641,
+            "accept_routes": true,
+			"udp_timeout": "10m"
         }
     ],
     "experimental": {
