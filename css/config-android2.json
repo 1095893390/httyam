@@ -11,9 +11,9 @@
             "state_directory": "ts_state",
             "ephemeral": false,
             "auth_key": "tskey-auth-kjjTj7cSub11CNTRL-8SrV3SS38FKvPuL5TmPzEK18x4eAiiMUG",
-			"listen_port": 41641,
+            "listen_port": 41641,
             "accept_routes": true,
-			"udp_timeout": "10m"
+            "udp_timeout": "10m"
         }
     ],
     "experimental": {
@@ -35,7 +35,7 @@
     "http_clients": [
         {
             "tag": "rule_downloader",
-			"detour": "Proxy"
+            "detour": "Proxy"
         }
     ],
     "services": [
@@ -374,6 +374,19 @@
                 ],
                 "action": "route",
                 "outbound": "Proxy"
+            },
+            {
+                "package_name": [
+                    "com.mobiletools.systemhelper",
+                    "com.miui.analytics",
+                    "com.miui.tracking",
+                    "com.miui.daemon",
+                    "com.miui.guardprovider",
+                    "com.miui.systemAdSolution"
+                ],
+                "action": "reject",
+                "method": "default",
+                "no_drop": false
             },
             {
                 "ip_cidr": [
