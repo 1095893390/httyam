@@ -12,8 +12,8 @@
             "state_directory": "./ts_state",
             "ephemeral": false,
             "auth_key": "tskey-auth-kdozQBnRfo11CNTRL-MwzFqA9MQX3PxxjkAd7yW36patovJGoL",
-			"listen_port": 41641,
-			"udp_timeout": "10m",
+            "listen_port": 41641,
+            "udp_timeout": "10m",
             "system_interface": false,
             "accept_routes": true
         }
@@ -37,7 +37,7 @@
     "http_clients": [
         {
             "tag": "rule_downloader",
-			"detour": "Proxy"
+            "detour": "Proxy"
         }
     ],
     "dns": {
@@ -188,6 +188,7 @@
             "tag": "Proxy",
             "outbounds": [
                 "naive-VmissUS",
+                "naive-VmissUS-detour",
                 "naive-hostUS",
                 "direct",
                 "block"
@@ -229,6 +230,21 @@
                 "enabled": true,
                 "server_name": "kidko.speedtestwget.xyz"
             }
+        },
+        {
+            "type": "naive",
+            "tag": "naive-VmissUS-detour",
+            "server": "38.47.116.71",
+            "server_port": 443,
+            "username": "mason",
+            "password": "smxmm1314",
+            "insecure_concurrency": 0,
+            "udp_over_tcp": true,
+            "tls": {
+                "enabled": true,
+                "server_name": "kidkoo.speedtestwget.xyz"
+            },
+            "detour": "naive-hostUS"
         },
         {
             "type": "naive",
